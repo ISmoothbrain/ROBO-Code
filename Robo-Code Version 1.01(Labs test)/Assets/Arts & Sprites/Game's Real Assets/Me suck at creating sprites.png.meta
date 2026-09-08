@@ -1,0 +1,481 @@
+fileFormatVersion: 2
+guid: 9958356ab3e95824e9d99084810f86f9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7659021250762885672
+    second: Me suck at creating sprites_0
+  - first:
+      213: 2915773683079907949
+    second: Me suck at creating sprites_1
+  - first:
+      213: 7433062398397326628
+    second: Me suck at creating sprites_2
+  - first:
+      213: 1549125243019236457
+    second: Me suck at creating sprites_3
+  - first:
+      213: -9009055532389486401
+    second: Me suck at creating sprites_4
+  - first:
+      213: -3726675922309235768
+    second: Me suck at creating sprites_5
+  - first:
+      213: 4061786479821027482
+    second: Me suck at creating sprites_6
+  - first:
+      213: -3187763779014945260
+    second: Me suck at creating sprites_7
+  - first:
+      213: 601745545863417032
+    second: Me suck at creating sprites_8
+  - first:
+      213: 3729684710086217990
+    second: Me suck at creating sprites_9
+  - first:
+      213: 8215892229252601736
+    second: Me suck at creating sprites_10
+  - first:
+      213: -1699653191679638747
+    second: Me suck at creating sprites_11
+  - first:
+      213: -8657012651400429317
+    second: Me suck at creating sprites_12
+  - first:
+      213: -1260310703804967883
+    second: Me suck at creating sprites_13
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Me suck at creating sprites_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 283
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82ac3e29f3f4a4a60800000000000000
+      internalID: 7659021250762885672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Me suck at creating sprites_1
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 283
+        width: 19
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6a096167b8e67820800000000000000
+      internalID: 2915773683079907949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Me suck at creating sprites_2
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 283
+        width: 10
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42529c98eda872760800000000000000
+      internalID: 7433062398397326628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Me suck at creating sprites_3
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 283
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96490ce63399f7510800000000000000
+      internalID: 1549125243019236457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Me suck at creating sprites_4
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 251
+        width: 22
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb0382ea9b769f280800000000000000
+      internalID: -9009055532389486401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Me suck at creating sprites_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 235
+        width: 29
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cbb1c15eff284cc0800000000000000
+      internalID: -3726675922309235768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Me suck at creating sprites_6
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 256
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a98773b784d5e5830800000000000000
+      internalID: 4061786479821027482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Me suck at creating sprites_7
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 232
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41615f38bb9c2c3d0800000000000000
+      internalID: -3187763779014945260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Me suck at creating sprites_8
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 131
+        width: 30
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cccc52c264d95800800000000000000
+      internalID: 601745545863417032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Me suck at creating sprites_9
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 171
+        width: 30
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60115ecab7082c330800000000000000
+      internalID: 3729684710086217990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Me suck at creating sprites_10
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 171
+        width: 30
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8875e7de376b40270800000000000000
+      internalID: 8215892229252601736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Me suck at creating sprites_11
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 171
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52383946d6e9968e0800000000000000
+      internalID: -1699653191679638747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Me suck at creating sprites_12
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 171
+        width: 33
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf007314cdc1cd780800000000000000
+      internalID: -8657012651400429317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Me suck at creating sprites_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 58
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5341511a71a728ee0800000000000000
+      internalID: -1260310703804967883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Me suck at creating sprites_0: 7659021250762885672
+      Me suck at creating sprites_1: 2915773683079907949
+      Me suck at creating sprites_10: 8215892229252601736
+      Me suck at creating sprites_11: -1699653191679638747
+      Me suck at creating sprites_12: -8657012651400429317
+      Me suck at creating sprites_13: -1260310703804967883
+      Me suck at creating sprites_2: 7433062398397326628
+      Me suck at creating sprites_3: 1549125243019236457
+      Me suck at creating sprites_4: -9009055532389486401
+      Me suck at creating sprites_5: -3726675922309235768
+      Me suck at creating sprites_6: 4061786479821027482
+      Me suck at creating sprites_7: -3187763779014945260
+      Me suck at creating sprites_8: 601745545863417032
+      Me suck at creating sprites_9: 3729684710086217990
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
