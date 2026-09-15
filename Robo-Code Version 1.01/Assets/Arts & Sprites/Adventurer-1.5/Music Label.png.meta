@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 038b3e60c53e541f389105ae0e68bf07
+guid: 8d4775d61b84a4df4a09db71fb691e08
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1098286324429101383
-    second: Fire_0
-  - first:
-      213: 7419590508823533442
-    second: Fire_1
-  - first:
-      213: 2333874723133794383
-    second: Fire_2
+      213: 4045919694359886227
+    second: Music Label_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -52,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -106,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fire_0
+      name: Music Label_0
       rect:
         serializedVersion: 2
-        x: 44
-        y: 88
-        width: 40
-        height: 43
+        x: 41
+        y: 23
+        width: 1227
+        height: 310
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,52 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7491445d795ed3f00800000000000000
-      internalID: 1098286324429101383
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fire_1
-      rect:
-        serializedVersion: 2
-        x: 107
-        y: 120
-        width: 44
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2875941d14ea7f660800000000000000
-      internalID: 7419590508823533442
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fire_2
-      rect:
-        serializedVersion: 2
-        x: 106
-        y: 40
-        width: 43
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f4827aef1b6936020800000000000000
-      internalID: 2333874723133794383
+      spriteID: 399f31c968ef52830800000000000000
+      internalID: 4045919694359886227
       vertices: []
       indices: 
       edges: []
@@ -175,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -185,9 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Fire_0: 1098286324429101383
-      Fire_1: 7419590508823533442
-      Fire_2: 2333874723133794383
+      Music Label_0: 4045919694359886227
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
