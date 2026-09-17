@@ -6,10 +6,19 @@ using System.Collections.Generic;
 public class MainMenu : MonoBehaviour
 {
     public GameObject settingsPanel;
+    public GameObject keybindPanel;
 
     void Start()
     {
-        settingsPanel.SetActive(false);
+        if (settingsPanel != null)
+        {
+            settingsPanel.SetActive(false);
+        }
+
+        if (keybindPanel != null)
+        {
+            keybindPanel.SetActive(false);
+        }
     }
 
     public void PlayGame()
@@ -25,6 +34,18 @@ public class MainMenu : MonoBehaviour
     public void CloseSettings()
     {
         settingsPanel.SetActive(false);
+    }
+
+    public void OpenKeybinds()
+    {
+        settingsPanel.SetActive(false);
+        keybindPanel.SetActive(true);
+    }
+
+    public void CloseKeybinds()
+    {
+        keybindPanel.SetActive(false);
+        settingsPanel.SetActive(true);
     }
 
     public void QuitGame()
