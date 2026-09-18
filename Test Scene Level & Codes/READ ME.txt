@@ -1,0 +1,8 @@
+This Folder contains the Test Scene Level and new updated code I made and some new assets. The changes I made in this scene is the settings I added a brightness slider
+Another change I created is the attack animation and killing enemies and finally is the coin counter.
+For Devesh since you're working on the inventory you can probably use this I would also include the Coin.cs if you want to add the coins in the inventory
+because the coin counter on the top right corner is temporary since I don't have your inventory UI.
+
+
+The Animation folder belongs to \Assets\Arts & Sprites\Adventurer-1.5
+This includes the attack animations so becareful
