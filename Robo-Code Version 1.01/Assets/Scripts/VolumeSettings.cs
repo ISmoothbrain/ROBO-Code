@@ -9,8 +9,23 @@ public class VolumeSettings : MonoBehaviour
 
     void Start()
     {
-        musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1f);
-        sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume", 1f);
+        if (musicSlider != null)
+        {
+            musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1f);
+        }
+        else
+        {
+            Debug.LogWarning("Music Slider not set on " + gameObject.name);
+        }
+
+        if (sfxSlider != null)
+        {
+            sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume", 1f);
+        }
+        else
+        {
+            Debug.LogWarning("SFX Slider not set on " + gameObject.name);
+        }
     }
 
     public void SetMusicVolume(float volume)
