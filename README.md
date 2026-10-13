@@ -1,9 +1,9 @@
 Robo-Code 
 
-Description:
-Main menu
-Moveable player character
-Moving and attacking enemies
+Description: 
+Main menu 
+Moveable player character 
+Moving and attacking enemies 
 Earn Currency
 change Keybinds
 Brightness adjusting
