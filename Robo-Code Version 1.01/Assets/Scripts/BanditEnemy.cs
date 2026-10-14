@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class BanditEnemy : MonoBehaviour
 {
@@ -21,6 +22,32 @@ public class BanditEnemy : MonoBehaviour
 
     [Header("Patrol")]
     public float waitTimeAtPoint = 1.5f;
+    public float fallbackPatrolDistance = 3f; // used only if Point A / Point B are left empty
+
+    [Header("Health Bar")]
+    public GameObject healthBarPrefab; // prefab with an EnemyHealthBar component on its root
+    public Vector3 healthBarOffset = new Vector3(0f, 1.2f, 0f);
+    private EnemyHealthBar healthBar;
+    private int maxHealth;
+
+    [Header("Damage Feedback")]
+    public Color damageFlashColor = Color.red;
+    public float damageFlashDuration = 0.1f;
+    private SpriteRenderer spriteRenderer;
+    private Color originalColor = Color.white;
+    private Coroutine flashRoutine;
+
+    [Header("Loot")]
+    public GameObject coinPrefab;          // drag your Coin prefab here
+    public int minCoins = 2;
+    public int maxCoins = 5;
+    public Vector3 coinSpawnOffset = new Vector3(0f, 0.5f, 0f);
+
+    [Header("Death")]
+    // Safety net only. Add OnDeathAnimationComplete() as an Animation Event on the LAST
+    // frame of BOTH LightBandit_Death and HeavyBandit_Death and the enemy despawns the
+    // instant that clip finishes instead of waiting out this flat guess.
+    public float deathDespawnFallback = 3f;
 
     private Transform player;
     private Player playerComponent;
@@ -38,12 +65,22 @@ public class BanditEnemy : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        currentTarget = pointB; // start heading toward point B
 
+        // Sprite might live on this object or on a child, depending on how the prefab is set up.
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer == null) spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        if (spriteRenderer != null) originalColor = spriteRenderer.color;
+
+        // If the patrol points were never wired up in the Inspector, make a pair on the
+        // fly around the spawn position instead of standing still and spamming warnings.
         if (pointA == null || pointB == null)
         {
-            Debug.LogWarning($"{name}: Point A or Point B is not assigned in the Inspector — patrol will not work.");
+            Debug.LogWarning($"{name}: Point A or Point B is not assigned — creating fallback patrol points.");
+            pointA = CreateFallbackPoint("_PatrolA", -fallbackPatrolDistance);
+            pointB = CreateFallbackPoint("_PatrolB", fallbackPatrolDistance);
         }
+
+        currentTarget = pointB; // start heading toward point B
 
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
@@ -51,6 +88,27 @@ public class BanditEnemy : MonoBehaviour
             player = playerObj.transform;
             playerComponent = playerObj.GetComponent<Player>();
         }
+
+        maxHealth = health;
+        SpawnHealthBar();
+    }
+
+    private void SpawnHealthBar()
+    {
+        if (healthBarPrefab == null) return;
+
+        GameObject barObj = Instantiate(healthBarPrefab);
+        healthBar = barObj.GetComponent<EnemyHealthBar>();
+
+        if (healthBar == null)
+        {
+            Debug.LogWarning($"{name}: healthBarPrefab is missing an EnemyHealthBar component.");
+            return;
+        }
+
+        healthBar.target = transform;
+        healthBar.offset = healthBarOffset;
+        healthBar.SetHealth(health, maxHealth);
     }
 
     private void FixedUpdate()
@@ -62,8 +120,6 @@ public class BanditEnemy : MonoBehaviour
         animator.SetBool("Grounded", isGrounded);
 
         float distanceToPlayer = player != null ? Mathf.Abs(transform.position.x - player.position.x) : Mathf.Infinity;
-
-        Debug.Log($"{name}: player={(player != null ? player.name : "NULL")}, distToPlayer={distanceToPlayer:F2}, isAttacking={isAttacking}, isWaiting={isWaitingAtPoint}, currentTarget={(currentTarget != null ? currentTarget.name : "NULL")}, velocity={rb.linearVelocity}");
 
         if (isAttacking)
         {
@@ -97,13 +153,16 @@ public class BanditEnemy : MonoBehaviour
         }
     }
 
+    private Transform CreateFallbackPoint(string suffix, float xOffset)
+    {
+        GameObject point = new GameObject(name + suffix);
+        point.transform.position = transform.position + new Vector3(xOffset, 0f, 0f);
+        return point.transform;
+    }
+
     private void Patrol()
     {
-        if (pointA == null || pointB == null)
-        {
-            Debug.LogWarning($"{name}: Point A or Point B is not assigned in the Inspector.");
-            return;
-        }
+        if (currentTarget == null) return;
 
         if (isWaitingAtPoint)
         {
@@ -134,11 +193,6 @@ public class BanditEnemy : MonoBehaviour
 
     private float GetHeightDiffToPlayer()
     {
-        // transform.position pivots differ between the enemy and player prefabs
-        // (the enemy's origin is at its feet, the player's is higher up near its
-        // center). Comparing raw transform.position.y biases the check so attacks
-        // only land when the enemy happens to be above the player. Comparing
-        // groundCheck (feet) positions instead makes the check symmetric.
         float enemyFootY = groundCheck != null ? groundCheck.position.y : transform.position.y;
         float playerFootY = (playerComponent != null && playerComponent.groundCheck != null)
             ? playerComponent.groundCheck.position.y
@@ -174,36 +228,23 @@ public class BanditEnemy : MonoBehaviour
         lastAttackTime = Time.time;
         animator.Play("Attack", 0, 0f); // force play from the start, bypassing any early auto-exit transition
 
-        // Damage is now dealt via an Animation Event on LightBandit_Attack.anim
-        // calling DealDamage() at the hit frame — no Invoke needed for that anymore.
-
-        // How long the whole attack should lock movement for.
-        // Adjust to match your Attack.anim length.
+        // Damage is dealt via an Animation Event on LightBandit_Attack.anim calling DealDamage().
         Invoke(nameof(EndAttack), 0.6f);
     }
 
     public void DealDamage()
     {
-        Debug.Log($"{name}: DealDamage() called. player={(player != null ? player.name : "NULL")}");
-
         if (player == null) return;
 
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-        Debug.Log($"{name}: distanceToPlayer={distanceToPlayer:F2}, attackRange+0.5={attackRange + 0.5f:F2}");
 
         if (distanceToPlayer <= attackRange + 0.5f)
         {
             Player playerScript = player.GetComponent<Player>();
-            Debug.Log($"{name}: playerScript found={playerScript != null}");
             if (playerScript != null)
             {
                 playerScript.TakeDamage(10);
-                Debug.Log($"{name}: dealt damage via TakeDamage()");
             }
-        }
-        else
-        {
-            Debug.Log($"{name}: player out of range, no damage dealt");
         }
     }
 
@@ -219,6 +260,14 @@ public class BanditEnemy : MonoBehaviour
 
         health -= amount;
         animator.SetTrigger("Hurt");
+        healthBar?.SetHealth(health, maxHealth);
+
+        // Same red flash the player gets when hit.
+        if (spriteRenderer != null)
+        {
+            if (flashRoutine != null) StopCoroutine(flashRoutine);
+            flashRoutine = StartCoroutine(DamageFlash());
+        }
 
         if (health <= 0)
         {
@@ -226,13 +275,68 @@ public class BanditEnemy : MonoBehaviour
         }
     }
 
+    private IEnumerator DamageFlash()
+    {
+        spriteRenderer.color = damageFlashColor;
+        yield return new WaitForSeconds(damageFlashDuration);
+        spriteRenderer.color = originalColor;
+        flashRoutine = null;
+    }
+
     private void Die()
     {
+        if (isDead) return;
         isDead = true;
         rb.linearVelocity = Vector2.zero;
+
+        // Attack() schedules Invoke(EndAttack, 0.6f) on every swing. If the killing blow
+        // lands mid-attack, that invoke is still pending and fires AFTER Death is
+        // triggered below — calling SetTrigger("Recover") and knocking the Animator
+        // straight back out of the death animation into idle. That's the "does a
+        // Recover, stands there, then disappears" bug. Cancelling it, and clearing any
+        // Hurt trigger still sitting in the queue for the same reason, makes Death win.
+        CancelInvoke(nameof(EndAttack));
+        isAttacking = false;
+        animator.ResetTrigger("Hurt");
+        animator.ResetTrigger("Recover");
         animator.SetTrigger("Death");
-        // Optionally disable collider/script after a delay, or destroy the object
-        Destroy(gameObject, 2f);
+
+        // Make sure the corpse can't keep flashing or blocking the player.
+        if (flashRoutine != null) StopCoroutine(flashRoutine);
+        if (spriteRenderer != null) spriteRenderer.color = originalColor;
+
+        DropCoins();
+
+        if (healthBar != null)
+        {
+            Destroy(healthBar.gameObject); // bar isn't a child, so it won't go with the enemy on its own
+        }
+
+        // Fallback only, in case the Animation Event below isn't wired up yet.
+        Invoke(nameof(OnDeathAnimationComplete), deathDespawnFallback);
+    }
+
+    // Add this as an Animation Event on the LAST frame of BOTH LightBandit_Death and
+    // HeavyBandit_Death. Whichever fires first — this or the fallback above — wins;
+    // the other becomes a harmless no-op since the object is already gone.
+    public void OnDeathAnimationComplete()
+    {
+        CancelInvoke(nameof(OnDeathAnimationComplete));
+        Destroy(gameObject);
+    }
+
+    private void DropCoins()
+    {
+        if (coinPrefab == null) return;
+
+        int count = Random.Range(minCoins, maxCoins + 1);
+
+        for (int i = 0; i < count; i++)
+        {
+            Vector3 spawnPos = transform.position + coinSpawnOffset;
+            // Coin.cs handles its own landing hop and scatter from here — no force needed.
+            Instantiate(coinPrefab, spawnPos, Quaternion.identity);
+        }
     }
 
     private void OnDrawGizmosSelected()
