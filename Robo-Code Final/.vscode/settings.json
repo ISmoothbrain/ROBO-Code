@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "Robo-Code Version 1.01.slnx"
+    "dotnet.defaultSolution": "Robo-Code Final.slnx"
 }
