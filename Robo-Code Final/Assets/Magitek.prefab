@@ -248,6 +248,7 @@ MonoBehaviour:
   groundCheckRadius: 0.2
   health: 60
   attackCooldown: 1.5
+  attackDamage: 25
   waitTimeAtPoint: 1.5
   fallbackPatrolDistance: 3
   healthBarPrefab: {fileID: 0}

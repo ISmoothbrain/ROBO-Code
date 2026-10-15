@@ -217,13 +217,19 @@ MonoBehaviour:
   groundCheckRadius: 0.2
   health: 30
   attackCooldown: 1.5
+  attackDamage: 15
   waitTimeAtPoint: 1.5
+  fallbackPatrolDistance: 3
   healthBarPrefab: {fileID: 0}
   healthBarOffset: {x: 0, y: 1.2, z: 0}
+  damageFlashColor: {r: 1, g: 0, b: 0, a: 1}
+  damageFlashDuration: 0.1
+  battleQuestions: []
   coinPrefab: {fileID: 8121993398754267287, guid: ce958efae44043544936a673dd5992ed, type: 3}
   minCoins: 2
   maxCoins: 5
   coinSpawnOffset: {x: 0, y: 0.5, z: 0}
+  deathDespawnFallback: 3
 --- !u!1 &7321249116006435937
 GameObject:
   m_ObjectHideFlags: 0
