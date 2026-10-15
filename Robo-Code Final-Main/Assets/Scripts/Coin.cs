@@ -139,6 +139,7 @@ public class Coin : MonoBehaviour
 
         collected = true;
         CoinCounter.Add(value);
+                if (AudioManager.instance != null) AudioManager.instance.PlaySFX(AudioManager.instance.coin);
         Destroy(gameObject);
     }
 }

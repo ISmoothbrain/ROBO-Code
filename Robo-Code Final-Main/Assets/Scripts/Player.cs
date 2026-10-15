@@ -65,6 +65,7 @@ public class Player : MonoBehaviour
     private Animator animator;
     private float moveInput;
     private float animationLockUntil; // set by PlayerSkills so a skill's animation isn't overwritten
+        private float footstepTimer;
 
     void Start()
     {
@@ -217,6 +218,19 @@ public class Player : MonoBehaviour
         }
 
         if (!isAttacking && Time.time >= animationLockUntil) SetAnimation(moveInput);
+                if (isGrounded && Mathf.Abs(moveInput) > 0.1f && !isAttacking)
+        {
+            footstepTimer -= Time.deltaTime;
+            if (footstepTimer <= 0f)
+            {
+                footstepTimer = 0.32f;
+                if (AudioManager.instance != null) AudioManager.instance.PlayFootstep();
+            }
+        }
+        else
+        {
+            footstepTimer = 0f;
+        }
 
         UpdateHealthUI();
     }
@@ -282,6 +296,7 @@ public class Player : MonoBehaviour
         isAttacking = true;
         attackStartTime = Time.time;
         animator.Play(state.hash, state.layer, 0f);
+                if (AudioManager.instance != null) AudioManager.instance.PlaySFX(AudioManager.instance.attack);
     }
 
     // Animation Event on the LAST frame of each attack clip.
@@ -356,6 +371,7 @@ public class Player : MonoBehaviour
     {
         if (isDead || amount <= 0) return;
         health = Mathf.Min(maxHealth, health + amount);
+                if (AudioManager.instance != null) AudioManager.instance.PlaySFX(AudioManager.instance.heal);
     }
     private static bool warnedNoBattleManager;
 
@@ -423,6 +439,7 @@ public class Player : MonoBehaviour
         if (isDead) return;
 
         health -= amount;
+                if (AudioManager.instance != null) AudioManager.instance.PlaySFX(AudioManager.instance.hurt);
         if (spriteRenderer != null) StartCoroutine(DamageFlash());
 
         if (health <= 0)
@@ -446,6 +463,7 @@ public class Player : MonoBehaviour
         isAttacking = false;
 
         animator.SetTrigger("Death");
+                if (AudioManager.instance != null) AudioManager.instance.PlaySFX(AudioManager.instance.defeat);
         StartCoroutine(ReloadAfterDeath());
     }
 

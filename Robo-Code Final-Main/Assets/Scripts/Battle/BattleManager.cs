@@ -109,8 +109,14 @@ public class BattleManager : MonoBehaviour
     private IEnumerator BattleRoutine(Player player, BanditEnemy enemy, bool playerFirst)
     {
         InBattle = true;
+                if (AudioManager.instance != null)
+        {
+            AudioManager.instance.PlaySFX(AudioManager.instance.battleStart);
+            AudioManager.instance.PlayMusic(AudioManager.instance.battleMusic);
+        }
         // The question bag is NOT reset here, so you see every question before any repeats.
         // Only reshuffle when the question pool changes (an enemy with its own questions vs. the defaults).
+        
         BanditEnemy source = enemy.battleQuestions != null && enemy.battleQuestions.Length > 0 ? enemy : null;
         if (source != lastQuestionSource)
         {
@@ -149,6 +155,10 @@ public class BattleManager : MonoBehaviour
         }
 
         bool won = enemy == null || enemy.IsDead;
+                if (AudioManager.instance != null)
+        {
+                        if (won) AudioManager.instance.PlaySFX(AudioManager.instance.victory);
+        }
         ui.ShowBanner(won ? "VICTORY!" : "DEFEATED...");
         yield return new WaitForSeconds(1.6f);
 
@@ -189,6 +199,7 @@ public class BattleManager : MonoBehaviour
         {
             int dmg = Mathf.RoundToInt((correctAnswerDamage + PlayerUpgrades.BonusDamage) * Mathf.Max(0.1f, q.damageMultiplier));
             player.PlayBattleAttack();
+                        if (AudioManager.instance != null) AudioManager.instance.PlaySFX(AudioManager.instance.attack);
             yield return new WaitForSeconds(0.3f);
             enemy.TakeDamage(dmg);
             ui.ShowBanner($"Code compiled!\n{dmg} damage");
@@ -212,11 +223,13 @@ public class BattleManager : MonoBehaviour
         yield return qte.Run(result => dodged = result);
 
         enemy.PlayBattleAttack();
+                if (AudioManager.instance != null) AudioManager.instance.PlaySFX(AudioManager.instance.enemyAttack);
         yield return new WaitForSeconds(0.3f);
 
         if (dodged)
         {
             ui.ShowBanner("DODGED!");
+                        if (AudioManager.instance != null) AudioManager.instance.PlaySFX(AudioManager.instance.defend);
         }
         else
         {
@@ -230,6 +243,7 @@ public class BattleManager : MonoBehaviour
     private void EndBattle(Player player, BanditEnemy enemy)
     {
         ui.Hide();
+                if (AudioManager.instance != null) AudioManager.instance.PlayMusic(AudioManager.instance.gameMusic);
         RestoreHud();
         if (battleCamera != null) battleCamera.SetActive(false);
         else if (cameraDirector != null) cameraDirector.Exit();
