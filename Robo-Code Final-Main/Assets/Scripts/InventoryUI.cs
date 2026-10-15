@@ -25,7 +25,7 @@ public class InventoryUI : MonoBehaviour
         // I is not a QTE key any more, but never toggle the bag mid-battle, mid-dialogue or while shopping.
         if (UIBusy.AnyOpen || UIBusy.ClosedThisFrame) return;
 
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(Keybinds.Get("Inventory")))
         {
             ToggleInventory();
         }

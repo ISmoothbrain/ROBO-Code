@@ -19,6 +19,7 @@ public class BackpackUI : MonoBehaviour
     public TextMeshProUGUI coinsText;
     public TextMeshProUGUI infoTitle;
     public TextMeshProUGUI infoText;
+    public TextMeshProUGUI hintText;
     public Sprite slotSprite;
     public Sprite slotSelectedSprite;
 
@@ -44,15 +45,18 @@ public class BackpackUI : MonoBehaviour
         CoinCounter.OnCoinsChanged -= OnCoins;
     }
 
-    private void Update()
+        private void Update()
     {
+        // the toggleKey field above is ignored now, the settings menu owns this
+        KeyCode toggle = Keybinds.Get("Inventory");
+
         if (IsOpen)
         {
-            if (Input.GetKeyDown(toggleKey) || Input.GetKeyDown(KeyCode.Escape)) Close();
+            if (Input.GetKeyDown(toggle) || Input.GetKeyDown(KeyCode.Escape)) Close();
             return;
         }
 
-        if (!UIBusy.AnyOpen && !UIBusy.ClosedThisFrame && Input.GetKeyDown(toggleKey)) Open();
+        if (!UIBusy.AnyOpen && !UIBusy.ClosedThisFrame && Input.GetKeyDown(toggle)) Open();
     }
 
     public void Open()
@@ -75,6 +79,10 @@ public class BackpackUI : MonoBehaviour
         selected = -1;
         Refresh();
         OnCoins(CoinCounter.Total);
+                if (hintText != null)
+        {
+            hintText.text = "[" + Keybinds.Label("Inventory") + "] or [Esc] to close";
+        }
 
         root.SetActive(true);
         IsOpen = true;

@@ -76,6 +76,7 @@ public static class GameUIBootstrap
             backpack.coinsText = b.coins;
             backpack.infoTitle = b.infoTitle;
             backpack.infoText = b.infoText;
+            backpack.hintText = b.hintText;
             backpack.slotSprite = b.slotSprite;
             backpack.slotSelectedSprite = b.slotSelectedSprite;
 
@@ -170,7 +171,7 @@ public static class GameUIBootstrap
     {
         public GameObject root, slotTemplate;
         public Transform grid;
-        public TextMeshProUGUI coins, infoTitle, infoText;
+        public TextMeshProUGUI coins, infoTitle, infoText, hintText;
         public Sprite slotSprite, slotSelectedSprite;
     }
 
@@ -242,7 +243,7 @@ public static class GameUIBootstrap
         r.infoText = UIBuild.Label(UIBuild.Node("Description", info.transform), 22, FontStyles.Normal, new Color(0.78f, 0.86f, 0.92f), TextAlignmentOptions.Left);
 
         GameObject hint = UIBuild.Node("Hint", window.transform);
-        UIBuild.Label(hint, 20, FontStyles.Normal, new Color(0.45f, 0.6f, 0.7f), TextAlignmentOptions.Center).text = "[I] or [Esc] to close";
+        r.hintText = UIBuild.Label(hint, 20, FontStyles.Normal, new Color(0.45f, 0.6f, 0.7f), TextAlignmentOptions.Center);
 
         // Slot template: frame + icon + stack count in the bottom-right corner
         GameObject slot = UIBuild.Node("SlotTemplate", root.transform);

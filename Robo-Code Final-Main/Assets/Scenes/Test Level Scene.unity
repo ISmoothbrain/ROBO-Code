@@ -826,6 +826,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseMenu
   pausePanel: {fileID: 527131258}
+  settingsPanel: {fileID: 2006670295}
+  keybindsPanel: {fileID: 954730435}
 --- !u!4 &203233423
 Transform:
   m_ObjectHideFlags: 0
@@ -7049,6 +7051,7 @@ GameObject:
   - component: {fileID: 954730436}
   - component: {fileID: 954730438}
   - component: {fileID: 954730437}
+  - component: {fileID: 954730439}
   m_Layer: 5
   m_Name: KeybindsPanel
   m_TagString: Untagged
@@ -7089,15 +7092,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.46666667, g: 0.53333336, b: 0.6, a: 0.39215687}
+  m_Color: {r: 0.46666667, g: 0.53333336, b: 0.6, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 4202066125836637424, guid: 6cf8c0b3f444bbe4ca132185ade1c46f, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -7114,6 +7117,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 954730435}
   m_CullTransparentMesh: 1
+--- !u!114 &954730439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954730435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6523e9e97ce74e4c98d0fd7edf6ac55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KeybindMenuBuilder
+  titleSprite: {fileID: 0}
+  nameSprites:
+  - {fileID: 21300000, guid: 2b871e84545f3414fb2a329c0b5b48b8, type: 3}
+  - {fileID: 21300000, guid: 7557c0eb0a887af4ea2c45bbf425490b, type: 3}
+  - {fileID: 21300000, guid: 7e83cf006f77bc347884387d4474824b, type: 3}
+  - {fileID: 21300000, guid: a3bc75303a5c7ff43b3e1e62014600e7, type: 3}
+  - {fileID: 21300000, guid: 1b8a0c94ae9ae914dbf72b5127884530, type: 3}
+  keyPlateSprite: {fileID: 21300000, guid: faf60d5c26a01a447914316810254bb5, type: 3}
+  resetSprite: {fileID: 21300000, guid: d143014c7ecdddd4c8beb569262c2a2d, type: 3}
+  font: {fileID: 0}
+  showTitle: 0
+  titleLeft: 0.34
+  titleRight: 0.66
+  titleBottom: 0.88
+  titleTop: 0.98
+  firstRowTop: 0.855
+  rowHeight: 0.072
+  rowGap: 0.02
+  nameLeft: 0.22
+  nameRight: 0.5
+  keyLeft: 0.54
+  keyRight: 0.78
+  backButton: {fileID: 137232071}
+  resetGap: 6
+  resetBottom: 0.3
+  resetTop: 0.365
+  resetLeft: 0.38
+  resetRight: 0.62
+  normalTint: {r: 0.46666667, g: 0.53333336, b: 0.6, a: 1}
+  highlightTint: {r: 0.9019608, g: 0.9019608, b: 0.9019608, a: 1}
+  pressedTint: {r: 0.46666667, g: 0.53333336, b: 0.6, a: 1}
+  nameFontSize: 24
+  keyFontSize: 22
+  textColor: {r: 0.50980395, g: 0.5882353, b: 0.64705884, a: 1}
+  messageColor: {r: 1, g: 0.82, b: 0.4, a: 1}
+  plainBoxColor: {r: 0.12, g: 0.16, b: 0.24, a: 1}
 --- !u!1 &1037165677
 GameObject:
   m_ObjectHideFlags: 0
@@ -10101,15 +10152,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.46666667, g: 0.53333336, b: 0.6, a: 0.39215687}
+  m_Color: {r: 0.46666667, g: 0.53333336, b: 0.6, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 4202066125836637424, guid: 6cf8c0b3f444bbe4ca132185ade1c46f, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

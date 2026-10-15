@@ -189,19 +189,21 @@ public class Player : MonoBehaviour
         // Freeze platformer input while a battle, conversation, shop, backpack or coding challenge is open.
         if (UIBusy.AnyOpen) { moveInput = 0f; return; }
 
-        moveInput = Input.GetAxis("Horizontal");
+                moveInput = 0f;
+        if (Input.GetKey(Keybinds.Get("MoveLeft"))) moveInput -= 1f;
+        if (Input.GetKey(Keybinds.Get("MoveRight"))) moveInput += 1f;
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(Keybinds.Get("Jump")) && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
 
         bool clickedOnUI = EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();
-        if (Input.GetMouseButtonDown(0) && !clickedOnUI)
+        if (Input.GetKeyDown(Keybinds.Get("Attack")) && !clickedOnUI)
         {
             TryAttack();
         }
-
+        
         if (isAttacking && Time.time - attackStartTime > maxAttackDuration)
         {
             Debug.LogWarning(
