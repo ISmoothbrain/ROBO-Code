@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Arts &amp; Sprites\Cainos\Third Party\Lucid Editor\Runtime\Attributes\HideIfAttribute.cs" />
+    <Compile Include="Assets\Scripts\UI\BackpackUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
     <Compile Include="Assets\Arts &amp; Sprites\Bandits - Pixel Art\Demo\Sensor_Bandit.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Assets\Scripts\Dialogue\NPCInteractable.cs" />
     <Compile Include="Assets\Arts &amp; Sprites\Cainos\Pixel Art Platformer - Village Props\Script\Chest.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
+    <Compile Include="Assets\Scripts\Shop\Consumables.cs" />
     <Compile Include="Assets\Arts &amp; Sprites\Cainos\Third Party\Lucid Editor\Runtime\Attributes\DisableIfAttribute.cs" />
     <Compile Include="Assets\Scripts\VolumeSettings.cs" />
     <Compile Include="Assets\Scripts\Shop\ShopItem.cs" />
@@ -83,6 +85,7 @@
     <Compile Include="Assets\Scripts\BanditEnemy.cs" />
     <Compile Include="Assets\Scripts\UI\UIFont.cs" />
     <Compile Include="Assets\Scripts\Shop\PotionUser.cs" />
+    <Compile Include="Assets\Scripts\Background\ParallaxBackground.cs" />
     <Compile Include="Assets\Scripts\ProgressManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
@@ -96,6 +99,7 @@
     <Compile Include="Assets\Scripts\Battle\BattleBootstrap.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
+    <Compile Include="Assets\Scripts\UI\ItemIcons.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\Arts &amp; Sprites\Cainos\Third Party\Lucid Editor\Runtime\Attributes\FoldoutGroupAttribute.cs" />
@@ -103,6 +107,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\Arts &amp; Sprites\Cainos\Third Party\Lucid Editor\Runtime\Attributes\GUIColorAttribute.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
+    <Compile Include="Assets\Scripts\Background\BackgroundSettings.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Battle\QuickTimeEvent.cs" />
@@ -172,6 +177,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
     <Compile Include="Assets\Scripts\HealthBarColorSettings.cs" />
     <Compile Include="Assets\Arts &amp; Sprites\Cainos\Third Party\Lucid Editor\Runtime\Attributes\ValidateInputAttribute.cs" />
+    <Compile Include="Assets\Scripts\UI\HudUI.cs" />
     <Compile Include="Assets\Scripts\Battle\BattleCameraDirector.cs" />
   </ItemGroup>
   <ItemGroup>
