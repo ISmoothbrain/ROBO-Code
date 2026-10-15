@@ -9,7 +9,7 @@ using UnityEngine;
 // changed on the Player prefab (attack point, scripts, settings) is kept.
 public static class HoodedHeroTools
 {
-    private const string HeroController = "Assets/Arts & Sprites/HoodedHero/Animation/HoodedHero.overrideController";
+    private const string HeroController = "Assets/Resources/PlayerCharacter.overrideController";
     private const string HeroSheet = "Assets/Arts & Sprites/HoodedHero/HoodedHero_Sheet.png";
     private const string OldController = "Assets/Arts & Sprites/Adventurer-1.5/Animation/Hero.controller";
     private const string OldSheet = "Assets/Arts & Sprites/Adventurer-1.5/adventurer-sheet-4x.png";

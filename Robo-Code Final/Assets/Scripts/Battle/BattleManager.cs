@@ -56,6 +56,7 @@ public class BattleManager : MonoBehaviour
     private float nextBattleAllowed;
     private readonly List<GameObject> hiddenHud = new List<GameObject>();
     private readonly List<PythonQuestion> questionBag = new List<PythonQuestion>();
+    private BanditEnemy lastQuestionSource; // only reshuffle when switching to an enemy with its own questions
 
     private void Awake()
     {
@@ -108,7 +109,14 @@ public class BattleManager : MonoBehaviour
     private IEnumerator BattleRoutine(Player player, BanditEnemy enemy, bool playerFirst)
     {
         InBattle = true;
-        questionBag.Clear();
+        // The question bag is NOT reset here, so you see every question before any repeats.
+        // Only reshuffle when the question pool changes (an enemy with its own questions vs. the defaults).
+        BanditEnemy source = enemy.battleQuestions != null && enemy.battleQuestions.Length > 0 ? enemy : null;
+        if (source != lastQuestionSource)
+        {
+            questionBag.Clear();
+            lastQuestionSource = source;
+        }
 
         player.EnterBattle(enemy.transform.position);
         enemy.EnterBattle(player.transform.position);
@@ -270,17 +278,20 @@ public class BattleManager : MonoBehaviour
         float playerDir = player.transform.position.x >= enemy.transform.position.x ? 1f : -1f;
         float half = need * 0.5f;
 
-        float playerMove = SafeDistance(player.transform, playerDir, half, player.groundLayer);
-        float enemyMove = SafeDistance(enemy.transform, -playerDir, half, enemy.groundLayer);
+        Vector3 playerTarget = FindLanding(player.transform, playerDir, half, player.groundLayer);
+        Vector3 enemyTarget = FindLanding(enemy.transform, -playerDir, half, enemy.groundLayer);
 
-        // If one of them has a wall or a ledge behind it, the other hops further to make up for it.
-        float leftover = need - playerMove - enemyMove;
+        // If one of them is backed against a wall or cliff, the other hops further to make up for it.
+        float leftover = need - Mathf.Abs(playerTarget.x - player.transform.position.x)
+                              - Mathf.Abs(enemyTarget.x - enemy.transform.position.x);
         if (leftover > 0.05f)
         {
-            if (playerMove < half - 0.01f)
-                enemyMove = SafeDistance(enemy.transform, -playerDir, enemyMove + leftover, enemy.groundLayer);
+            float playerMoved = Mathf.Abs(playerTarget.x - player.transform.position.x);
+            float enemyMoved = Mathf.Abs(enemyTarget.x - enemy.transform.position.x);
+            if (playerMoved < half - 0.01f)
+                enemyTarget = FindLanding(enemy.transform, -playerDir, enemyMoved + leftover, enemy.groundLayer);
             else
-                playerMove = SafeDistance(player.transform, playerDir, playerMove + leftover, player.groundLayer);
+                playerTarget = FindLanding(player.transform, playerDir, playerMoved + leftover, player.groundLayer);
         }
 
         Animator playerAnim = player.GetComponent<Animator>();
@@ -288,33 +299,46 @@ public class BattleManager : MonoBehaviour
         if (playerAnim != null && !string.IsNullOrEmpty(player.jumpState)) playerAnim.Play(player.jumpState);
         if (enemyAnim != null) enemyAnim.SetBool("Grounded", false);
 
-        yield return Hop(
-            new[] { player.transform, enemy.transform },
-            new[] { playerDir * playerMove, -playerDir * enemyMove });
+        yield return Hop(new[] { player.transform, enemy.transform }, new[] { playerTarget, enemyTarget });
 
         if (enemyAnim != null) enemyAnim.SetBool("Grounded", true);
         player.ReturnToBattleIdle();
     }
 
-    // How far a fighter can safely hop: stops short of walls and never off the edge of a ledge.
-    private static float SafeDistance(Transform t, float dir, float wanted, LayerMask ground)
+    // Where a fighter lands if it hops up to 'wanted' units in 'dir'. It can hop up onto low things
+    // (rocks, small steps) or down small drops, but never into a wall or off a cliff.
+    // Returns its current position if there's nowhere safe to go.
+    private static Vector3 FindLanding(Transform t, float dir, float wanted, LayerMask ground)
     {
-        if (ground.value == 0) return wanted; // no ground layer set, so we can't check
+        Vector3 here = t.position;
+        if (ground.value == 0) return here + Vector3.right * dir * wanted; // no ground layer set, so we can't check
 
-        for (float d = wanted; d > 0.05f; d -= 0.25f)
+        Collider2D body = t.GetComponent<Collider2D>();
+        float feetOffset = body != null ? here.y - body.bounds.min.y : 0f;
+        float feetY = here.y - feetOffset;
+        const float maxStepUp = 1.2f, maxStepDown = 1.0f, headroom = 1.4f;
+
+        for (float d = wanted; d > 0.05f; d -= 0.2f)
         {
-            Vector2 from = (Vector2)t.position + Vector2.up * 0.5f;
-            Vector2 to = from + Vector2.right * dir * d;
+            float x = here.x + dir * d;
 
-            if (Physics2D.Linecast(from, to, ground).collider != null) continue;            // wall in the way
-            if (Physics2D.Raycast(to, Vector2.down, 1.5f, ground).collider == null) continue; // no floor there
+            // Find the floor at the landing spot.
+            RaycastHit2D floor = Physics2D.Raycast(new Vector2(x, feetY + maxStepUp + 0.3f), Vector2.down,
+                                                   maxStepUp + maxStepDown + 0.3f, ground);
+            if (floor.collider == null) continue;                    // a cliff or a gap: no floor
+            if (floor.distance < 0.01f) continue;                    // started inside a wall
+            if (floor.point.y > feetY + maxStepUp) continue;         // too high to hop onto
 
-            return d;
+            // Make sure nothing blocks the arc, measured above the higher of the two floors.
+            float clearY = Mathf.Max(feetY, floor.point.y) + headroom;
+            if (Physics2D.Linecast(new Vector2(here.x, clearY), new Vector2(x, clearY), ground).collider != null) continue;
+
+            return new Vector3(x, floor.point.y + feetOffset + 0.02f, here.z);
         }
-        return 0f;
+        return here;
     }
 
-    private IEnumerator Hop(Transform[] bodies, float[] offsetsX)
+    private IEnumerator Hop(Transform[] bodies, Vector3[] targets)
     {
         int n = bodies.Length;
         Vector3[] start = new Vector3[n];
@@ -338,11 +362,12 @@ public class BattleManager : MonoBehaviour
         {
             t += Time.deltaTime / Mathf.Max(0.05f, hopTime);
             float k = Mathf.Clamp01(t);
+            float e = Mathf.SmoothStep(0f, 1f, k);
             for (int i = 0; i < n; i++)
             {
                 if (bodies[i] == null) continue;
-                Vector3 p = start[i] + Vector3.right * offsetsX[i] * Mathf.SmoothStep(0f, 1f, k);
-                p.y += Mathf.Sin(k * Mathf.PI) * hopHeight;
+                Vector3 p = Vector3.Lerp(start[i], targets[i], e);
+                if ((targets[i] - start[i]).sqrMagnitude > 0.0001f) p.y += Mathf.Sin(k * Mathf.PI) * hopHeight;
                 bodies[i].position = p;
             }
             yield return null;
@@ -351,7 +376,7 @@ public class BattleManager : MonoBehaviour
         for (int i = 0; i < n; i++)
         {
             if (bodies[i] == null) continue;
-            bodies[i].position = start[i] + Vector3.right * offsetsX[i];
+            bodies[i].position = targets[i];
             if (rbs[i] != null)
             {
                 rbs[i].bodyType = types[i];

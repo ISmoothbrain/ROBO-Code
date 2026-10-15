@@ -1,48 +1,64 @@
 using UnityEngine;
 
 // Stock used when a shop has no Shop Items of its own assigned.
+// Icons come from Assets/Resources/Icons.
 public static class DefaultShopItems
 {
     private static ShopItem[] items;
-    private static InventoryItem potion;
+    private static InventoryItem healthPotion, bigHealthPotion, manaPotion;
 
-    // The inventory item the default Health Potion puts in the bag (PotionUser drinks these).
+    public static Sprite Icon(string name) => Resources.Load<Sprite>("Icons/" + name);
+
+    // Note: Unity objects need an explicit "== null" check here. Runtime-made items are destroyed
+    // when Play mode stops, and "??=" would keep handing out those destroyed (empty) items.
     public static InventoryItem HealthPotion
     {
-        get
-        {
-            if (potion == null)
-            {
-                potion = ScriptableObject.CreateInstance<InventoryItem>();
-                potion.name = "Health Potion";
-                potion.itemName = "Health Potion";
-                potion.description = "Restores 30 HP. Press H to drink.";
-                potion.isStackable = true;
-            }
-            return potion;
-        }
+        get { if (healthPotion == null) healthPotion = Item("Health Potion", "potion_red", "Restores 30 HP. Click it here, or press H."); return healthPotion; }
+    }
+    public static InventoryItem BigHealthPotion
+    {
+        get { if (bigHealthPotion == null) bigHealthPotion = Item("Big Health Potion", "potion_big_red", "Restores 80 HP. Click it here to drink."); return bigHealthPotion; }
+    }
+    public static InventoryItem ManaPotion
+    {
+        get { if (manaPotion == null) manaPotion = Item("Mana Potion", "potion_blue", "Restores 50 mana. Click it here to drink."); return manaPotion; }
     }
 
     public static ShopItem[] Get()
     {
-        if (items != null) return items;
+        if (items != null && System.Array.TrueForAll(items, i => i != null)) return items;
 
         items = new[]
         {
-            Make("Health Potion", "Restores 30 HP when you drink it (press H).", 15,
-                 ShopEffect.AddToInventory, 30, new Color(0.95f, 0.3f, 0.35f), HealthPotion),
-            Make("Damage Boost", "Permanently +5 damage to your attacks and correct answers.", 40,
-                 ShopEffect.DamageBoost, 5, new Color(1f, 0.65f, 0.2f)),
-            Make("Heart Container", "Permanently +20 max HP.", 60,
-                 ShopEffect.MaxHealthUp, 20, new Color(1f, 0.4f, 0.75f)),
-            Make("Quick Snack", "Heals 15 HP right now.", 5,
-                 ShopEffect.HealNow, 15, new Color(0.5f, 0.9f, 0.45f)),
+            Make("Health Potion", "Restores 30 HP. Goes in your backpack (press H to drink).", 15,
+                 ShopEffect.AddToInventory, 30, "potion_red", HealthPotion),
+            Make("Big Health Potion", "Restores 80 HP. Goes in your backpack.", 35,
+                 ShopEffect.AddToInventory, 80, "potion_big_red", BigHealthPotion),
+            Make("Mana Potion", "Restores 50 mana for your crafted skills.", 15,
+                 ShopEffect.AddToInventory, 50, "potion_blue", ManaPotion),
+            Make("Damage Boost", "Permanently +5 damage to attacks and correct answers.", 40,
+                 ShopEffect.DamageBoost, 5, "fire"),
+            Make("Heart Container", "Permanently +20 max HP (two more hearts).", 60,
+                 ShopEffect.MaxHealthUp, 20, "heart_full"),
+            Make("Apple", "Heals 15 HP right away.", 5,
+                 ShopEffect.HealNow, 15, "apple"),
         };
         return items;
     }
 
+    private static InventoryItem Item(string name, string icon, string desc)
+    {
+        InventoryItem i = ScriptableObject.CreateInstance<InventoryItem>();
+        i.name = name;
+        i.itemName = name;
+        i.icon = Icon(icon);
+        i.description = desc;
+        i.isStackable = true;
+        return i;
+    }
+
     private static ShopItem Make(string name, string desc, int price, ShopEffect effect, int amount,
-                                 Color tint, InventoryItem inv = null)
+                                 string icon, InventoryItem inv = null)
     {
         ShopItem s = ScriptableObject.CreateInstance<ShopItem>();
         s.name = name;
@@ -51,7 +67,7 @@ public static class DefaultShopItems
         s.price = price;
         s.effect = effect;
         s.amount = amount;
-        s.iconTint = tint;
+        s.icon = Icon(icon);
         s.inventoryItem = inv;
         return s;
     }

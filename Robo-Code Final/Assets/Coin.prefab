@@ -158,16 +158,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Coin
   value: 1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  scatterSideDistance: 1
+  scatterArcHeight: 0.6
   settleTime: 1
+  groundRayDistance: 10
+  restingHeight: 0.15
+  letAnimatorHandleFloat: 0
   bobHeight: 1
   bobSpeed: 1
   spinSpeed: 0.1
   magnetRange: 1.5
   magnetSpeed: 8
   lifetime: 30
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!61 &1494153329752823165
 BoxCollider2D:
   m_ObjectHideFlags: 0

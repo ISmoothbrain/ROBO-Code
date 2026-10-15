@@ -162,7 +162,7 @@ MonoBehaviour:
   - {fileID: 3102228744887297882, guid: e73357ce6d4a4ec4b00867015877b242, type: 3}
   - {fileID: -172237242060633201, guid: e73357ce6d4a4ec4b00867015877b242, type: 3}
   - {fileID: -3521289658049934810, guid: e73357ce6d4a4ec4b00867015877b242, type: 3}
-  framesPerSecond: 8
+  framesPerSecond: 7.142857
 --- !u!114 &1851537126674979378
 MonoBehaviour:
   m_ObjectHideFlags: 0

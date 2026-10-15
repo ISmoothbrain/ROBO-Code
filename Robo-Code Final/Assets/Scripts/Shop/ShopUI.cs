@@ -48,7 +48,8 @@ public class ShopUI : MonoBehaviour
 
     public void Open(string title, ShopItem[] items)
     {
-        stock = items != null && items.Length > 0 ? items : DefaultShopItems.Get();
+        // Use the shop's own items if it has any real ones; empty Inspector slots don't count.
+        stock = items != null && System.Array.Exists(items, i => i != null) ? items : DefaultShopItems.Get();
         titleText.text = title;
         feedbackText.text = "";
 
@@ -62,8 +63,8 @@ public class ShopUI : MonoBehaviour
             row.SetActive(true);
 
             Image icon = row.transform.Find("Icon").GetComponent<Image>();
-            icon.sprite = item.icon;
-            icon.color = item.icon != null ? Color.white : item.iconTint;
+            icon.sprite = ItemIcons.For(item);
+            icon.color = icon.sprite != null ? Color.white : item.iconTint;
             icon.preserveAspect = true;
 
             row.transform.Find("Texts/Name").GetComponent<TextMeshProUGUI>().text = item.itemName;
@@ -76,6 +77,8 @@ public class ShopUI : MonoBehaviour
             buy.onClick.AddListener(() => Buy(captured));
             rows.Add((item, buy, price));
         }
+
+        if (rows.Count == 0) Feedback("Nothing for sale right now.", false);
 
         CoinCounter.OnCoinsChanged -= OnCoinsChanged;
         CoinCounter.OnCoinsChanged += OnCoinsChanged;

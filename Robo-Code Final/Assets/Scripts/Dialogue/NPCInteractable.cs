@@ -85,7 +85,7 @@ public class NPCInteractable : MonoBehaviour
             prompt.transform.localScale = s;
         }
 
-        bool busy = DialogueUI.IsOpen || ShopUI.IsOpen || BattleManager.InBattle || CodeChallengeUI.IsOpen;
+        bool busy = UIBusy.AnyOpen;
         if (prompt != null) prompt.gameObject.SetActive(playerInRange && !busy);
 
         if (!playerInRange || busy || !Input.GetKeyDown(interactKey)) return;

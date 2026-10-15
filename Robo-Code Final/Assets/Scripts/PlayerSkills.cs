@@ -30,6 +30,12 @@ public class PlayerSkills : MonoBehaviour
 
     public float Mana => mana;
 
+    // Mana potions call this. Never goes above max.
+    public void RestoreMana(float amount)
+    {
+        mana = Mathf.Min(maxMana, mana + Mathf.Max(0f, amount));
+    }
+
     private void Start()
     {
         player = GetComponent<Player>();

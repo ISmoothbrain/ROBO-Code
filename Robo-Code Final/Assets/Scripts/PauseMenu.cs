@@ -17,7 +17,7 @@ public class PauseMenu : MonoBehaviour
     void Update()
     {
         // Escape closes dialogue / the shop first, so don't also pause on that same press.
-        if (BattleManager.InBattle || DialogueUI.IsOpen || ShopUI.IsOpen || UIBusy.ClosedThisFrame) return;
+        if (UIBusy.AnyOpen || UIBusy.ClosedThisFrame) return;
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {

@@ -29,9 +29,9 @@ public class BattleSettings : ScriptableObject
 
     [Header("Quick-Time Event")]
     [Tooltip("Seconds for the ring to close. Smaller = harder.")]
-    public float qteCloseTime = 1.3f;
+    public float qteCloseTime = 1.5f;
     [Tooltip("How forgiving the timing is. Smaller = harder.")]
-    [Range(0.05f, 0.4f)] public float qteHitWindow = 0.15f;
+    [Range(0.05f, 0.4f)] public float qteHitWindow = 0.25f;
 
     public static BattleSettings Load() => Resources.Load<BattleSettings>("BattleSettings");
 }

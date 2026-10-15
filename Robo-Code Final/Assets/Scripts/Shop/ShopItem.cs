@@ -40,7 +40,7 @@ public class ShopItem : ScriptableObject
                     message = "Your bag is full!";
                     return false;
                 }
-                message = $"{itemName} added to your bag. Press H to drink one.";
+                message = $"{itemName} added to your backpack (I).";
                 return true;
 
             case ShopEffect.HealNow:

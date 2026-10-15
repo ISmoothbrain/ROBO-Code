@@ -9,4 +9,8 @@ public static class UIBusy
     public static bool ClosedThisFrame => Time.frameCount == lastCloseFrame;
 
     public static void MarkClosed() => lastCloseFrame = Time.frameCount;
+
+    // True while a battle, conversation, shop, backpack or coding challenge has the controls.
+    public static bool AnyOpen =>
+        BattleManager.InBattle || DialogueUI.IsOpen || ShopUI.IsOpen || BackpackUI.IsOpen || CodeChallengeUI.IsOpen;
 }

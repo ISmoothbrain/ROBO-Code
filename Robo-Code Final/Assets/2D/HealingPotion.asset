@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: HealingPotion
   m_EditorClassIdentifier: Assembly-CSharp::InventoryItem
   itemName: Healing Potion
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 4fc7f31558ab470c887fa65c1cd25056, type: 3}
   description: Restores 50 HP
   isStackable: 1

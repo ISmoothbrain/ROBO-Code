@@ -23,7 +23,7 @@ public class InventoryUI : MonoBehaviour
     private void Update()
     {
         // I is not a QTE key any more, but never toggle the bag mid-battle, mid-dialogue or while shopping.
-        if (BattleManager.InBattle || DialogueUI.IsOpen || ShopUI.IsOpen || UIBusy.ClosedThisFrame) return;
+        if (UIBusy.AnyOpen || UIBusy.ClosedThisFrame) return;
 
         if (Input.GetKeyDown(KeyCode.I))
         {

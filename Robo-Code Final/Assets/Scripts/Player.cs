@@ -185,8 +185,8 @@ public class Player : MonoBehaviour
     {
         if (isDead) return;
 
-        // Freeze platformer input while a coding challenge window or a battle is running.
-        if (CodeChallengeUI.IsOpen || BattleManager.InBattle || DialogueUI.IsOpen || ShopUI.IsOpen) { moveInput = 0f; return; }
+        // Freeze platformer input while a battle, conversation, shop, backpack or coding challenge is open.
+        if (UIBusy.AnyOpen) { moveInput = 0f; return; }
 
         moveInput = Input.GetAxis("Horizontal");
 

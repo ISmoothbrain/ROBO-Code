@@ -18,11 +18,11 @@ public class QuickTimeEvent : MonoBehaviour
 
     [Header("Tuning")]
     [Tooltip("Seconds for the closing ring to reach the target ring.")]
-    public float closeTime = 1.3f;
+    public float closeTime = 1.5f;
     [Tooltip("How big the closing ring starts, relative to the target ring.")]
     public float startScale = 3f;
     [Tooltip("How close (in scale) counts as a hit. 0.15 = within 15% of the target ring.")]
-    public float hitWindow = 0.15f;
+    public float hitWindow = 0.25f;
     [Tooltip("Keys that can be picked. Leaves out I (inventory), E (talk), Q (skill) and H (potion).")]
     public string keyPool = "WRTYUOPASDFGJKLZXCVBNM";
 

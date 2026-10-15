@@ -20,6 +20,7 @@ public class BanditEnemy : MonoBehaviour
     [Header("Combat")]
     public int health = 30;
     public float attackCooldown = 1.5f;
+    [Range(0, 100)] public int attackDamage = 10;
 
     [Header("Patrol")]
     public float waitTimeAtPoint = 1.5f;
@@ -263,7 +264,7 @@ public class BanditEnemy : MonoBehaviour
                 // Landing the first hit on the player starts an ambush battle (enemy goes first).
                 if (BattleManager.Instance != null && BattleManager.Instance.TryStartBattle(playerScript, this, false)) return;
 
-                playerScript.TakeDamage(10);
+                playerScript.TakeDamage(attackDamage);
             }
         }
     }

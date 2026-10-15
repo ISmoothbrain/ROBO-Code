@@ -1,12 +1,10 @@
 using UnityEngine;
 
-// Press H to drink a Health Potion from the inventory. Added to the Player automatically.
+// Press H to drink a healing item from the backpack. Added to the Player automatically.
+// Uses the weakest one first so big potions are saved for emergencies.
 public class PotionUser : MonoBehaviour
 {
     public KeyCode drinkKey = KeyCode.H;
-    public int healAmount = 30;
-    [Tooltip("Inventory items with any of these names count as health potions.")]
-    public string[] potionNames = { "Health Potion", "Healing Potion" };
 
     private Player player;
 
@@ -17,22 +15,24 @@ public class PotionUser : MonoBehaviour
 
     private void Update()
     {
-        if (player == null || player.IsDead) return;
-        if (BattleManager.InBattle || DialogueUI.IsOpen || ShopUI.IsOpen || CodeChallengeUI.IsOpen) return;
+        if (player == null || player.IsDead || UIBusy.AnyOpen) return;
         if (!Input.GetKeyDown(drinkKey)) return;
 
         InventoryManager inv = InventoryManager.Instance;
         if (inv == null) return;
 
-        InventorySlot slot = inv.slots.Find(s => s.item != null && System.Array.IndexOf(potionNames, s.item.itemName) >= 0);
-        if (slot == null)
+        InventorySlot best = null;
+        foreach (InventorySlot s in inv.slots)
         {
-            Debug.Log("No health potions. Buy some at the shop!");
+            int heal = Consumables.HealAmount(s.item);
+            if (heal > 0 && (best == null || heal < Consumables.HealAmount(best.item))) best = s;
+        }
+
+        if (best == null)
+        {
+            Debug.Log("No healing items. Buy some at the shop!");
             return;
         }
-        if (player.health >= player.maxHealth) return; // don't waste one at full HP
-
-        inv.RemoveItem(slot.item, 1);
-        player.Heal(healAmount);
+        Consumables.TryUse(best.item, player);
     }
 }
