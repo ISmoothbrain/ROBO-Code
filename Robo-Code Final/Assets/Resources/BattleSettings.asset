@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5da82721fb54d1599b39c74bc8d5904, type: 3}
+  m_Name: BattleSettings
+  m_EditorClassIdentifier: Assembly-CSharp::BattleSettings
+  zoomFactor: 0.67
+  focusOffset: {x: 0, y: -0.5, z: 0}
+  zoomTime: 0.6
+  battleSpacing: 3
+  hopTime: 0.35
+  hopHeight: 0.6
+  correctAnswerDamage: 15
+  wrongAnswerDamage: 10
+  enemyAttackDamage: 10
+  answerTimeLimit: 20
+  qteCloseTime: 1.3
+  qteHitWindow: 0.15
