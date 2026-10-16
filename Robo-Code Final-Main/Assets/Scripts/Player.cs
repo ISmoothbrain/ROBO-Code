@@ -466,12 +466,14 @@ public class Player : MonoBehaviour
 
         animator.SetTrigger("Death");
                 if (AudioManager.instance != null) AudioManager.instance.PlaySFX(AudioManager.instance.defeat);
-        StartCoroutine(ReloadAfterDeath());
+        // Play the death animation (if there is one) and reload once it has finished.
+        float delay = Mathf.Max(deathReloadDelay, PlayerDeathAnimation.PlayOn(gameObject) + 0.5f);
+        StartCoroutine(ReloadAfterDeath(delay));
     }
 
-    private IEnumerator ReloadAfterDeath()
+    private IEnumerator ReloadAfterDeath(float delay)
     {
-        yield return new WaitForSeconds(deathReloadDelay);
+        yield return new WaitForSeconds(delay);
         UnityEngine.SceneManagement.SceneManager.LoadScene(
             UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
     }
