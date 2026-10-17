@@ -10,6 +10,27 @@ public class InventoryManager : MonoBehaviour
     public int maxSlots = 20;
 
     public event Action OnInventoryChanged;
+    public event Action OnEquippedChanged;
+    [SerializeField] private InventoryItem equippedItem;
+    public InventoryItem EquippedItem => equippedItem;
+
+    // One quick-use slot. InventoryItem is an asset reference, not a copy of an item stack.
+    public void ToggleEquip(InventoryItem item)
+    {
+        if (item == null || !slots.Exists(s => s.item == item && s.count > 0)) return;
+        equippedItem = equippedItem == item ? null : item;
+        OnEquippedChanged?.Invoke();
+    }
+
+    public int EquippedCount
+    {
+        get
+        {
+            InventorySlot slot = slots.Find(s => s.item == equippedItem);
+            return slot == null ? 0 : slot.count;
+        }
+    }
+
 
     private void Awake()
     {
@@ -59,6 +80,11 @@ public class InventoryManager : MonoBehaviour
             slots.Remove(slot);
         }
 
+        if (equippedItem == item && EquippedCount == 0)
+        {
+            equippedItem = null;
+            OnEquippedChanged?.Invoke();
+        }
         OnInventoryChanged?.Invoke();
         return true;
     }

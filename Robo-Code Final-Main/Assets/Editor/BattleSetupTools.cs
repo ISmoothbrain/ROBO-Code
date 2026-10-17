@@ -205,6 +205,20 @@ public static class BattleSetupTools
         qte.resultText = Label(result, 48, FontStyles.Bold, Color.white, TextAlignmentOptions.Center);
         qte.resultText.outlineWidth = 0.25f; qte.resultText.outlineColor = Color.black;
 
+        GameObject sequence = Node("BossArrowSequence", root.transform);
+        RectTransform sr = (RectTransform)sequence.transform;
+        sr.anchorMin = sr.anchorMax = new Vector2(0.5f, 0.5f);
+        sr.sizeDelta = new Vector2(1400, 140);
+        sr.anchoredPosition = new Vector2(0, 5);
+        qte.sequenceText = Label(sequence, 78, FontStyles.Bold, Color.cyan, TextAlignmentOptions.Center);
+
+        GameObject instruction = Node("QTEInstructions", root.transform);
+        RectTransform ir = (RectTransform)instruction.transform;
+        ir.anchorMin = ir.anchorMax = new Vector2(0.5f, 0.5f);
+        ir.sizeDelta = new Vector2(1450, 70);
+        ir.anchoredPosition = new Vector2(0, 195);
+        qte.instructionText = Label(instruction, 34, FontStyles.Bold, Color.cyan, TextAlignmentOptions.Center);
+
         root.SetActive(false);
         return qte;
     }

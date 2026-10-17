@@ -42,6 +42,20 @@ public class BanditEnemy : MonoBehaviour
     [Header("Battle")]
     [Tooltip("Python questions this enemy asks. Leave empty to use the BattleManager's defaults.")]
     public PythonQuestion[] battleQuestions;
+
+    [Header("Boss")]
+    [Tooltip("Bosses ask harder questions, and after the ring quick-time event the player must also type an arrow-key combo.")]
+    public bool isBoss = false;
+    [Tooltip("How many arrows are in each boss combo.")]
+    [Range(3, 10)] public int arrowComboLength = 5;
+    [Tooltip("Seconds the player gets to type the whole combo.")]
+    [Range(1f, 10f)] public float arrowComboTime = 4f;
+
+    // Other names for the same three settings, used by StageBossInstaller.cs.
+    // They read and write the fields above, so both systems always agree.
+    public bool isStageBoss { get => isBoss; set => isBoss = value; }
+    public int bossArrowCount { get => arrowComboLength; set => arrowComboLength = value; }
+    public float bossArrowSeconds { get => arrowComboTime; set => arrowComboTime = value; }
     private bool inBattle;
 
     [Header("Loot")]

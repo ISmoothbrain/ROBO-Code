@@ -11,7 +11,7 @@ public class KeybindMenuBuilder : MonoBehaviour
     [Header("Images")]
     public Sprite titleSprite;
 
-    [Tooltip("One per action, in the same order as the rows: Jump, Move Left, Move Right, Attack, Inventory.")]
+    [Tooltip("One per action, in the same order as the rows: Jump, Move Left, Move Right, Attack, Inventory, Use Equipped Item.")]
     public Sprite[] nameSprites;
 
     public Sprite keyPlateSprite;
@@ -34,8 +34,8 @@ public class KeybindMenuBuilder : MonoBehaviour
 
     [Header("Rows")]
     public float firstRowTop = 0.855f;
-    public float rowHeight = 0.072f;
-    public float rowGap = 0.020f;
+    public float rowHeight = 0.062f;
+    public float rowGap = 0.014f;
 
     [Header("Row columns, left to right")]
     public float nameLeft = 0.22f;

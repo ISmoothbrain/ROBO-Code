@@ -16,6 +16,8 @@ public class BattleManager : MonoBehaviour
     [Header("References")]
     public BattleUI ui;
     public QuickTimeEvent qte;
+    [Tooltip("Boss arrow combo. Created automatically by BattleBootstrap.")]
+    public ArrowSequence arrows;
     [Tooltip("A CinemachineCamera with a higher priority than the normal one. Kept inactive until a battle starts.")]
     public GameObject battleCamera;
     [Tooltip("Used instead of Battle Camera when that's empty: zooms your existing camera directly.")]
@@ -223,21 +225,31 @@ public class BattleManager : MonoBehaviour
         bool dodged = false;
         yield return qte.Run(result => dodged = result);
 
+        // Bosses add a second test: an arrow-key combo, Helldivers "Stratagem Hero" style.
+        bool comboOk = true;
+        if (enemy.isBoss && arrows != null)
+        {
+            ui.ShowBanner("BOSS COMBO!\nType the arrows!");
+            yield return new WaitForSeconds(0.5f);
+            yield return arrows.Run(enemy.arrowComboLength, enemy.arrowComboTime, r => comboOk = r);
+        }
+
         enemy.PlayBattleAttack();
                 if (AudioManager.instance != null) AudioManager.instance.PlaySFX(AudioManager.instance.enemyAttack);
         yield return new WaitForSeconds(0.3f);
 
-        if (dodged)
+        // One hit for a missed ring, and (bosses only) another for a failed combo.
+        int dmg = Mathf.Max(0, Mathf.RoundToInt(enemy.attackDamage * enemyDamageMultiplier));
+        int hits = (dodged ? 0 : 1) + (comboOk ? 0 : 1);
+        if (hits == 0)
         {
             ui.ShowBanner("DODGED!");
-                        if (AudioManager.instance != null) AudioManager.instance.PlaySFX(AudioManager.instance.defend);
+            if (AudioManager.instance != null) AudioManager.instance.PlaySFX(AudioManager.instance.defend);
         }
         else
         {
-            // Each enemy hits for its own Attack Damage (set on its prefab), scaled by the multiplier.
-            int dmg = Mathf.Max(0, Mathf.RoundToInt(enemy.attackDamage * enemyDamageMultiplier));
-            player.TakeDamage(dmg);
-            ui.ShowBanner($"HIT!\n-{dmg} HP");
+            player.TakeDamage(dmg * hits);
+            ui.ShowBanner(hits == 2 ? $"DOUBLE HIT!\n-{dmg * 2} HP" : $"HIT!\n-{dmg} HP");
         }
 
         yield return new WaitForSeconds(0.9f);
@@ -442,27 +454,39 @@ public class BattleManager : MonoBehaviour
 
     // ---------------------------------------------------------------- questions
 
-    // Shuffled "bag": no repeats until every question has been used once.
+    // Questions already asked this play session (kept across level reloads), so you see every
+    // question before any repeats. Normal enemies ask easy-medium, bosses ask medium-hard.
+    private static readonly HashSet<string> askedNormal = new HashSet<string>();
+    private static readonly HashSet<string> askedBoss = new HashSet<string>();
+    private static readonly HashSet<string> askedCustom = new HashSet<string>();
+
     private PythonQuestion NextQuestion(BanditEnemy enemy)
     {
-        if (questionBag.Count == 0)
+        bool custom = enemy.battleQuestions != null && System.Array.Exists(enemy.battleQuestions, q => q != null);
+        PythonQuestion[] source = custom ? enemy.battleQuestions : defaultQuestions;
+        if (source == null) return null;
+
+        List<PythonQuestion> pool = new List<PythonQuestion>();
+        foreach (PythonQuestion q in source)
         {
-            PythonQuestion[] pool = enemy.battleQuestions != null && enemy.battleQuestions.Length > 0
-                ? enemy.battleQuestions
-                : defaultQuestions;
-            if (pool == null) return null;
-
-            foreach (PythonQuestion q in pool) if (q != null) questionBag.Add(q);
-            for (int i = questionBag.Count - 1; i > 0; i--)
-            {
-                int j = Random.Range(0, i + 1);
-                (questionBag[i], questionBag[j]) = (questionBag[j], questionBag[i]);
-            }
+            if (q == null) continue;
+            if (!custom && (enemy.isBoss ? q.difficulty < 2 : q.difficulty > 2)) continue;
+            pool.Add(q);
         }
+        if (pool.Count == 0) return null;
 
-        if (questionBag.Count == 0) return null;
-        PythonQuestion next = questionBag[questionBag.Count - 1];
-        questionBag.RemoveAt(questionBag.Count - 1);
-        return next;
+        HashSet<string> asked = custom ? askedCustom : (enemy.isBoss ? askedBoss : askedNormal);
+        List<PythonQuestion> fresh = pool.FindAll(q => !asked.Contains(Key(q)));
+        if (fresh.Count == 0)
+        {
+            foreach (PythonQuestion q in pool) asked.Remove(Key(q)); // seen them all: start a new round
+            fresh = pool;
+        }
+        PythonQuestion pick = fresh[Random.Range(0, fresh.Count)];
+        asked.Add(Key(pick));
+        return pick;
     }
+
+    private static string Key(PythonQuestion q) =>
+        q.goal + "|" + (q.codeLines != null && q.codeLines.Length > 0 ? q.codeLines[0] : "");
 }

@@ -68,6 +68,11 @@ public static class GameUIBootstrap
             HudUI hud = controllers.AddComponent<HudUI>();
             hud.heartRow = h.hearts;
             hud.manaRow = h.mana;
+            hud.itemIcon = h.itemIcon;
+            hud.itemLabel = h.itemLabel;
+            hud.itemCount = h.itemCount;
+            hud.itemKey = h.itemKey;
+            hud.itemMessage = h.itemMessage;
 
             BackpackUI backpack = controllers.AddComponent<BackpackUI>();
             backpack.root = b.root;
@@ -146,7 +151,12 @@ public static class GameUIBootstrap
 
     // ================================================================ HUD
 
-    private struct HudRefs { public RectTransform hearts, mana; }
+    private struct HudRefs
+    {
+        public RectTransform hearts, mana;
+        public Image itemIcon;
+        public TextMeshProUGUI itemLabel, itemCount, itemKey, itemMessage;
+    }
 
     private static HudRefs BuildHud(Transform canvas)
     {
@@ -157,14 +167,64 @@ public static class GameUIBootstrap
         hr.pivot = new Vector2(0f, 1f);
         hr.anchoredPosition = new Vector2(28f, -24f);
         hr.sizeDelta = new Vector2(900f, 0f);
-        VerticalLayoutGroup v = hud.AddComponent<VerticalLayoutGroup>();
+        // [ Items slot ] [ hearts / mana ]   (matches your HUD wireframe)
+        HorizontalLayoutGroup hl = hud.AddComponent<HorizontalLayoutGroup>();
+        hl.spacing = 14;
+        hl.childAlignment = TextAnchor.UpperLeft;
+        hl.childControlWidth = hl.childControlHeight = true;
+        hl.childForceExpandWidth = hl.childForceExpandHeight = false;
+        hud.AddComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+
+        // Items slot: icon, stack count, and the Use Item key in the corner
+        GameObject slot = UIBuild.Node("ItemSlot", hud.transform);
+        LayoutElement sl = slot.AddComponent<LayoutElement>();
+        sl.preferredWidth = sl.preferredHeight = 84;
+        UIBuild.Sliced(slot, Resources.Load<Sprite>("UI/slot"), Color.white);
+
+        GameObject label = UIBuild.Node("Label", slot.transform);
+        UIBuild.Stretch(label, 0, 0, 1, 1);
+        r.itemLabel = UIBuild.Label(label, 20, FontStyles.Normal, new Color(0.55f, 0.88f, 1f), TextAlignmentOptions.Center);
+        r.itemLabel.text = "Items";
+
+        GameObject icon = UIBuild.Node("Icon", slot.transform);
+        UIBuild.Stretch(icon, 0, 0, 1, 1);
+        RectTransform ir = (RectTransform)icon.transform;
+        ir.offsetMin = new Vector2(18f, 18f); ir.offsetMax = new Vector2(-18f, -18f); // 48px = 3x the 16px icons
+        r.itemIcon = icon.AddComponent<Image>();
+        r.itemIcon.preserveAspect = true;
+        r.itemIcon.raycastTarget = false;
+        r.itemIcon.enabled = false;
+
+        GameObject count = UIBuild.Node("Count", slot.transform);
+        UIBuild.Stretch(count, 0, 0, 1, 1);
+        RectTransform cr = (RectTransform)count.transform;
+        cr.offsetMin = new Vector2(4f, 3f); cr.offsetMax = new Vector2(-8f, -4f);
+        r.itemCount = UIBuild.Label(count, 22, FontStyles.Bold, Color.white, TextAlignmentOptions.BottomRight);
+
+        GameObject key = UIBuild.Node("Key", slot.transform);
+        RectTransform kr = (RectTransform)key.transform;
+        kr.anchorMin = kr.anchorMax = new Vector2(0f, 1f); kr.pivot = new Vector2(0f, 1f);
+        kr.anchoredPosition = new Vector2(-6f, 8f); kr.sizeDelta = new Vector2(34f, 30f);
+        key.AddComponent<Image>().color = new Color(0.9f, 0.75f, 0.35f);
+        GameObject keyText = UIBuild.Node("Text", key.transform);
+        UIBuild.Stretch(keyText, 0, 0, 1, 1);
+        r.itemKey = UIBuild.Label(keyText, 20, FontStyles.Bold, new Color(0.1f, 0.08f, 0.05f), TextAlignmentOptions.Center);
+
+        GameObject msg = UIBuild.Node("Message", slot.transform);
+        RectTransform mr = (RectTransform)msg.transform;
+        mr.anchorMin = mr.anchorMax = new Vector2(0f, 0f); mr.pivot = new Vector2(0f, 1f);
+        mr.anchoredPosition = new Vector2(0f, -6f); mr.sizeDelta = new Vector2(420f, 30f);
+        r.itemMessage = UIBuild.Label(msg, 20, FontStyles.Normal, new Color(0.5f, 1f, 0.6f), TextAlignmentOptions.TopLeft);
+
+        // hearts and mana, stacked
+        GameObject bars = UIBuild.Node("Bars", hud.transform);
+        VerticalLayoutGroup v = bars.AddComponent<VerticalLayoutGroup>();
         v.spacing = 8;
         v.childControlWidth = v.childControlHeight = true;
         v.childForceExpandWidth = v.childForceExpandHeight = false;
-        hud.AddComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
 
-        r.hearts = Row(hud.transform, "Hearts", 4);
-        r.mana = Row(hud.transform, "Mana", 6);
+        r.hearts = Row(bars.transform, "Hearts", 4);
+        r.mana = Row(bars.transform, "Mana", 6);
         return r;
     }
 

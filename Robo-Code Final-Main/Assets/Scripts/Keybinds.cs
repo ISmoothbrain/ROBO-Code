@@ -6,7 +6,7 @@ using UnityEngine;
 public static class Keybinds
 {
     // the order the settings menu shows them in
-    public static readonly string[] Actions = { "Jump", "MoveLeft", "MoveRight", "Attack", "Inventory" };
+    public static readonly string[] Actions = { "Jump", "MoveLeft", "MoveRight", "Attack", "Inventory", "UseItem" };
 
     private static readonly Dictionary<string, KeyCode> defaults = new Dictionary<string, KeyCode>
     {
@@ -14,7 +14,8 @@ public static class Keybinds
         { "MoveLeft", KeyCode.A },
         { "MoveRight", KeyCode.D },
         { "Attack", KeyCode.Mouse0 },
-        { "Inventory", KeyCode.I }
+        { "Inventory", KeyCode.I },
+        { "UseItem", KeyCode.F }
     };
 
     private static Dictionary<string, KeyCode> current = new Dictionary<string, KeyCode>(defaults);

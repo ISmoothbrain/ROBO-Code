@@ -105,6 +105,7 @@ public class BackpackUI : MonoBehaviour
             GameObject cell = Instantiate(slotTemplate, grid);
             cell.SetActive(true);
             cell.GetComponent<Button>().onClick.AddListener(() => OnCellClicked(index));
+            cell.AddComponent<BackpackSlotClick>().index = index; // right-click = equip
             cells.Add(cell);
         }
     }
@@ -127,6 +128,8 @@ public class BackpackUI : MonoBehaviour
             count.text = has && slot.count > 1 ? slot.count.ToString() : "";
 
             cells[i].GetComponent<Image>().sprite = i == selected ? slotSelectedSprite : slotSprite;
+            bool equipped = has && slot.item == EquippedItem.Item;
+            cells[i].GetComponent<Image>().color = equipped ? new Color(1f, 0.85f, 0.4f) : Color.white; // gold = equipped
         }
 
         ShowInfo();
@@ -163,8 +166,61 @@ public class BackpackUI : MonoBehaviour
         }
 
         infoTitle.text = slot.count > 1 ? $"{slot.item.itemName}  x{slot.count}" : slot.item.itemName;
-        string hint = Consumables.CanUse(slot.item) ? "\n<color=#7FE3FF>Click again to use.</color>" : "";
+        string key = Keybinds.Label("UseItem");
+        string hint = !Consumables.CanUse(slot.item) ? ""
+            : slot.item == EquippedItem.Item
+                ? $"\n<color=#FFD966>Equipped: press [{key}] to use.</color> <color=#7FE3FF>Click again to use now.</color>"
+                : $"\n<color=#7FE3FF>Click again to use. Right-click to equip it to [{key}].</color>";
         infoText.text = (slot.item.description ?? "") + hint;
+    }
+
+    // Right-click: put this item in the HUD's quick slot.
+    public void EquipCell(int index)
+    {
+        List<InventorySlot> slots = InventoryManager.Instance != null ? InventoryManager.Instance.slots : null;
+        InventorySlot slot = slots != null && index < slots.Count ? slots[index] : null;
+        if (slot == null || slot.item == null) return;
+
+        selected = index;
+        if (!Consumables.CanUse(slot.item))
+        {
+            Refresh();
+            infoText.text = $"{slot.item.itemName} can't be equipped. Only usable items (potions, food) can.";
+            return;
+        }
+        EquippedItem.Equip(slot.item);
+        Refresh();
+    }
+
+    // ToggleEquip: equips the item, or un-equips it if it's already in the quick slot.
+    // Kept for BackpackSlotPointer.cs (your project's own right-click script), which calls it.
+    public void ToggleEquip(int index)
+    {
+        List<InventorySlot> slots = InventoryManager.Instance != null ? InventoryManager.Instance.slots : null;
+        InventorySlot slot = slots != null && index >= 0 && index < slots.Count ? slots[index] : null;
+        if (slot == null || slot.item == null) return;
+
+        if (slot.item == EquippedItem.Item)
+        {
+            EquippedItem.Clear();
+            selected = index;
+            Refresh();
+            infoText.text = $"{slot.item.itemName} un-equipped.";
+            return;
+        }
+        EquipCell(index);
+    }
+
+    public void ToggleEquip(InventorySlot slot)
+    {
+        List<InventorySlot> slots = InventoryManager.Instance != null ? InventoryManager.Instance.slots : null;
+        if (slots != null && slot != null) ToggleEquip(slots.IndexOf(slot));
+    }
+
+    public void ToggleEquip(InventoryItem item)
+    {
+        List<InventorySlot> slots = InventoryManager.Instance != null ? InventoryManager.Instance.slots : null;
+        if (slots != null && item != null) ToggleEquip(slots.FindIndex(sl => sl.item == item));
     }
 
     private void OnCoins(int total)

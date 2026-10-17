@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,14 @@ public class HudUI : MonoBehaviour
 {
     public RectTransform heartRow;
     public RectTransform manaRow;
+
+    [Header("Item slot")]
+    public Image itemIcon;
+    public TextMeshProUGUI itemLabel;   // "Items" when the slot is empty
+    public TextMeshProUGUI itemCount;
+    public TextMeshProUGUI itemKey;     // the Use Item key, e.g. [F]
+    public TextMeshProUGUI itemMessage; // "Restored 30 HP." etc., fades out
+    private float messageUntil;
 
     [Tooltip("HP per heart. 10 = one heart per bandit hit.")]
     public int healthPerHeart = 10;
@@ -39,6 +48,8 @@ public class HudUI : MonoBehaviour
             skills = player.GetComponent<PlayerSkills>();
         }
 
+        UpdateItemSlot();
+
         // Health
         int heartCount = Mathf.Max(1, Mathf.CeilToInt(player.maxHealth / (float)healthPerHeart));
         EnsureIcons(hearts, heartRow, heartCount, heartEmpty, heartFull, heartSize, Image.FillMethod.Horizontal);
@@ -53,6 +64,30 @@ public class HudUI : MonoBehaviour
             EnsureIcons(capsules, manaRow, capsuleCount, manaEmpty, manaFull, capsuleSize, Image.FillMethod.Vertical);
             for (int i = 0; i < capsules.Count; i++)
                 capsules[i].fillAmount = Mathf.Clamp01((skills.Mana - i * manaPerCapsule) / manaPerCapsule);
+        }
+    }
+
+    private void UpdateItemSlot()
+    {
+        if (itemIcon == null) return;
+
+        InventoryItem item = EquippedItem.Item;
+        int count = EquippedItem.Count();
+        if (item != null && count == 0) { EquippedItem.Clear(); item = null; } // used the last one
+
+        Sprite picture = item != null ? ItemIcons.For(item) : null;
+        itemIcon.enabled = picture != null;
+        itemIcon.sprite = picture;
+        if (itemLabel != null) itemLabel.gameObject.SetActive(item == null);
+        if (itemCount != null) itemCount.text = item != null && count > 1 ? count.ToString() : "";
+        if (itemKey != null) itemKey.text = Keybinds.Label("UseItem");
+        if (itemMessage != null && Time.time > messageUntil) itemMessage.text = "";
+
+        // Use one with the Use Item key (not while a battle, the shop or the backpack is open)
+        if (item != null && !UIBusy.AnyOpen && !player.IsDead && Input.GetKeyDown(Keybinds.Get("UseItem")))
+        {
+            string msg = Consumables.TryUse(item, player);
+            if (itemMessage != null && !string.IsNullOrEmpty(msg)) { itemMessage.text = msg; messageUntil = Time.time + 1.6f; }
         }
     }
 
