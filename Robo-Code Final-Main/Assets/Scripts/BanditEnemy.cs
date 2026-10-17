@@ -56,6 +56,9 @@ public class BanditEnemy : MonoBehaviour
     public bool isStageBoss { get => isBoss; set => isBoss = value; }
     public int bossArrowCount { get => arrowComboLength; set => arrowComboLength = value; }
     public float bossArrowSeconds { get => arrowComboTime; set => arrowComboTime = value; }
+
+    [Tooltip("While ticked, this enemy stands still and never attacks (e.g. a boss you've fooled in conversation). Hitting it still starts a battle.")]
+    public bool passive = false;
     private bool inBattle;
 
     [Header("Loot")]
@@ -142,6 +145,14 @@ public class BanditEnemy : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
             animator.SetInteger("AnimState", inBattle ? 1 : 0);
+            return;
+        }
+
+        // Fooled or waiting to talk: stand still and don't chase or attack.
+        if (passive)
+        {
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+            animator.SetInteger("AnimState", 0); // idle
             return;
         }
 

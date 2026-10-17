@@ -23,7 +23,8 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadSceneAsync(1);
+        // Fade out, show the level's name, then load it
+        SceneTransition.LoadScene(1, false, LevelProgress.TitleForBuildIndex(1));
     }
 
     public void OpenSettings()

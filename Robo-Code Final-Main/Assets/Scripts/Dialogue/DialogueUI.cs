@@ -158,6 +158,16 @@ public class DialogueUI : MonoBehaviour
             b.gameObject.SetActive(true);
             TextMeshProUGUI label = b.GetComponentInChildren<TextMeshProUGUI>(true);
             label.text = choices[i];
+
+            // Size the button to its text, so long answers wrap inside it instead of spilling out.
+            RectTransform lr = label.rectTransform;
+            lr.offsetMin = new Vector2(16f, 6f);
+            lr.offsetMax = new Vector2(-16f, -6f);
+            float width = ((RectTransform)choiceContainer).rect.width - 32f;
+            float textHeight = label.GetPreferredValues(choices[i], Mathf.Max(120f, width), 0f).y;
+            LayoutElement le = b.GetComponent<LayoutElement>();
+            if (le == null) le = b.gameObject.AddComponent<LayoutElement>();
+            le.minHeight = le.preferredHeight = Mathf.Max(56f, textHeight + 22f);
             b.onClick.AddListener(() =>
             {
                 Action<int> callback = onChoice;

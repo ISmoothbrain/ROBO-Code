@@ -99,12 +99,21 @@ public class KeybindMenuBuilder : MonoBehaviour
             }
         }
 
+        // Fit every row between the top and the Reset button. With more actions than the
+        // layout was made for, the rows get a little shorter instead of overlapping Reset.
+        int count = Keybinds.Actions.Length;
+        float lowest = ResetTopFraction() + 0.06f;           // leave room for the message line
+        float needed = count * rowHeight + (count - 1) * rowGap;
+        float available = firstRowTop - lowest;
+        float fit = (available > 0f && needed > available) ? available / needed : 1f;
+        float rh = rowHeight * fit, rg = rowGap * fit;
+
         float top = firstRowTop;
 
-        for (int i = 0; i < Keybinds.Actions.Length; i++)
+        for (int i = 0; i < count; i++)
         {
-            BuildRow(Keybinds.Actions[i], top, i);
-            top -= rowHeight + rowGap; // step down to where the next row goes
+            BuildRow(Keybinds.Actions[i], top, i, rh);
+            top -= rh + rg; // step down to where the next row goes
         }
 
         // the warning line sits just under the last row
@@ -121,9 +130,22 @@ public class KeybindMenuBuilder : MonoBehaviour
         }
     }
 
-    private void BuildRow(string action, float top, int index)
+    // Where the top of the Reset button sits, as a share of the panel's height (0 = bottom, 1 = top).
+    private float ResetTopFraction()
     {
-        float bottom = top - rowHeight;
+        if (backButton == null) return resetTop;
+        Canvas.ForceUpdateCanvases();
+        RectTransform panel = (RectTransform)transform;
+        Vector3[] corners = new Vector3[4];
+        backButton.GetWorldCorners(corners);
+        float backTop = panel.InverseTransformPoint(corners[1]).y;
+        float resetTopLocal = backTop + backButton.rect.height + resetGap;
+        return Mathf.Clamp01((resetTopLocal - panel.rect.yMin) / Mathf.Max(1f, panel.rect.height));
+    }
+
+    private void BuildRow(string action, float top, int index, float height)
+    {
+        float bottom = top - height;
 
         GameObject nameGo = Place("Name_" + action, nameLeft, nameRight, bottom, top);
 
@@ -137,7 +159,11 @@ public class KeybindMenuBuilder : MonoBehaviour
         }
         else
         {
-            AddText(nameGo, nameFontSize, textColor, TextAlignmentOptions.MidlineLeft).text = Spaced(action);
+            // No picture for this action (e.g. Use Item): use the blank plate with the name
+            // written on it in capitals, so it matches the other rows.
+            AddBox(nameGo, keyPlateSprite).color = normalTint;
+            GameObject labelGo = Place("Label", 0f, 1f, 0f, 1f, nameGo.transform);
+            AddText(labelGo, nameFontSize, textColor, TextAlignmentOptions.Center).text = Spaced(action).ToUpperInvariant();
         }
 
         GameObject keyGo = Place("Key_" + action, keyLeft, keyRight, bottom, top);
@@ -263,6 +289,10 @@ public class KeybindMenuBuilder : MonoBehaviour
         if (font != null)
         {
             t.font = font;
+        }
+        else
+        {
+            UIFont.Apply(t); // the game's pixel font (GNF), so the key names match the lettering
         }
 
         // shrinks the text if its box gets small, so the size above is a

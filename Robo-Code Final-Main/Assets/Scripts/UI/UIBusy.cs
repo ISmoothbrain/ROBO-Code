@@ -12,5 +12,6 @@ public static class UIBusy
 
     // True while a battle, conversation, shop, backpack or coding challenge has the controls.
     public static bool AnyOpen =>
-        BattleManager.InBattle || DialogueUI.IsOpen || ShopUI.IsOpen || BackpackUI.IsOpen || CodeChallengeUI.IsOpen;
+        BattleManager.InBattle || DialogueUI.IsOpen || ShopUI.IsOpen || BackpackUI.IsOpen || CodeChallengeUI.IsOpen
+        || StoneOfRecall.MenuOpen || PlayerDeathAnimation.Spawning;
 }

@@ -27,6 +27,7 @@ public class Coin : MonoBehaviour
     [Header("Pickup")]
     public float magnetRange = 1.5f;
     public float magnetSpeed = 8f;
+    [Tooltip("Only for coins dropped by enemies. Coins placed in the level never expire. 0 = never.")]
     public float lifetime = 30f; // 0 = never expires
 
     private Rigidbody2D rb;
@@ -35,6 +36,7 @@ public class Coin : MonoBehaviour
     private float bobOffset;
     private bool isFloating;
     private bool collected;
+    private bool placedInLevel; // put in the scene by hand, rather than dropped by an enemy
 
     void Awake()
     {
@@ -53,7 +55,18 @@ public class Coin : MonoBehaviour
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null) player = playerObj.transform;
 
-        if (lifetime > 0f) Destroy(gameObject, lifetime);
+        // Coins placed in the level by hand exist the moment it loads. They stay exactly where
+        // you put them (no hop to the floor) and never expire. Only coins dropped by enemies
+        // appear later, hop to the ground, and expire after Lifetime seconds.
+        placedInLevel = Time.timeSinceLevelLoad < 0.25f;
+        if (placedInLevel)
+        {
+            floatAnchor = transform.position;
+            isFloating = true;
+            return;
+        }
+
+        if (lifetime > 0f) StartCoroutine(ExpireAfter(lifetime));
 
         if (groundLayer.value == 0)
         {
@@ -98,6 +111,23 @@ public class Coin : MonoBehaviour
         transform.position = landingPos;
         floatAnchor = landingPos;
         isFloating = true;
+    }
+
+    // Blinks for the last 3 seconds so a dropped coin doesn't just vanish without warning.
+    private System.Collections.IEnumerator ExpireAfter(float seconds)
+    {
+        const float blinkTime = 3f;
+        yield return new WaitForSeconds(Mathf.Max(0f, seconds - blinkTime));
+        SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>();
+        float t = 0f;
+        while (t < blinkTime)
+        {
+            t += Time.deltaTime;
+            bool show = Mathf.Repeat(t * (t > blinkTime * 0.6f ? 10f : 5f), 1f) > 0.5f; // blinks faster near the end
+            foreach (SpriteRenderer r in renderers) if (r != null) r.enabled = show;
+            yield return null;
+        }
+        Destroy(gameObject);
     }
 
     void Update()

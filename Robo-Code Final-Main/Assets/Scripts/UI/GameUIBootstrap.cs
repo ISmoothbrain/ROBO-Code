@@ -411,7 +411,7 @@ public static class GameUIBootstrap
         cr.anchorMin = cr.anchorMax = new Vector2(0.5f, 0f);
         cr.pivot = new Vector2(1f, 0f);
         cr.anchoredPosition = new Vector2(700f, 290f);
-        cr.sizeDelta = new Vector2(360f, 0f);
+        cr.sizeDelta = new Vector2(640f, 0f); // wide enough for long answers; each button grows to fit its text
         VerticalLayoutGroup v = choices.AddComponent<VerticalLayoutGroup>();
         v.spacing = 8;
         v.childControlWidth = v.childControlHeight = true;
@@ -420,7 +420,7 @@ public static class GameUIBootstrap
         choices.AddComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
         r.choices = choices.transform;
 
-        r.choiceTemplate = UIBuild.Button(root.transform, "ChoiceTemplate", "choice", 28, 56);
+        r.choiceTemplate = UIBuild.Button(root.transform, "ChoiceTemplate", "choice", 24, 56);
         r.choiceTemplate.gameObject.SetActive(false);
 
         root.SetActive(false);
