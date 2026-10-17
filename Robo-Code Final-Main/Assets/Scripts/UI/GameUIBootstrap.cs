@@ -105,8 +105,22 @@ public static class GameUIBootstrap
     {
         if (Object.FindFirstObjectByType<ParallaxBackground>() != null) return;
         BackgroundSettings settings = BackgroundSettings.Load();
+
+        // A Scene Background component in this scene picks this scene's theme.
+        SceneBackground sceneChoice = Object.FindFirstObjectByType<SceneBackground>();
+        if (sceneChoice != null)
+        {
+            // Work on a copy so this scene's choice never changes the shared settings file.
+            settings = settings != null ? Object.Instantiate(settings) : ScriptableObject.CreateInstance<BackgroundSettings>();
+            settings.theme = sceneChoice.theme;
+            settings.verticalOffset = sceneChoice.verticalOffset;
+            settings.scale = sceneChoice.scale;
+        }
         if (settings == null) return;
-        new GameObject("[Background]").AddComponent<ParallaxBackground>().settings = settings;
+
+        ParallaxBackground bg = new GameObject("[Background]").AddComponent<ParallaxBackground>();
+        bg.settings = settings;
+        bg.sceneOverride = sceneChoice;
     }
 
     // The scene's original HUD pieces are replaced by the new HUD and backpack.

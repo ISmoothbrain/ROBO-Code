@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BackgroundSettings
   m_EditorClassIdentifier: Assembly-CSharp::BackgroundSettings
   theme: 2
-  verticalOffset: -4.5
+  verticalOffset: 0.8
   scale: 1
   sky: 1
   clouds: 0.95

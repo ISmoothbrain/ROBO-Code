@@ -36,7 +36,8 @@ public class BattleManager : MonoBehaviour
     public bool startBattleOnHit = true;
     public int correctAnswerDamage = 15;  // to the enemy
     public int wrongAnswerDamage = 10;    // to the player
-    public int enemyAttackDamage = 10;    // to the player when the QTE is missed
+    public int enemyAttackDamage = 10;    // old: battles now use each enemy's own Attack Damage
+    public float enemyDamageMultiplier = 1f; // scales every enemy's Attack Damage in battles
     public float answerTimeLimit = 20f;
 
     [Header("Staging")]
@@ -233,8 +234,10 @@ public class BattleManager : MonoBehaviour
         }
         else
         {
-            player.TakeDamage(enemyAttackDamage);
-            ui.ShowBanner($"HIT!\n-{enemyAttackDamage} HP");
+            // Each enemy hits for its own Attack Damage (set on its prefab), scaled by the multiplier.
+            int dmg = Mathf.Max(0, Mathf.RoundToInt(enemy.attackDamage * enemyDamageMultiplier));
+            player.TakeDamage(dmg);
+            ui.ShowBanner($"HIT!\n-{dmg} HP");
         }
 
         yield return new WaitForSeconds(0.9f);
@@ -267,6 +270,7 @@ public class BattleManager : MonoBehaviour
         correctAnswerDamage = settings.correctAnswerDamage;
         wrongAnswerDamage = settings.wrongAnswerDamage;
         enemyAttackDamage = settings.enemyAttackDamage;
+        enemyDamageMultiplier = settings.enemyDamageMultiplier;
         answerTimeLimit = settings.answerTimeLimit;
 
         if (cameraDirector != null)

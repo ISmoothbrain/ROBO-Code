@@ -1,0 +1,4431 @@
+{
+  "name": "Reference Matched Hybrid Dirt + Sci-Fi Lab",
+  "tile_size_px": 32,
+  "pixels_per_unit": 32,
+  "unity_grid_cell": [
+    1,
+    1,
+    0
+  ],
+  "columns": 16,
+  "rows": 18,
+  "source_art": "TX Tileset Ground.png and TX_SciFi_Lab(2).png",
+  "stages": [
+    [
+      "pure_dirt",
+      "PURE NATURAL DIRT"
+    ],
+    [
+      "light_reinforcement",
+      "LIGHTLY REINFORCED"
+    ],
+    [
+      "balanced_hybrid",
+      "BALANCED DIRT + METAL"
+    ],
+    [
+      "heavy_industrial",
+      "HEAVILY INDUSTRIALIZED"
+    ],
+    [
+      "full_metal",
+      "FULL INDUSTRIAL"
+    ]
+  ],
+  "terrain_count": 288,
+  "props_count": 32,
+  "cardinal_bits": {
+    "top": 1,
+    "right": 2,
+    "bottom": 4,
+    "left": 8
+  },
+  "terrain": [
+    {
+      "index": 0,
+      "name": "pure_dirt_edges_00",
+      "category": "pure_dirt",
+      "kind": "terrain_neighbors",
+      "atlas_col": 0,
+      "atlas_row": 0,
+      "sprite": "Sprites/Terrain/000_pure_dirt_edges_00.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 1,
+      "name": "pure_dirt_edges_01",
+      "category": "pure_dirt",
+      "kind": "terrain_neighbors",
+      "atlas_col": 1,
+      "atlas_row": 0,
+      "sprite": "Sprites/Terrain/001_pure_dirt_edges_01.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 1
+    },
+    {
+      "index": 2,
+      "name": "pure_dirt_edges_02",
+      "category": "pure_dirt",
+      "kind": "terrain_neighbors",
+      "atlas_col": 2,
+      "atlas_row": 0,
+      "sprite": "Sprites/Terrain/002_pure_dirt_edges_02.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 2
+    },
+    {
+      "index": 3,
+      "name": "pure_dirt_edges_03",
+      "category": "pure_dirt",
+      "kind": "terrain_neighbors",
+      "atlas_col": 3,
+      "atlas_row": 0,
+      "sprite": "Sprites/Terrain/003_pure_dirt_edges_03.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 3
+    },
+    {
+      "index": 4,
+      "name": "pure_dirt_edges_04",
+      "category": "pure_dirt",
+      "kind": "terrain_neighbors",
+      "atlas_col": 4,
+      "atlas_row": 0,
+      "sprite": "Sprites/Terrain/004_pure_dirt_edges_04.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 4
+    },
+    {
+      "index": 5,
+      "name": "pure_dirt_edges_05",
+      "category": "pure_dirt",
+      "kind": "terrain_neighbors",
+      "atlas_col": 5,
+      "atlas_row": 0,
+      "sprite": "Sprites/Terrain/005_pure_dirt_edges_05.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 5
+    },
+    {
+      "index": 6,
+      "name": "pure_dirt_edges_06",
+      "category": "pure_dirt",
+      "kind": "terrain_neighbors",
+      "atlas_col": 6,
+      "atlas_row": 0,
+      "sprite": "Sprites/Terrain/006_pure_dirt_edges_06.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 6
+    },
+    {
+      "index": 7,
+      "name": "pure_dirt_edges_07",
+      "category": "pure_dirt",
+      "kind": "terrain_neighbors",
+      "atlas_col": 7,
+      "atlas_row": 0,
+      "sprite": "Sprites/Terrain/007_pure_dirt_edges_07.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 7
+    },
+    {
+      "index": 8,
+      "name": "pure_dirt_edges_08",
+      "category": "pure_dirt",
+      "kind": "terrain_neighbors",
+      "atlas_col": 8,
+      "atlas_row": 0,
+      "sprite": "Sprites/Terrain/008_pure_dirt_edges_08.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 8
+    },
+    {
+      "index": 9,
+      "name": "pure_dirt_edges_09",
+      "category": "pure_dirt",
+      "kind": "terrain_neighbors",
+      "atlas_col": 9,
+      "atlas_row": 0,
+      "sprite": "Sprites/Terrain/009_pure_dirt_edges_09.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 9
+    },
+    {
+      "index": 10,
+      "name": "pure_dirt_edges_10",
+      "category": "pure_dirt",
+      "kind": "terrain_neighbors",
+      "atlas_col": 10,
+      "atlas_row": 0,
+      "sprite": "Sprites/Terrain/010_pure_dirt_edges_10.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 10
+    },
+    {
+      "index": 11,
+      "name": "pure_dirt_edges_11",
+      "category": "pure_dirt",
+      "kind": "terrain_neighbors",
+      "atlas_col": 11,
+      "atlas_row": 0,
+      "sprite": "Sprites/Terrain/011_pure_dirt_edges_11.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 11
+    },
+    {
+      "index": 12,
+      "name": "pure_dirt_edges_12",
+      "category": "pure_dirt",
+      "kind": "terrain_neighbors",
+      "atlas_col": 12,
+      "atlas_row": 0,
+      "sprite": "Sprites/Terrain/012_pure_dirt_edges_12.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 12
+    },
+    {
+      "index": 13,
+      "name": "pure_dirt_edges_13",
+      "category": "pure_dirt",
+      "kind": "terrain_neighbors",
+      "atlas_col": 13,
+      "atlas_row": 0,
+      "sprite": "Sprites/Terrain/013_pure_dirt_edges_13.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 13
+    },
+    {
+      "index": 14,
+      "name": "pure_dirt_edges_14",
+      "category": "pure_dirt",
+      "kind": "terrain_neighbors",
+      "atlas_col": 14,
+      "atlas_row": 0,
+      "sprite": "Sprites/Terrain/014_pure_dirt_edges_14.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 14
+    },
+    {
+      "index": 15,
+      "name": "pure_dirt_edges_15",
+      "category": "pure_dirt",
+      "kind": "terrain_neighbors",
+      "atlas_col": 15,
+      "atlas_row": 0,
+      "sprite": "Sprites/Terrain/015_pure_dirt_edges_15.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 15
+    },
+    {
+      "index": 16,
+      "name": "pure_dirt_solid_clean",
+      "category": "pure_dirt",
+      "kind": "detail",
+      "atlas_col": 0,
+      "atlas_row": 1,
+      "sprite": "Sprites/Terrain/016_pure_dirt_solid_clean.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 17,
+      "name": "pure_dirt_soil_or_panel_detail",
+      "category": "pure_dirt",
+      "kind": "detail",
+      "atlas_col": 1,
+      "atlas_row": 1,
+      "sprite": "Sprites/Terrain/017_pure_dirt_soil_or_panel_detail.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 18,
+      "name": "pure_dirt_infill_bracket",
+      "category": "pure_dirt",
+      "kind": "detail",
+      "atlas_col": 2,
+      "atlas_row": 1,
+      "sprite": "Sprites/Terrain/018_pure_dirt_infill_bracket.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 19,
+      "name": "pure_dirt_horizontal_pipe",
+      "category": "pure_dirt",
+      "kind": "detail",
+      "atlas_col": 3,
+      "atlas_row": 1,
+      "sprite": "Sprites/Terrain/019_pure_dirt_horizontal_pipe.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 20,
+      "name": "pure_dirt_rocky_infill",
+      "category": "pure_dirt",
+      "kind": "detail",
+      "atlas_col": 4,
+      "atlas_row": 1,
+      "sprite": "Sprites/Terrain/020_pure_dirt_rocky_infill.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 21,
+      "name": "pure_dirt_fasteners",
+      "category": "pure_dirt",
+      "kind": "detail",
+      "atlas_col": 5,
+      "atlas_row": 1,
+      "sprite": "Sprites/Terrain/021_pure_dirt_fasteners.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 22,
+      "name": "pure_dirt_underfloor_service",
+      "category": "pure_dirt",
+      "kind": "detail",
+      "atlas_col": 6,
+      "atlas_row": 1,
+      "sprite": "Sprites/Terrain/022_pure_dirt_underfloor_service.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 23,
+      "name": "pure_dirt_embedded_vent",
+      "category": "pure_dirt",
+      "kind": "detail",
+      "atlas_col": 7,
+      "atlas_row": 1,
+      "sprite": "Sprites/Terrain/023_pure_dirt_embedded_vent.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 24,
+      "name": "pure_dirt_grassy_top_a",
+      "category": "pure_dirt",
+      "kind": "detail",
+      "atlas_col": 8,
+      "atlas_row": 1,
+      "sprite": "Sprites/Terrain/024_pure_dirt_grassy_top_a.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 1
+    },
+    {
+      "index": 25,
+      "name": "pure_dirt_grassy_top_b",
+      "category": "pure_dirt",
+      "kind": "detail",
+      "atlas_col": 9,
+      "atlas_row": 1,
+      "sprite": "Sprites/Terrain/025_pure_dirt_grassy_top_b.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 1
+    },
+    {
+      "index": 26,
+      "name": "pure_dirt_inner_corner_tl",
+      "category": "pure_dirt",
+      "kind": "detail",
+      "atlas_col": 10,
+      "atlas_row": 1,
+      "sprite": "Sprites/Terrain/026_pure_dirt_inner_corner_tl.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 27,
+      "name": "pure_dirt_inner_corner_tr",
+      "category": "pure_dirt",
+      "kind": "detail",
+      "atlas_col": 11,
+      "atlas_row": 1,
+      "sprite": "Sprites/Terrain/027_pure_dirt_inner_corner_tr.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 28,
+      "name": "pure_dirt_inner_corner_bl",
+      "category": "pure_dirt",
+      "kind": "detail",
+      "atlas_col": 12,
+      "atlas_row": 1,
+      "sprite": "Sprites/Terrain/028_pure_dirt_inner_corner_bl.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 29,
+      "name": "pure_dirt_inner_corner_br",
+      "category": "pure_dirt",
+      "kind": "detail",
+      "atlas_col": 13,
+      "atlas_row": 1,
+      "sprite": "Sprites/Terrain/029_pure_dirt_inner_corner_br.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 30,
+      "name": "pure_dirt_floating_platform_l",
+      "category": "pure_dirt",
+      "kind": "detail",
+      "atlas_col": 14,
+      "atlas_row": 1,
+      "sprite": "Sprites/Terrain/030_pure_dirt_floating_platform_l.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 13
+    },
+    {
+      "index": 31,
+      "name": "pure_dirt_floating_platform_r",
+      "category": "pure_dirt",
+      "kind": "detail",
+      "atlas_col": 15,
+      "atlas_row": 1,
+      "sprite": "Sprites/Terrain/031_pure_dirt_floating_platform_r.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 7
+    },
+    {
+      "index": 32,
+      "name": "light_reinforcement_edges_00",
+      "category": "light_reinforcement",
+      "kind": "terrain_neighbors",
+      "atlas_col": 0,
+      "atlas_row": 2,
+      "sprite": "Sprites/Terrain/032_light_reinforcement_edges_00.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 33,
+      "name": "light_reinforcement_edges_01",
+      "category": "light_reinforcement",
+      "kind": "terrain_neighbors",
+      "atlas_col": 1,
+      "atlas_row": 2,
+      "sprite": "Sprites/Terrain/033_light_reinforcement_edges_01.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 1
+    },
+    {
+      "index": 34,
+      "name": "light_reinforcement_edges_02",
+      "category": "light_reinforcement",
+      "kind": "terrain_neighbors",
+      "atlas_col": 2,
+      "atlas_row": 2,
+      "sprite": "Sprites/Terrain/034_light_reinforcement_edges_02.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 2
+    },
+    {
+      "index": 35,
+      "name": "light_reinforcement_edges_03",
+      "category": "light_reinforcement",
+      "kind": "terrain_neighbors",
+      "atlas_col": 3,
+      "atlas_row": 2,
+      "sprite": "Sprites/Terrain/035_light_reinforcement_edges_03.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 3
+    },
+    {
+      "index": 36,
+      "name": "light_reinforcement_edges_04",
+      "category": "light_reinforcement",
+      "kind": "terrain_neighbors",
+      "atlas_col": 4,
+      "atlas_row": 2,
+      "sprite": "Sprites/Terrain/036_light_reinforcement_edges_04.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 4
+    },
+    {
+      "index": 37,
+      "name": "light_reinforcement_edges_05",
+      "category": "light_reinforcement",
+      "kind": "terrain_neighbors",
+      "atlas_col": 5,
+      "atlas_row": 2,
+      "sprite": "Sprites/Terrain/037_light_reinforcement_edges_05.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 5
+    },
+    {
+      "index": 38,
+      "name": "light_reinforcement_edges_06",
+      "category": "light_reinforcement",
+      "kind": "terrain_neighbors",
+      "atlas_col": 6,
+      "atlas_row": 2,
+      "sprite": "Sprites/Terrain/038_light_reinforcement_edges_06.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 6
+    },
+    {
+      "index": 39,
+      "name": "light_reinforcement_edges_07",
+      "category": "light_reinforcement",
+      "kind": "terrain_neighbors",
+      "atlas_col": 7,
+      "atlas_row": 2,
+      "sprite": "Sprites/Terrain/039_light_reinforcement_edges_07.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 7
+    },
+    {
+      "index": 40,
+      "name": "light_reinforcement_edges_08",
+      "category": "light_reinforcement",
+      "kind": "terrain_neighbors",
+      "atlas_col": 8,
+      "atlas_row": 2,
+      "sprite": "Sprites/Terrain/040_light_reinforcement_edges_08.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 8
+    },
+    {
+      "index": 41,
+      "name": "light_reinforcement_edges_09",
+      "category": "light_reinforcement",
+      "kind": "terrain_neighbors",
+      "atlas_col": 9,
+      "atlas_row": 2,
+      "sprite": "Sprites/Terrain/041_light_reinforcement_edges_09.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 9
+    },
+    {
+      "index": 42,
+      "name": "light_reinforcement_edges_10",
+      "category": "light_reinforcement",
+      "kind": "terrain_neighbors",
+      "atlas_col": 10,
+      "atlas_row": 2,
+      "sprite": "Sprites/Terrain/042_light_reinforcement_edges_10.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 10
+    },
+    {
+      "index": 43,
+      "name": "light_reinforcement_edges_11",
+      "category": "light_reinforcement",
+      "kind": "terrain_neighbors",
+      "atlas_col": 11,
+      "atlas_row": 2,
+      "sprite": "Sprites/Terrain/043_light_reinforcement_edges_11.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 11
+    },
+    {
+      "index": 44,
+      "name": "light_reinforcement_edges_12",
+      "category": "light_reinforcement",
+      "kind": "terrain_neighbors",
+      "atlas_col": 12,
+      "atlas_row": 2,
+      "sprite": "Sprites/Terrain/044_light_reinforcement_edges_12.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 12
+    },
+    {
+      "index": 45,
+      "name": "light_reinforcement_edges_13",
+      "category": "light_reinforcement",
+      "kind": "terrain_neighbors",
+      "atlas_col": 13,
+      "atlas_row": 2,
+      "sprite": "Sprites/Terrain/045_light_reinforcement_edges_13.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 13
+    },
+    {
+      "index": 46,
+      "name": "light_reinforcement_edges_14",
+      "category": "light_reinforcement",
+      "kind": "terrain_neighbors",
+      "atlas_col": 14,
+      "atlas_row": 2,
+      "sprite": "Sprites/Terrain/046_light_reinforcement_edges_14.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 14
+    },
+    {
+      "index": 47,
+      "name": "light_reinforcement_edges_15",
+      "category": "light_reinforcement",
+      "kind": "terrain_neighbors",
+      "atlas_col": 15,
+      "atlas_row": 2,
+      "sprite": "Sprites/Terrain/047_light_reinforcement_edges_15.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 15
+    },
+    {
+      "index": 48,
+      "name": "light_reinforcement_solid_clean",
+      "category": "light_reinforcement",
+      "kind": "detail",
+      "atlas_col": 0,
+      "atlas_row": 3,
+      "sprite": "Sprites/Terrain/048_light_reinforcement_solid_clean.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 49,
+      "name": "light_reinforcement_soil_or_panel_detail",
+      "category": "light_reinforcement",
+      "kind": "detail",
+      "atlas_col": 1,
+      "atlas_row": 3,
+      "sprite": "Sprites/Terrain/049_light_reinforcement_soil_or_panel_detail.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 50,
+      "name": "light_reinforcement_infill_bracket",
+      "category": "light_reinforcement",
+      "kind": "detail",
+      "atlas_col": 2,
+      "atlas_row": 3,
+      "sprite": "Sprites/Terrain/050_light_reinforcement_infill_bracket.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 51,
+      "name": "light_reinforcement_horizontal_pipe",
+      "category": "light_reinforcement",
+      "kind": "detail",
+      "atlas_col": 3,
+      "atlas_row": 3,
+      "sprite": "Sprites/Terrain/051_light_reinforcement_horizontal_pipe.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 52,
+      "name": "light_reinforcement_rocky_infill",
+      "category": "light_reinforcement",
+      "kind": "detail",
+      "atlas_col": 4,
+      "atlas_row": 3,
+      "sprite": "Sprites/Terrain/052_light_reinforcement_rocky_infill.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 53,
+      "name": "light_reinforcement_fasteners",
+      "category": "light_reinforcement",
+      "kind": "detail",
+      "atlas_col": 5,
+      "atlas_row": 3,
+      "sprite": "Sprites/Terrain/053_light_reinforcement_fasteners.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 54,
+      "name": "light_reinforcement_underfloor_service",
+      "category": "light_reinforcement",
+      "kind": "detail",
+      "atlas_col": 6,
+      "atlas_row": 3,
+      "sprite": "Sprites/Terrain/054_light_reinforcement_underfloor_service.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 55,
+      "name": "light_reinforcement_embedded_vent",
+      "category": "light_reinforcement",
+      "kind": "detail",
+      "atlas_col": 7,
+      "atlas_row": 3,
+      "sprite": "Sprites/Terrain/055_light_reinforcement_embedded_vent.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 56,
+      "name": "light_reinforcement_grassy_top_a",
+      "category": "light_reinforcement",
+      "kind": "detail",
+      "atlas_col": 8,
+      "atlas_row": 3,
+      "sprite": "Sprites/Terrain/056_light_reinforcement_grassy_top_a.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 1
+    },
+    {
+      "index": 57,
+      "name": "light_reinforcement_grassy_top_b",
+      "category": "light_reinforcement",
+      "kind": "detail",
+      "atlas_col": 9,
+      "atlas_row": 3,
+      "sprite": "Sprites/Terrain/057_light_reinforcement_grassy_top_b.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 1
+    },
+    {
+      "index": 58,
+      "name": "light_reinforcement_inner_corner_tl",
+      "category": "light_reinforcement",
+      "kind": "detail",
+      "atlas_col": 10,
+      "atlas_row": 3,
+      "sprite": "Sprites/Terrain/058_light_reinforcement_inner_corner_tl.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 59,
+      "name": "light_reinforcement_inner_corner_tr",
+      "category": "light_reinforcement",
+      "kind": "detail",
+      "atlas_col": 11,
+      "atlas_row": 3,
+      "sprite": "Sprites/Terrain/059_light_reinforcement_inner_corner_tr.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 60,
+      "name": "light_reinforcement_inner_corner_bl",
+      "category": "light_reinforcement",
+      "kind": "detail",
+      "atlas_col": 12,
+      "atlas_row": 3,
+      "sprite": "Sprites/Terrain/060_light_reinforcement_inner_corner_bl.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 61,
+      "name": "light_reinforcement_inner_corner_br",
+      "category": "light_reinforcement",
+      "kind": "detail",
+      "atlas_col": 13,
+      "atlas_row": 3,
+      "sprite": "Sprites/Terrain/061_light_reinforcement_inner_corner_br.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 62,
+      "name": "light_reinforcement_floating_platform_l",
+      "category": "light_reinforcement",
+      "kind": "detail",
+      "atlas_col": 14,
+      "atlas_row": 3,
+      "sprite": "Sprites/Terrain/062_light_reinforcement_floating_platform_l.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 13
+    },
+    {
+      "index": 63,
+      "name": "light_reinforcement_floating_platform_r",
+      "category": "light_reinforcement",
+      "kind": "detail",
+      "atlas_col": 15,
+      "atlas_row": 3,
+      "sprite": "Sprites/Terrain/063_light_reinforcement_floating_platform_r.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 7
+    },
+    {
+      "index": 64,
+      "name": "balanced_hybrid_edges_00",
+      "category": "balanced_hybrid",
+      "kind": "terrain_neighbors",
+      "atlas_col": 0,
+      "atlas_row": 4,
+      "sprite": "Sprites/Terrain/064_balanced_hybrid_edges_00.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 65,
+      "name": "balanced_hybrid_edges_01",
+      "category": "balanced_hybrid",
+      "kind": "terrain_neighbors",
+      "atlas_col": 1,
+      "atlas_row": 4,
+      "sprite": "Sprites/Terrain/065_balanced_hybrid_edges_01.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 1
+    },
+    {
+      "index": 66,
+      "name": "balanced_hybrid_edges_02",
+      "category": "balanced_hybrid",
+      "kind": "terrain_neighbors",
+      "atlas_col": 2,
+      "atlas_row": 4,
+      "sprite": "Sprites/Terrain/066_balanced_hybrid_edges_02.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 2
+    },
+    {
+      "index": 67,
+      "name": "balanced_hybrid_edges_03",
+      "category": "balanced_hybrid",
+      "kind": "terrain_neighbors",
+      "atlas_col": 3,
+      "atlas_row": 4,
+      "sprite": "Sprites/Terrain/067_balanced_hybrid_edges_03.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 3
+    },
+    {
+      "index": 68,
+      "name": "balanced_hybrid_edges_04",
+      "category": "balanced_hybrid",
+      "kind": "terrain_neighbors",
+      "atlas_col": 4,
+      "atlas_row": 4,
+      "sprite": "Sprites/Terrain/068_balanced_hybrid_edges_04.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 4
+    },
+    {
+      "index": 69,
+      "name": "balanced_hybrid_edges_05",
+      "category": "balanced_hybrid",
+      "kind": "terrain_neighbors",
+      "atlas_col": 5,
+      "atlas_row": 4,
+      "sprite": "Sprites/Terrain/069_balanced_hybrid_edges_05.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 5
+    },
+    {
+      "index": 70,
+      "name": "balanced_hybrid_edges_06",
+      "category": "balanced_hybrid",
+      "kind": "terrain_neighbors",
+      "atlas_col": 6,
+      "atlas_row": 4,
+      "sprite": "Sprites/Terrain/070_balanced_hybrid_edges_06.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 6
+    },
+    {
+      "index": 71,
+      "name": "balanced_hybrid_edges_07",
+      "category": "balanced_hybrid",
+      "kind": "terrain_neighbors",
+      "atlas_col": 7,
+      "atlas_row": 4,
+      "sprite": "Sprites/Terrain/071_balanced_hybrid_edges_07.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 7
+    },
+    {
+      "index": 72,
+      "name": "balanced_hybrid_edges_08",
+      "category": "balanced_hybrid",
+      "kind": "terrain_neighbors",
+      "atlas_col": 8,
+      "atlas_row": 4,
+      "sprite": "Sprites/Terrain/072_balanced_hybrid_edges_08.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 8
+    },
+    {
+      "index": 73,
+      "name": "balanced_hybrid_edges_09",
+      "category": "balanced_hybrid",
+      "kind": "terrain_neighbors",
+      "atlas_col": 9,
+      "atlas_row": 4,
+      "sprite": "Sprites/Terrain/073_balanced_hybrid_edges_09.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 9
+    },
+    {
+      "index": 74,
+      "name": "balanced_hybrid_edges_10",
+      "category": "balanced_hybrid",
+      "kind": "terrain_neighbors",
+      "atlas_col": 10,
+      "atlas_row": 4,
+      "sprite": "Sprites/Terrain/074_balanced_hybrid_edges_10.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 10
+    },
+    {
+      "index": 75,
+      "name": "balanced_hybrid_edges_11",
+      "category": "balanced_hybrid",
+      "kind": "terrain_neighbors",
+      "atlas_col": 11,
+      "atlas_row": 4,
+      "sprite": "Sprites/Terrain/075_balanced_hybrid_edges_11.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 11
+    },
+    {
+      "index": 76,
+      "name": "balanced_hybrid_edges_12",
+      "category": "balanced_hybrid",
+      "kind": "terrain_neighbors",
+      "atlas_col": 12,
+      "atlas_row": 4,
+      "sprite": "Sprites/Terrain/076_balanced_hybrid_edges_12.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 12
+    },
+    {
+      "index": 77,
+      "name": "balanced_hybrid_edges_13",
+      "category": "balanced_hybrid",
+      "kind": "terrain_neighbors",
+      "atlas_col": 13,
+      "atlas_row": 4,
+      "sprite": "Sprites/Terrain/077_balanced_hybrid_edges_13.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 13
+    },
+    {
+      "index": 78,
+      "name": "balanced_hybrid_edges_14",
+      "category": "balanced_hybrid",
+      "kind": "terrain_neighbors",
+      "atlas_col": 14,
+      "atlas_row": 4,
+      "sprite": "Sprites/Terrain/078_balanced_hybrid_edges_14.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 14
+    },
+    {
+      "index": 79,
+      "name": "balanced_hybrid_edges_15",
+      "category": "balanced_hybrid",
+      "kind": "terrain_neighbors",
+      "atlas_col": 15,
+      "atlas_row": 4,
+      "sprite": "Sprites/Terrain/079_balanced_hybrid_edges_15.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 15
+    },
+    {
+      "index": 80,
+      "name": "balanced_hybrid_solid_clean",
+      "category": "balanced_hybrid",
+      "kind": "detail",
+      "atlas_col": 0,
+      "atlas_row": 5,
+      "sprite": "Sprites/Terrain/080_balanced_hybrid_solid_clean.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 81,
+      "name": "balanced_hybrid_soil_or_panel_detail",
+      "category": "balanced_hybrid",
+      "kind": "detail",
+      "atlas_col": 1,
+      "atlas_row": 5,
+      "sprite": "Sprites/Terrain/081_balanced_hybrid_soil_or_panel_detail.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 82,
+      "name": "balanced_hybrid_infill_bracket",
+      "category": "balanced_hybrid",
+      "kind": "detail",
+      "atlas_col": 2,
+      "atlas_row": 5,
+      "sprite": "Sprites/Terrain/082_balanced_hybrid_infill_bracket.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 83,
+      "name": "balanced_hybrid_horizontal_pipe",
+      "category": "balanced_hybrid",
+      "kind": "detail",
+      "atlas_col": 3,
+      "atlas_row": 5,
+      "sprite": "Sprites/Terrain/083_balanced_hybrid_horizontal_pipe.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 84,
+      "name": "balanced_hybrid_rocky_infill",
+      "category": "balanced_hybrid",
+      "kind": "detail",
+      "atlas_col": 4,
+      "atlas_row": 5,
+      "sprite": "Sprites/Terrain/084_balanced_hybrid_rocky_infill.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 85,
+      "name": "balanced_hybrid_fasteners",
+      "category": "balanced_hybrid",
+      "kind": "detail",
+      "atlas_col": 5,
+      "atlas_row": 5,
+      "sprite": "Sprites/Terrain/085_balanced_hybrid_fasteners.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 86,
+      "name": "balanced_hybrid_underfloor_service",
+      "category": "balanced_hybrid",
+      "kind": "detail",
+      "atlas_col": 6,
+      "atlas_row": 5,
+      "sprite": "Sprites/Terrain/086_balanced_hybrid_underfloor_service.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 87,
+      "name": "balanced_hybrid_embedded_vent",
+      "category": "balanced_hybrid",
+      "kind": "detail",
+      "atlas_col": 7,
+      "atlas_row": 5,
+      "sprite": "Sprites/Terrain/087_balanced_hybrid_embedded_vent.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 88,
+      "name": "balanced_hybrid_grassy_top_a",
+      "category": "balanced_hybrid",
+      "kind": "detail",
+      "atlas_col": 8,
+      "atlas_row": 5,
+      "sprite": "Sprites/Terrain/088_balanced_hybrid_grassy_top_a.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 1
+    },
+    {
+      "index": 89,
+      "name": "balanced_hybrid_grassy_top_b",
+      "category": "balanced_hybrid",
+      "kind": "detail",
+      "atlas_col": 9,
+      "atlas_row": 5,
+      "sprite": "Sprites/Terrain/089_balanced_hybrid_grassy_top_b.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 1
+    },
+    {
+      "index": 90,
+      "name": "balanced_hybrid_inner_corner_tl",
+      "category": "balanced_hybrid",
+      "kind": "detail",
+      "atlas_col": 10,
+      "atlas_row": 5,
+      "sprite": "Sprites/Terrain/090_balanced_hybrid_inner_corner_tl.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 91,
+      "name": "balanced_hybrid_inner_corner_tr",
+      "category": "balanced_hybrid",
+      "kind": "detail",
+      "atlas_col": 11,
+      "atlas_row": 5,
+      "sprite": "Sprites/Terrain/091_balanced_hybrid_inner_corner_tr.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 92,
+      "name": "balanced_hybrid_inner_corner_bl",
+      "category": "balanced_hybrid",
+      "kind": "detail",
+      "atlas_col": 12,
+      "atlas_row": 5,
+      "sprite": "Sprites/Terrain/092_balanced_hybrid_inner_corner_bl.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 93,
+      "name": "balanced_hybrid_inner_corner_br",
+      "category": "balanced_hybrid",
+      "kind": "detail",
+      "atlas_col": 13,
+      "atlas_row": 5,
+      "sprite": "Sprites/Terrain/093_balanced_hybrid_inner_corner_br.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 94,
+      "name": "balanced_hybrid_floating_platform_l",
+      "category": "balanced_hybrid",
+      "kind": "detail",
+      "atlas_col": 14,
+      "atlas_row": 5,
+      "sprite": "Sprites/Terrain/094_balanced_hybrid_floating_platform_l.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 13
+    },
+    {
+      "index": 95,
+      "name": "balanced_hybrid_floating_platform_r",
+      "category": "balanced_hybrid",
+      "kind": "detail",
+      "atlas_col": 15,
+      "atlas_row": 5,
+      "sprite": "Sprites/Terrain/095_balanced_hybrid_floating_platform_r.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 7
+    },
+    {
+      "index": 96,
+      "name": "heavy_industrial_edges_00",
+      "category": "heavy_industrial",
+      "kind": "terrain_neighbors",
+      "atlas_col": 0,
+      "atlas_row": 6,
+      "sprite": "Sprites/Terrain/096_heavy_industrial_edges_00.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 97,
+      "name": "heavy_industrial_edges_01",
+      "category": "heavy_industrial",
+      "kind": "terrain_neighbors",
+      "atlas_col": 1,
+      "atlas_row": 6,
+      "sprite": "Sprites/Terrain/097_heavy_industrial_edges_01.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 1
+    },
+    {
+      "index": 98,
+      "name": "heavy_industrial_edges_02",
+      "category": "heavy_industrial",
+      "kind": "terrain_neighbors",
+      "atlas_col": 2,
+      "atlas_row": 6,
+      "sprite": "Sprites/Terrain/098_heavy_industrial_edges_02.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 2
+    },
+    {
+      "index": 99,
+      "name": "heavy_industrial_edges_03",
+      "category": "heavy_industrial",
+      "kind": "terrain_neighbors",
+      "atlas_col": 3,
+      "atlas_row": 6,
+      "sprite": "Sprites/Terrain/099_heavy_industrial_edges_03.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 3
+    },
+    {
+      "index": 100,
+      "name": "heavy_industrial_edges_04",
+      "category": "heavy_industrial",
+      "kind": "terrain_neighbors",
+      "atlas_col": 4,
+      "atlas_row": 6,
+      "sprite": "Sprites/Terrain/100_heavy_industrial_edges_04.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 4
+    },
+    {
+      "index": 101,
+      "name": "heavy_industrial_edges_05",
+      "category": "heavy_industrial",
+      "kind": "terrain_neighbors",
+      "atlas_col": 5,
+      "atlas_row": 6,
+      "sprite": "Sprites/Terrain/101_heavy_industrial_edges_05.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 5
+    },
+    {
+      "index": 102,
+      "name": "heavy_industrial_edges_06",
+      "category": "heavy_industrial",
+      "kind": "terrain_neighbors",
+      "atlas_col": 6,
+      "atlas_row": 6,
+      "sprite": "Sprites/Terrain/102_heavy_industrial_edges_06.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 6
+    },
+    {
+      "index": 103,
+      "name": "heavy_industrial_edges_07",
+      "category": "heavy_industrial",
+      "kind": "terrain_neighbors",
+      "atlas_col": 7,
+      "atlas_row": 6,
+      "sprite": "Sprites/Terrain/103_heavy_industrial_edges_07.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 7
+    },
+    {
+      "index": 104,
+      "name": "heavy_industrial_edges_08",
+      "category": "heavy_industrial",
+      "kind": "terrain_neighbors",
+      "atlas_col": 8,
+      "atlas_row": 6,
+      "sprite": "Sprites/Terrain/104_heavy_industrial_edges_08.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 8
+    },
+    {
+      "index": 105,
+      "name": "heavy_industrial_edges_09",
+      "category": "heavy_industrial",
+      "kind": "terrain_neighbors",
+      "atlas_col": 9,
+      "atlas_row": 6,
+      "sprite": "Sprites/Terrain/105_heavy_industrial_edges_09.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 9
+    },
+    {
+      "index": 106,
+      "name": "heavy_industrial_edges_10",
+      "category": "heavy_industrial",
+      "kind": "terrain_neighbors",
+      "atlas_col": 10,
+      "atlas_row": 6,
+      "sprite": "Sprites/Terrain/106_heavy_industrial_edges_10.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 10
+    },
+    {
+      "index": 107,
+      "name": "heavy_industrial_edges_11",
+      "category": "heavy_industrial",
+      "kind": "terrain_neighbors",
+      "atlas_col": 11,
+      "atlas_row": 6,
+      "sprite": "Sprites/Terrain/107_heavy_industrial_edges_11.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 11
+    },
+    {
+      "index": 108,
+      "name": "heavy_industrial_edges_12",
+      "category": "heavy_industrial",
+      "kind": "terrain_neighbors",
+      "atlas_col": 12,
+      "atlas_row": 6,
+      "sprite": "Sprites/Terrain/108_heavy_industrial_edges_12.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 12
+    },
+    {
+      "index": 109,
+      "name": "heavy_industrial_edges_13",
+      "category": "heavy_industrial",
+      "kind": "terrain_neighbors",
+      "atlas_col": 13,
+      "atlas_row": 6,
+      "sprite": "Sprites/Terrain/109_heavy_industrial_edges_13.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 13
+    },
+    {
+      "index": 110,
+      "name": "heavy_industrial_edges_14",
+      "category": "heavy_industrial",
+      "kind": "terrain_neighbors",
+      "atlas_col": 14,
+      "atlas_row": 6,
+      "sprite": "Sprites/Terrain/110_heavy_industrial_edges_14.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 14
+    },
+    {
+      "index": 111,
+      "name": "heavy_industrial_edges_15",
+      "category": "heavy_industrial",
+      "kind": "terrain_neighbors",
+      "atlas_col": 15,
+      "atlas_row": 6,
+      "sprite": "Sprites/Terrain/111_heavy_industrial_edges_15.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 15
+    },
+    {
+      "index": 112,
+      "name": "heavy_industrial_solid_clean",
+      "category": "heavy_industrial",
+      "kind": "detail",
+      "atlas_col": 0,
+      "atlas_row": 7,
+      "sprite": "Sprites/Terrain/112_heavy_industrial_solid_clean.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 113,
+      "name": "heavy_industrial_soil_or_panel_detail",
+      "category": "heavy_industrial",
+      "kind": "detail",
+      "atlas_col": 1,
+      "atlas_row": 7,
+      "sprite": "Sprites/Terrain/113_heavy_industrial_soil_or_panel_detail.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 114,
+      "name": "heavy_industrial_infill_bracket",
+      "category": "heavy_industrial",
+      "kind": "detail",
+      "atlas_col": 2,
+      "atlas_row": 7,
+      "sprite": "Sprites/Terrain/114_heavy_industrial_infill_bracket.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 115,
+      "name": "heavy_industrial_horizontal_pipe",
+      "category": "heavy_industrial",
+      "kind": "detail",
+      "atlas_col": 3,
+      "atlas_row": 7,
+      "sprite": "Sprites/Terrain/115_heavy_industrial_horizontal_pipe.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 116,
+      "name": "heavy_industrial_rocky_infill",
+      "category": "heavy_industrial",
+      "kind": "detail",
+      "atlas_col": 4,
+      "atlas_row": 7,
+      "sprite": "Sprites/Terrain/116_heavy_industrial_rocky_infill.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 117,
+      "name": "heavy_industrial_fasteners",
+      "category": "heavy_industrial",
+      "kind": "detail",
+      "atlas_col": 5,
+      "atlas_row": 7,
+      "sprite": "Sprites/Terrain/117_heavy_industrial_fasteners.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 118,
+      "name": "heavy_industrial_underfloor_service",
+      "category": "heavy_industrial",
+      "kind": "detail",
+      "atlas_col": 6,
+      "atlas_row": 7,
+      "sprite": "Sprites/Terrain/118_heavy_industrial_underfloor_service.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 119,
+      "name": "heavy_industrial_embedded_vent",
+      "category": "heavy_industrial",
+      "kind": "detail",
+      "atlas_col": 7,
+      "atlas_row": 7,
+      "sprite": "Sprites/Terrain/119_heavy_industrial_embedded_vent.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 120,
+      "name": "heavy_industrial_grassy_top_a",
+      "category": "heavy_industrial",
+      "kind": "detail",
+      "atlas_col": 8,
+      "atlas_row": 7,
+      "sprite": "Sprites/Terrain/120_heavy_industrial_grassy_top_a.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 1
+    },
+    {
+      "index": 121,
+      "name": "heavy_industrial_grassy_top_b",
+      "category": "heavy_industrial",
+      "kind": "detail",
+      "atlas_col": 9,
+      "atlas_row": 7,
+      "sprite": "Sprites/Terrain/121_heavy_industrial_grassy_top_b.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 1
+    },
+    {
+      "index": 122,
+      "name": "heavy_industrial_inner_corner_tl",
+      "category": "heavy_industrial",
+      "kind": "detail",
+      "atlas_col": 10,
+      "atlas_row": 7,
+      "sprite": "Sprites/Terrain/122_heavy_industrial_inner_corner_tl.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 123,
+      "name": "heavy_industrial_inner_corner_tr",
+      "category": "heavy_industrial",
+      "kind": "detail",
+      "atlas_col": 11,
+      "atlas_row": 7,
+      "sprite": "Sprites/Terrain/123_heavy_industrial_inner_corner_tr.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 124,
+      "name": "heavy_industrial_inner_corner_bl",
+      "category": "heavy_industrial",
+      "kind": "detail",
+      "atlas_col": 12,
+      "atlas_row": 7,
+      "sprite": "Sprites/Terrain/124_heavy_industrial_inner_corner_bl.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 125,
+      "name": "heavy_industrial_inner_corner_br",
+      "category": "heavy_industrial",
+      "kind": "detail",
+      "atlas_col": 13,
+      "atlas_row": 7,
+      "sprite": "Sprites/Terrain/125_heavy_industrial_inner_corner_br.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 126,
+      "name": "heavy_industrial_floating_platform_l",
+      "category": "heavy_industrial",
+      "kind": "detail",
+      "atlas_col": 14,
+      "atlas_row": 7,
+      "sprite": "Sprites/Terrain/126_heavy_industrial_floating_platform_l.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 13
+    },
+    {
+      "index": 127,
+      "name": "heavy_industrial_floating_platform_r",
+      "category": "heavy_industrial",
+      "kind": "detail",
+      "atlas_col": 15,
+      "atlas_row": 7,
+      "sprite": "Sprites/Terrain/127_heavy_industrial_floating_platform_r.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 7
+    },
+    {
+      "index": 128,
+      "name": "full_metal_edges_00",
+      "category": "full_metal",
+      "kind": "terrain_neighbors",
+      "atlas_col": 0,
+      "atlas_row": 8,
+      "sprite": "Sprites/Terrain/128_full_metal_edges_00.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 129,
+      "name": "full_metal_edges_01",
+      "category": "full_metal",
+      "kind": "terrain_neighbors",
+      "atlas_col": 1,
+      "atlas_row": 8,
+      "sprite": "Sprites/Terrain/129_full_metal_edges_01.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 1
+    },
+    {
+      "index": 130,
+      "name": "full_metal_edges_02",
+      "category": "full_metal",
+      "kind": "terrain_neighbors",
+      "atlas_col": 2,
+      "atlas_row": 8,
+      "sprite": "Sprites/Terrain/130_full_metal_edges_02.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 2
+    },
+    {
+      "index": 131,
+      "name": "full_metal_edges_03",
+      "category": "full_metal",
+      "kind": "terrain_neighbors",
+      "atlas_col": 3,
+      "atlas_row": 8,
+      "sprite": "Sprites/Terrain/131_full_metal_edges_03.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 3
+    },
+    {
+      "index": 132,
+      "name": "full_metal_edges_04",
+      "category": "full_metal",
+      "kind": "terrain_neighbors",
+      "atlas_col": 4,
+      "atlas_row": 8,
+      "sprite": "Sprites/Terrain/132_full_metal_edges_04.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 4
+    },
+    {
+      "index": 133,
+      "name": "full_metal_edges_05",
+      "category": "full_metal",
+      "kind": "terrain_neighbors",
+      "atlas_col": 5,
+      "atlas_row": 8,
+      "sprite": "Sprites/Terrain/133_full_metal_edges_05.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 5
+    },
+    {
+      "index": 134,
+      "name": "full_metal_edges_06",
+      "category": "full_metal",
+      "kind": "terrain_neighbors",
+      "atlas_col": 6,
+      "atlas_row": 8,
+      "sprite": "Sprites/Terrain/134_full_metal_edges_06.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 6
+    },
+    {
+      "index": 135,
+      "name": "full_metal_edges_07",
+      "category": "full_metal",
+      "kind": "terrain_neighbors",
+      "atlas_col": 7,
+      "atlas_row": 8,
+      "sprite": "Sprites/Terrain/135_full_metal_edges_07.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 7
+    },
+    {
+      "index": 136,
+      "name": "full_metal_edges_08",
+      "category": "full_metal",
+      "kind": "terrain_neighbors",
+      "atlas_col": 8,
+      "atlas_row": 8,
+      "sprite": "Sprites/Terrain/136_full_metal_edges_08.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 8
+    },
+    {
+      "index": 137,
+      "name": "full_metal_edges_09",
+      "category": "full_metal",
+      "kind": "terrain_neighbors",
+      "atlas_col": 9,
+      "atlas_row": 8,
+      "sprite": "Sprites/Terrain/137_full_metal_edges_09.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 9
+    },
+    {
+      "index": 138,
+      "name": "full_metal_edges_10",
+      "category": "full_metal",
+      "kind": "terrain_neighbors",
+      "atlas_col": 10,
+      "atlas_row": 8,
+      "sprite": "Sprites/Terrain/138_full_metal_edges_10.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 10
+    },
+    {
+      "index": 139,
+      "name": "full_metal_edges_11",
+      "category": "full_metal",
+      "kind": "terrain_neighbors",
+      "atlas_col": 11,
+      "atlas_row": 8,
+      "sprite": "Sprites/Terrain/139_full_metal_edges_11.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 11
+    },
+    {
+      "index": 140,
+      "name": "full_metal_edges_12",
+      "category": "full_metal",
+      "kind": "terrain_neighbors",
+      "atlas_col": 12,
+      "atlas_row": 8,
+      "sprite": "Sprites/Terrain/140_full_metal_edges_12.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 12
+    },
+    {
+      "index": 141,
+      "name": "full_metal_edges_13",
+      "category": "full_metal",
+      "kind": "terrain_neighbors",
+      "atlas_col": 13,
+      "atlas_row": 8,
+      "sprite": "Sprites/Terrain/141_full_metal_edges_13.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 13
+    },
+    {
+      "index": 142,
+      "name": "full_metal_edges_14",
+      "category": "full_metal",
+      "kind": "terrain_neighbors",
+      "atlas_col": 14,
+      "atlas_row": 8,
+      "sprite": "Sprites/Terrain/142_full_metal_edges_14.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 14
+    },
+    {
+      "index": 143,
+      "name": "full_metal_edges_15",
+      "category": "full_metal",
+      "kind": "terrain_neighbors",
+      "atlas_col": 15,
+      "atlas_row": 8,
+      "sprite": "Sprites/Terrain/143_full_metal_edges_15.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 15
+    },
+    {
+      "index": 144,
+      "name": "full_metal_solid_clean",
+      "category": "full_metal",
+      "kind": "detail",
+      "atlas_col": 0,
+      "atlas_row": 9,
+      "sprite": "Sprites/Terrain/144_full_metal_solid_clean.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 145,
+      "name": "full_metal_soil_or_panel_detail",
+      "category": "full_metal",
+      "kind": "detail",
+      "atlas_col": 1,
+      "atlas_row": 9,
+      "sprite": "Sprites/Terrain/145_full_metal_soil_or_panel_detail.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 146,
+      "name": "full_metal_infill_bracket",
+      "category": "full_metal",
+      "kind": "detail",
+      "atlas_col": 2,
+      "atlas_row": 9,
+      "sprite": "Sprites/Terrain/146_full_metal_infill_bracket.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 147,
+      "name": "full_metal_horizontal_pipe",
+      "category": "full_metal",
+      "kind": "detail",
+      "atlas_col": 3,
+      "atlas_row": 9,
+      "sprite": "Sprites/Terrain/147_full_metal_horizontal_pipe.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 148,
+      "name": "full_metal_rocky_infill",
+      "category": "full_metal",
+      "kind": "detail",
+      "atlas_col": 4,
+      "atlas_row": 9,
+      "sprite": "Sprites/Terrain/148_full_metal_rocky_infill.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 149,
+      "name": "full_metal_fasteners",
+      "category": "full_metal",
+      "kind": "detail",
+      "atlas_col": 5,
+      "atlas_row": 9,
+      "sprite": "Sprites/Terrain/149_full_metal_fasteners.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 150,
+      "name": "full_metal_underfloor_service",
+      "category": "full_metal",
+      "kind": "detail",
+      "atlas_col": 6,
+      "atlas_row": 9,
+      "sprite": "Sprites/Terrain/150_full_metal_underfloor_service.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 151,
+      "name": "full_metal_embedded_vent",
+      "category": "full_metal",
+      "kind": "detail",
+      "atlas_col": 7,
+      "atlas_row": 9,
+      "sprite": "Sprites/Terrain/151_full_metal_embedded_vent.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 152,
+      "name": "full_metal_grassy_top_a",
+      "category": "full_metal",
+      "kind": "detail",
+      "atlas_col": 8,
+      "atlas_row": 9,
+      "sprite": "Sprites/Terrain/152_full_metal_grassy_top_a.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 1
+    },
+    {
+      "index": 153,
+      "name": "full_metal_grassy_top_b",
+      "category": "full_metal",
+      "kind": "detail",
+      "atlas_col": 9,
+      "atlas_row": 9,
+      "sprite": "Sprites/Terrain/153_full_metal_grassy_top_b.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 1
+    },
+    {
+      "index": 154,
+      "name": "full_metal_inner_corner_tl",
+      "category": "full_metal",
+      "kind": "detail",
+      "atlas_col": 10,
+      "atlas_row": 9,
+      "sprite": "Sprites/Terrain/154_full_metal_inner_corner_tl.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 155,
+      "name": "full_metal_inner_corner_tr",
+      "category": "full_metal",
+      "kind": "detail",
+      "atlas_col": 11,
+      "atlas_row": 9,
+      "sprite": "Sprites/Terrain/155_full_metal_inner_corner_tr.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 156,
+      "name": "full_metal_inner_corner_bl",
+      "category": "full_metal",
+      "kind": "detail",
+      "atlas_col": 12,
+      "atlas_row": 9,
+      "sprite": "Sprites/Terrain/156_full_metal_inner_corner_bl.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 157,
+      "name": "full_metal_inner_corner_br",
+      "category": "full_metal",
+      "kind": "detail",
+      "atlas_col": 13,
+      "atlas_row": 9,
+      "sprite": "Sprites/Terrain/157_full_metal_inner_corner_br.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 0
+    },
+    {
+      "index": 158,
+      "name": "full_metal_floating_platform_l",
+      "category": "full_metal",
+      "kind": "detail",
+      "atlas_col": 14,
+      "atlas_row": 9,
+      "sprite": "Sprites/Terrain/158_full_metal_floating_platform_l.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 13
+    },
+    {
+      "index": 159,
+      "name": "full_metal_floating_platform_r",
+      "category": "full_metal",
+      "kind": "detail",
+      "atlas_col": 15,
+      "atlas_row": 9,
+      "sprite": "Sprites/Terrain/159_full_metal_floating_platform_r.png",
+      "size": [
+        32,
+        32
+      ],
+      "exposed_mask": 7
+    },
+    {
+      "index": 160,
+      "name": "trans_pure_dirt_to_light_reinforcement_lr_fill",
+      "category": "transition",
+      "kind": "lr_fill",
+      "atlas_col": 0,
+      "atlas_row": 10,
+      "sprite": "Sprites/Terrain/160_trans_pure_dirt_to_light_reinforcement_lr_fill.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 161,
+      "name": "trans_pure_dirt_to_light_reinforcement_lr_top",
+      "category": "transition",
+      "kind": "lr_top",
+      "atlas_col": 1,
+      "atlas_row": 10,
+      "sprite": "Sprites/Terrain/161_trans_pure_dirt_to_light_reinforcement_lr_top.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 162,
+      "name": "trans_pure_dirt_to_light_reinforcement_lr_bottom",
+      "category": "transition",
+      "kind": "lr_bottom",
+      "atlas_col": 2,
+      "atlas_row": 10,
+      "sprite": "Sprites/Terrain/162_trans_pure_dirt_to_light_reinforcement_lr_bottom.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 163,
+      "name": "trans_pure_dirt_to_light_reinforcement_lr_left_edge",
+      "category": "transition",
+      "kind": "lr_left_edge",
+      "atlas_col": 3,
+      "atlas_row": 10,
+      "sprite": "Sprites/Terrain/163_trans_pure_dirt_to_light_reinforcement_lr_left_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 164,
+      "name": "trans_pure_dirt_to_light_reinforcement_lr_right_edge",
+      "category": "transition",
+      "kind": "lr_right_edge",
+      "atlas_col": 4,
+      "atlas_row": 10,
+      "sprite": "Sprites/Terrain/164_trans_pure_dirt_to_light_reinforcement_lr_right_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 165,
+      "name": "trans_pure_dirt_to_light_reinforcement_lr_top_left",
+      "category": "transition",
+      "kind": "lr_top_left",
+      "atlas_col": 5,
+      "atlas_row": 10,
+      "sprite": "Sprites/Terrain/165_trans_pure_dirt_to_light_reinforcement_lr_top_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 166,
+      "name": "trans_pure_dirt_to_light_reinforcement_lr_top_right",
+      "category": "transition",
+      "kind": "lr_top_right",
+      "atlas_col": 6,
+      "atlas_row": 10,
+      "sprite": "Sprites/Terrain/166_trans_pure_dirt_to_light_reinforcement_lr_top_right.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 167,
+      "name": "trans_pure_dirt_to_light_reinforcement_lr_bottom_left",
+      "category": "transition",
+      "kind": "lr_bottom_left",
+      "atlas_col": 7,
+      "atlas_row": 10,
+      "sprite": "Sprites/Terrain/167_trans_pure_dirt_to_light_reinforcement_lr_bottom_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 168,
+      "name": "trans_pure_dirt_to_light_reinforcement_rl_fill",
+      "category": "transition",
+      "kind": "rl_fill",
+      "atlas_col": 8,
+      "atlas_row": 10,
+      "sprite": "Sprites/Terrain/168_trans_pure_dirt_to_light_reinforcement_rl_fill.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 169,
+      "name": "trans_pure_dirt_to_light_reinforcement_rl_top",
+      "category": "transition",
+      "kind": "rl_top",
+      "atlas_col": 9,
+      "atlas_row": 10,
+      "sprite": "Sprites/Terrain/169_trans_pure_dirt_to_light_reinforcement_rl_top.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 170,
+      "name": "trans_pure_dirt_to_light_reinforcement_rl_bottom",
+      "category": "transition",
+      "kind": "rl_bottom",
+      "atlas_col": 10,
+      "atlas_row": 10,
+      "sprite": "Sprites/Terrain/170_trans_pure_dirt_to_light_reinforcement_rl_bottom.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 171,
+      "name": "trans_pure_dirt_to_light_reinforcement_rl_left_edge",
+      "category": "transition",
+      "kind": "rl_left_edge",
+      "atlas_col": 11,
+      "atlas_row": 10,
+      "sprite": "Sprites/Terrain/171_trans_pure_dirt_to_light_reinforcement_rl_left_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 172,
+      "name": "trans_pure_dirt_to_light_reinforcement_rl_right_edge",
+      "category": "transition",
+      "kind": "rl_right_edge",
+      "atlas_col": 12,
+      "atlas_row": 10,
+      "sprite": "Sprites/Terrain/172_trans_pure_dirt_to_light_reinforcement_rl_right_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 173,
+      "name": "trans_pure_dirt_to_light_reinforcement_rl_top_left",
+      "category": "transition",
+      "kind": "rl_top_left",
+      "atlas_col": 13,
+      "atlas_row": 10,
+      "sprite": "Sprites/Terrain/173_trans_pure_dirt_to_light_reinforcement_rl_top_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 174,
+      "name": "trans_pure_dirt_to_light_reinforcement_rl_top_right",
+      "category": "transition",
+      "kind": "rl_top_right",
+      "atlas_col": 14,
+      "atlas_row": 10,
+      "sprite": "Sprites/Terrain/174_trans_pure_dirt_to_light_reinforcement_rl_top_right.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 175,
+      "name": "trans_pure_dirt_to_light_reinforcement_rl_bottom_left",
+      "category": "transition",
+      "kind": "rl_bottom_left",
+      "atlas_col": 15,
+      "atlas_row": 10,
+      "sprite": "Sprites/Terrain/175_trans_pure_dirt_to_light_reinforcement_rl_bottom_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 176,
+      "name": "trans_pure_dirt_to_light_reinforcement_tb_fill",
+      "category": "transition",
+      "kind": "tb_fill",
+      "atlas_col": 0,
+      "atlas_row": 11,
+      "sprite": "Sprites/Terrain/176_trans_pure_dirt_to_light_reinforcement_tb_fill.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 177,
+      "name": "trans_pure_dirt_to_light_reinforcement_tb_top",
+      "category": "transition",
+      "kind": "tb_top",
+      "atlas_col": 1,
+      "atlas_row": 11,
+      "sprite": "Sprites/Terrain/177_trans_pure_dirt_to_light_reinforcement_tb_top.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 178,
+      "name": "trans_pure_dirt_to_light_reinforcement_tb_bottom",
+      "category": "transition",
+      "kind": "tb_bottom",
+      "atlas_col": 2,
+      "atlas_row": 11,
+      "sprite": "Sprites/Terrain/178_trans_pure_dirt_to_light_reinforcement_tb_bottom.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 179,
+      "name": "trans_pure_dirt_to_light_reinforcement_tb_left_edge",
+      "category": "transition",
+      "kind": "tb_left_edge",
+      "atlas_col": 3,
+      "atlas_row": 11,
+      "sprite": "Sprites/Terrain/179_trans_pure_dirt_to_light_reinforcement_tb_left_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 180,
+      "name": "trans_pure_dirt_to_light_reinforcement_tb_right_edge",
+      "category": "transition",
+      "kind": "tb_right_edge",
+      "atlas_col": 4,
+      "atlas_row": 11,
+      "sprite": "Sprites/Terrain/180_trans_pure_dirt_to_light_reinforcement_tb_right_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 181,
+      "name": "trans_pure_dirt_to_light_reinforcement_tb_top_left",
+      "category": "transition",
+      "kind": "tb_top_left",
+      "atlas_col": 5,
+      "atlas_row": 11,
+      "sprite": "Sprites/Terrain/181_trans_pure_dirt_to_light_reinforcement_tb_top_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 182,
+      "name": "trans_pure_dirt_to_light_reinforcement_tb_top_right",
+      "category": "transition",
+      "kind": "tb_top_right",
+      "atlas_col": 6,
+      "atlas_row": 11,
+      "sprite": "Sprites/Terrain/182_trans_pure_dirt_to_light_reinforcement_tb_top_right.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 183,
+      "name": "trans_pure_dirt_to_light_reinforcement_tb_bottom_left",
+      "category": "transition",
+      "kind": "tb_bottom_left",
+      "atlas_col": 7,
+      "atlas_row": 11,
+      "sprite": "Sprites/Terrain/183_trans_pure_dirt_to_light_reinforcement_tb_bottom_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 184,
+      "name": "trans_pure_dirt_to_light_reinforcement_bt_fill",
+      "category": "transition",
+      "kind": "bt_fill",
+      "atlas_col": 8,
+      "atlas_row": 11,
+      "sprite": "Sprites/Terrain/184_trans_pure_dirt_to_light_reinforcement_bt_fill.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 185,
+      "name": "trans_pure_dirt_to_light_reinforcement_bt_top",
+      "category": "transition",
+      "kind": "bt_top",
+      "atlas_col": 9,
+      "atlas_row": 11,
+      "sprite": "Sprites/Terrain/185_trans_pure_dirt_to_light_reinforcement_bt_top.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 186,
+      "name": "trans_pure_dirt_to_light_reinforcement_bt_bottom",
+      "category": "transition",
+      "kind": "bt_bottom",
+      "atlas_col": 10,
+      "atlas_row": 11,
+      "sprite": "Sprites/Terrain/186_trans_pure_dirt_to_light_reinforcement_bt_bottom.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 187,
+      "name": "trans_pure_dirt_to_light_reinforcement_bt_left_edge",
+      "category": "transition",
+      "kind": "bt_left_edge",
+      "atlas_col": 11,
+      "atlas_row": 11,
+      "sprite": "Sprites/Terrain/187_trans_pure_dirt_to_light_reinforcement_bt_left_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 188,
+      "name": "trans_pure_dirt_to_light_reinforcement_bt_right_edge",
+      "category": "transition",
+      "kind": "bt_right_edge",
+      "atlas_col": 12,
+      "atlas_row": 11,
+      "sprite": "Sprites/Terrain/188_trans_pure_dirt_to_light_reinforcement_bt_right_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 189,
+      "name": "trans_pure_dirt_to_light_reinforcement_bt_top_left",
+      "category": "transition",
+      "kind": "bt_top_left",
+      "atlas_col": 13,
+      "atlas_row": 11,
+      "sprite": "Sprites/Terrain/189_trans_pure_dirt_to_light_reinforcement_bt_top_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 190,
+      "name": "trans_pure_dirt_to_light_reinforcement_bt_top_right",
+      "category": "transition",
+      "kind": "bt_top_right",
+      "atlas_col": 14,
+      "atlas_row": 11,
+      "sprite": "Sprites/Terrain/190_trans_pure_dirt_to_light_reinforcement_bt_top_right.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 191,
+      "name": "trans_pure_dirt_to_light_reinforcement_bt_bottom_left",
+      "category": "transition",
+      "kind": "bt_bottom_left",
+      "atlas_col": 15,
+      "atlas_row": 11,
+      "sprite": "Sprites/Terrain/191_trans_pure_dirt_to_light_reinforcement_bt_bottom_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "pure_dirt",
+      "to_stage": "light_reinforcement"
+    },
+    {
+      "index": 192,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_lr_fill",
+      "category": "transition",
+      "kind": "lr_fill",
+      "atlas_col": 0,
+      "atlas_row": 12,
+      "sprite": "Sprites/Terrain/192_trans_light_reinforcement_to_balanced_hybrid_lr_fill.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 193,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_lr_top",
+      "category": "transition",
+      "kind": "lr_top",
+      "atlas_col": 1,
+      "atlas_row": 12,
+      "sprite": "Sprites/Terrain/193_trans_light_reinforcement_to_balanced_hybrid_lr_top.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 194,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_lr_bottom",
+      "category": "transition",
+      "kind": "lr_bottom",
+      "atlas_col": 2,
+      "atlas_row": 12,
+      "sprite": "Sprites/Terrain/194_trans_light_reinforcement_to_balanced_hybrid_lr_bottom.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 195,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_lr_left_edge",
+      "category": "transition",
+      "kind": "lr_left_edge",
+      "atlas_col": 3,
+      "atlas_row": 12,
+      "sprite": "Sprites/Terrain/195_trans_light_reinforcement_to_balanced_hybrid_lr_left_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 196,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_lr_right_edge",
+      "category": "transition",
+      "kind": "lr_right_edge",
+      "atlas_col": 4,
+      "atlas_row": 12,
+      "sprite": "Sprites/Terrain/196_trans_light_reinforcement_to_balanced_hybrid_lr_right_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 197,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_lr_top_left",
+      "category": "transition",
+      "kind": "lr_top_left",
+      "atlas_col": 5,
+      "atlas_row": 12,
+      "sprite": "Sprites/Terrain/197_trans_light_reinforcement_to_balanced_hybrid_lr_top_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 198,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_lr_top_right",
+      "category": "transition",
+      "kind": "lr_top_right",
+      "atlas_col": 6,
+      "atlas_row": 12,
+      "sprite": "Sprites/Terrain/198_trans_light_reinforcement_to_balanced_hybrid_lr_top_right.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 199,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_lr_bottom_left",
+      "category": "transition",
+      "kind": "lr_bottom_left",
+      "atlas_col": 7,
+      "atlas_row": 12,
+      "sprite": "Sprites/Terrain/199_trans_light_reinforcement_to_balanced_hybrid_lr_bottom_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 200,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_rl_fill",
+      "category": "transition",
+      "kind": "rl_fill",
+      "atlas_col": 8,
+      "atlas_row": 12,
+      "sprite": "Sprites/Terrain/200_trans_light_reinforcement_to_balanced_hybrid_rl_fill.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 201,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_rl_top",
+      "category": "transition",
+      "kind": "rl_top",
+      "atlas_col": 9,
+      "atlas_row": 12,
+      "sprite": "Sprites/Terrain/201_trans_light_reinforcement_to_balanced_hybrid_rl_top.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 202,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_rl_bottom",
+      "category": "transition",
+      "kind": "rl_bottom",
+      "atlas_col": 10,
+      "atlas_row": 12,
+      "sprite": "Sprites/Terrain/202_trans_light_reinforcement_to_balanced_hybrid_rl_bottom.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 203,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_rl_left_edge",
+      "category": "transition",
+      "kind": "rl_left_edge",
+      "atlas_col": 11,
+      "atlas_row": 12,
+      "sprite": "Sprites/Terrain/203_trans_light_reinforcement_to_balanced_hybrid_rl_left_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 204,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_rl_right_edge",
+      "category": "transition",
+      "kind": "rl_right_edge",
+      "atlas_col": 12,
+      "atlas_row": 12,
+      "sprite": "Sprites/Terrain/204_trans_light_reinforcement_to_balanced_hybrid_rl_right_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 205,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_rl_top_left",
+      "category": "transition",
+      "kind": "rl_top_left",
+      "atlas_col": 13,
+      "atlas_row": 12,
+      "sprite": "Sprites/Terrain/205_trans_light_reinforcement_to_balanced_hybrid_rl_top_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 206,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_rl_top_right",
+      "category": "transition",
+      "kind": "rl_top_right",
+      "atlas_col": 14,
+      "atlas_row": 12,
+      "sprite": "Sprites/Terrain/206_trans_light_reinforcement_to_balanced_hybrid_rl_top_right.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 207,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_rl_bottom_left",
+      "category": "transition",
+      "kind": "rl_bottom_left",
+      "atlas_col": 15,
+      "atlas_row": 12,
+      "sprite": "Sprites/Terrain/207_trans_light_reinforcement_to_balanced_hybrid_rl_bottom_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 208,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_tb_fill",
+      "category": "transition",
+      "kind": "tb_fill",
+      "atlas_col": 0,
+      "atlas_row": 13,
+      "sprite": "Sprites/Terrain/208_trans_light_reinforcement_to_balanced_hybrid_tb_fill.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 209,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_tb_top",
+      "category": "transition",
+      "kind": "tb_top",
+      "atlas_col": 1,
+      "atlas_row": 13,
+      "sprite": "Sprites/Terrain/209_trans_light_reinforcement_to_balanced_hybrid_tb_top.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 210,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_tb_bottom",
+      "category": "transition",
+      "kind": "tb_bottom",
+      "atlas_col": 2,
+      "atlas_row": 13,
+      "sprite": "Sprites/Terrain/210_trans_light_reinforcement_to_balanced_hybrid_tb_bottom.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 211,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_tb_left_edge",
+      "category": "transition",
+      "kind": "tb_left_edge",
+      "atlas_col": 3,
+      "atlas_row": 13,
+      "sprite": "Sprites/Terrain/211_trans_light_reinforcement_to_balanced_hybrid_tb_left_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 212,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_tb_right_edge",
+      "category": "transition",
+      "kind": "tb_right_edge",
+      "atlas_col": 4,
+      "atlas_row": 13,
+      "sprite": "Sprites/Terrain/212_trans_light_reinforcement_to_balanced_hybrid_tb_right_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 213,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_tb_top_left",
+      "category": "transition",
+      "kind": "tb_top_left",
+      "atlas_col": 5,
+      "atlas_row": 13,
+      "sprite": "Sprites/Terrain/213_trans_light_reinforcement_to_balanced_hybrid_tb_top_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 214,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_tb_top_right",
+      "category": "transition",
+      "kind": "tb_top_right",
+      "atlas_col": 6,
+      "atlas_row": 13,
+      "sprite": "Sprites/Terrain/214_trans_light_reinforcement_to_balanced_hybrid_tb_top_right.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 215,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_tb_bottom_left",
+      "category": "transition",
+      "kind": "tb_bottom_left",
+      "atlas_col": 7,
+      "atlas_row": 13,
+      "sprite": "Sprites/Terrain/215_trans_light_reinforcement_to_balanced_hybrid_tb_bottom_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 216,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_bt_fill",
+      "category": "transition",
+      "kind": "bt_fill",
+      "atlas_col": 8,
+      "atlas_row": 13,
+      "sprite": "Sprites/Terrain/216_trans_light_reinforcement_to_balanced_hybrid_bt_fill.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 217,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_bt_top",
+      "category": "transition",
+      "kind": "bt_top",
+      "atlas_col": 9,
+      "atlas_row": 13,
+      "sprite": "Sprites/Terrain/217_trans_light_reinforcement_to_balanced_hybrid_bt_top.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 218,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_bt_bottom",
+      "category": "transition",
+      "kind": "bt_bottom",
+      "atlas_col": 10,
+      "atlas_row": 13,
+      "sprite": "Sprites/Terrain/218_trans_light_reinforcement_to_balanced_hybrid_bt_bottom.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 219,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_bt_left_edge",
+      "category": "transition",
+      "kind": "bt_left_edge",
+      "atlas_col": 11,
+      "atlas_row": 13,
+      "sprite": "Sprites/Terrain/219_trans_light_reinforcement_to_balanced_hybrid_bt_left_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 220,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_bt_right_edge",
+      "category": "transition",
+      "kind": "bt_right_edge",
+      "atlas_col": 12,
+      "atlas_row": 13,
+      "sprite": "Sprites/Terrain/220_trans_light_reinforcement_to_balanced_hybrid_bt_right_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 221,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_bt_top_left",
+      "category": "transition",
+      "kind": "bt_top_left",
+      "atlas_col": 13,
+      "atlas_row": 13,
+      "sprite": "Sprites/Terrain/221_trans_light_reinforcement_to_balanced_hybrid_bt_top_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 222,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_bt_top_right",
+      "category": "transition",
+      "kind": "bt_top_right",
+      "atlas_col": 14,
+      "atlas_row": 13,
+      "sprite": "Sprites/Terrain/222_trans_light_reinforcement_to_balanced_hybrid_bt_top_right.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 223,
+      "name": "trans_light_reinforcement_to_balanced_hybrid_bt_bottom_left",
+      "category": "transition",
+      "kind": "bt_bottom_left",
+      "atlas_col": 15,
+      "atlas_row": 13,
+      "sprite": "Sprites/Terrain/223_trans_light_reinforcement_to_balanced_hybrid_bt_bottom_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "light_reinforcement",
+      "to_stage": "balanced_hybrid"
+    },
+    {
+      "index": 224,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_lr_fill",
+      "category": "transition",
+      "kind": "lr_fill",
+      "atlas_col": 0,
+      "atlas_row": 14,
+      "sprite": "Sprites/Terrain/224_trans_balanced_hybrid_to_heavy_industrial_lr_fill.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 225,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_lr_top",
+      "category": "transition",
+      "kind": "lr_top",
+      "atlas_col": 1,
+      "atlas_row": 14,
+      "sprite": "Sprites/Terrain/225_trans_balanced_hybrid_to_heavy_industrial_lr_top.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 226,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_lr_bottom",
+      "category": "transition",
+      "kind": "lr_bottom",
+      "atlas_col": 2,
+      "atlas_row": 14,
+      "sprite": "Sprites/Terrain/226_trans_balanced_hybrid_to_heavy_industrial_lr_bottom.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 227,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_lr_left_edge",
+      "category": "transition",
+      "kind": "lr_left_edge",
+      "atlas_col": 3,
+      "atlas_row": 14,
+      "sprite": "Sprites/Terrain/227_trans_balanced_hybrid_to_heavy_industrial_lr_left_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 228,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_lr_right_edge",
+      "category": "transition",
+      "kind": "lr_right_edge",
+      "atlas_col": 4,
+      "atlas_row": 14,
+      "sprite": "Sprites/Terrain/228_trans_balanced_hybrid_to_heavy_industrial_lr_right_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 229,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_lr_top_left",
+      "category": "transition",
+      "kind": "lr_top_left",
+      "atlas_col": 5,
+      "atlas_row": 14,
+      "sprite": "Sprites/Terrain/229_trans_balanced_hybrid_to_heavy_industrial_lr_top_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 230,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_lr_top_right",
+      "category": "transition",
+      "kind": "lr_top_right",
+      "atlas_col": 6,
+      "atlas_row": 14,
+      "sprite": "Sprites/Terrain/230_trans_balanced_hybrid_to_heavy_industrial_lr_top_right.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 231,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_lr_bottom_left",
+      "category": "transition",
+      "kind": "lr_bottom_left",
+      "atlas_col": 7,
+      "atlas_row": 14,
+      "sprite": "Sprites/Terrain/231_trans_balanced_hybrid_to_heavy_industrial_lr_bottom_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 232,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_rl_fill",
+      "category": "transition",
+      "kind": "rl_fill",
+      "atlas_col": 8,
+      "atlas_row": 14,
+      "sprite": "Sprites/Terrain/232_trans_balanced_hybrid_to_heavy_industrial_rl_fill.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 233,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_rl_top",
+      "category": "transition",
+      "kind": "rl_top",
+      "atlas_col": 9,
+      "atlas_row": 14,
+      "sprite": "Sprites/Terrain/233_trans_balanced_hybrid_to_heavy_industrial_rl_top.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 234,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_rl_bottom",
+      "category": "transition",
+      "kind": "rl_bottom",
+      "atlas_col": 10,
+      "atlas_row": 14,
+      "sprite": "Sprites/Terrain/234_trans_balanced_hybrid_to_heavy_industrial_rl_bottom.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 235,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_rl_left_edge",
+      "category": "transition",
+      "kind": "rl_left_edge",
+      "atlas_col": 11,
+      "atlas_row": 14,
+      "sprite": "Sprites/Terrain/235_trans_balanced_hybrid_to_heavy_industrial_rl_left_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 236,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_rl_right_edge",
+      "category": "transition",
+      "kind": "rl_right_edge",
+      "atlas_col": 12,
+      "atlas_row": 14,
+      "sprite": "Sprites/Terrain/236_trans_balanced_hybrid_to_heavy_industrial_rl_right_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 237,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_rl_top_left",
+      "category": "transition",
+      "kind": "rl_top_left",
+      "atlas_col": 13,
+      "atlas_row": 14,
+      "sprite": "Sprites/Terrain/237_trans_balanced_hybrid_to_heavy_industrial_rl_top_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 238,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_rl_top_right",
+      "category": "transition",
+      "kind": "rl_top_right",
+      "atlas_col": 14,
+      "atlas_row": 14,
+      "sprite": "Sprites/Terrain/238_trans_balanced_hybrid_to_heavy_industrial_rl_top_right.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 239,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_rl_bottom_left",
+      "category": "transition",
+      "kind": "rl_bottom_left",
+      "atlas_col": 15,
+      "atlas_row": 14,
+      "sprite": "Sprites/Terrain/239_trans_balanced_hybrid_to_heavy_industrial_rl_bottom_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 240,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_tb_fill",
+      "category": "transition",
+      "kind": "tb_fill",
+      "atlas_col": 0,
+      "atlas_row": 15,
+      "sprite": "Sprites/Terrain/240_trans_balanced_hybrid_to_heavy_industrial_tb_fill.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 241,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_tb_top",
+      "category": "transition",
+      "kind": "tb_top",
+      "atlas_col": 1,
+      "atlas_row": 15,
+      "sprite": "Sprites/Terrain/241_trans_balanced_hybrid_to_heavy_industrial_tb_top.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 242,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_tb_bottom",
+      "category": "transition",
+      "kind": "tb_bottom",
+      "atlas_col": 2,
+      "atlas_row": 15,
+      "sprite": "Sprites/Terrain/242_trans_balanced_hybrid_to_heavy_industrial_tb_bottom.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 243,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_tb_left_edge",
+      "category": "transition",
+      "kind": "tb_left_edge",
+      "atlas_col": 3,
+      "atlas_row": 15,
+      "sprite": "Sprites/Terrain/243_trans_balanced_hybrid_to_heavy_industrial_tb_left_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 244,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_tb_right_edge",
+      "category": "transition",
+      "kind": "tb_right_edge",
+      "atlas_col": 4,
+      "atlas_row": 15,
+      "sprite": "Sprites/Terrain/244_trans_balanced_hybrid_to_heavy_industrial_tb_right_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 245,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_tb_top_left",
+      "category": "transition",
+      "kind": "tb_top_left",
+      "atlas_col": 5,
+      "atlas_row": 15,
+      "sprite": "Sprites/Terrain/245_trans_balanced_hybrid_to_heavy_industrial_tb_top_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 246,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_tb_top_right",
+      "category": "transition",
+      "kind": "tb_top_right",
+      "atlas_col": 6,
+      "atlas_row": 15,
+      "sprite": "Sprites/Terrain/246_trans_balanced_hybrid_to_heavy_industrial_tb_top_right.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 247,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_tb_bottom_left",
+      "category": "transition",
+      "kind": "tb_bottom_left",
+      "atlas_col": 7,
+      "atlas_row": 15,
+      "sprite": "Sprites/Terrain/247_trans_balanced_hybrid_to_heavy_industrial_tb_bottom_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 248,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_bt_fill",
+      "category": "transition",
+      "kind": "bt_fill",
+      "atlas_col": 8,
+      "atlas_row": 15,
+      "sprite": "Sprites/Terrain/248_trans_balanced_hybrid_to_heavy_industrial_bt_fill.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 249,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_bt_top",
+      "category": "transition",
+      "kind": "bt_top",
+      "atlas_col": 9,
+      "atlas_row": 15,
+      "sprite": "Sprites/Terrain/249_trans_balanced_hybrid_to_heavy_industrial_bt_top.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 250,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_bt_bottom",
+      "category": "transition",
+      "kind": "bt_bottom",
+      "atlas_col": 10,
+      "atlas_row": 15,
+      "sprite": "Sprites/Terrain/250_trans_balanced_hybrid_to_heavy_industrial_bt_bottom.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 251,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_bt_left_edge",
+      "category": "transition",
+      "kind": "bt_left_edge",
+      "atlas_col": 11,
+      "atlas_row": 15,
+      "sprite": "Sprites/Terrain/251_trans_balanced_hybrid_to_heavy_industrial_bt_left_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 252,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_bt_right_edge",
+      "category": "transition",
+      "kind": "bt_right_edge",
+      "atlas_col": 12,
+      "atlas_row": 15,
+      "sprite": "Sprites/Terrain/252_trans_balanced_hybrid_to_heavy_industrial_bt_right_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 253,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_bt_top_left",
+      "category": "transition",
+      "kind": "bt_top_left",
+      "atlas_col": 13,
+      "atlas_row": 15,
+      "sprite": "Sprites/Terrain/253_trans_balanced_hybrid_to_heavy_industrial_bt_top_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 254,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_bt_top_right",
+      "category": "transition",
+      "kind": "bt_top_right",
+      "atlas_col": 14,
+      "atlas_row": 15,
+      "sprite": "Sprites/Terrain/254_trans_balanced_hybrid_to_heavy_industrial_bt_top_right.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 255,
+      "name": "trans_balanced_hybrid_to_heavy_industrial_bt_bottom_left",
+      "category": "transition",
+      "kind": "bt_bottom_left",
+      "atlas_col": 15,
+      "atlas_row": 15,
+      "sprite": "Sprites/Terrain/255_trans_balanced_hybrid_to_heavy_industrial_bt_bottom_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "balanced_hybrid",
+      "to_stage": "heavy_industrial"
+    },
+    {
+      "index": 256,
+      "name": "trans_heavy_industrial_to_full_metal_lr_fill",
+      "category": "transition",
+      "kind": "lr_fill",
+      "atlas_col": 0,
+      "atlas_row": 16,
+      "sprite": "Sprites/Terrain/256_trans_heavy_industrial_to_full_metal_lr_fill.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 257,
+      "name": "trans_heavy_industrial_to_full_metal_lr_top",
+      "category": "transition",
+      "kind": "lr_top",
+      "atlas_col": 1,
+      "atlas_row": 16,
+      "sprite": "Sprites/Terrain/257_trans_heavy_industrial_to_full_metal_lr_top.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 258,
+      "name": "trans_heavy_industrial_to_full_metal_lr_bottom",
+      "category": "transition",
+      "kind": "lr_bottom",
+      "atlas_col": 2,
+      "atlas_row": 16,
+      "sprite": "Sprites/Terrain/258_trans_heavy_industrial_to_full_metal_lr_bottom.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 259,
+      "name": "trans_heavy_industrial_to_full_metal_lr_left_edge",
+      "category": "transition",
+      "kind": "lr_left_edge",
+      "atlas_col": 3,
+      "atlas_row": 16,
+      "sprite": "Sprites/Terrain/259_trans_heavy_industrial_to_full_metal_lr_left_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 260,
+      "name": "trans_heavy_industrial_to_full_metal_lr_right_edge",
+      "category": "transition",
+      "kind": "lr_right_edge",
+      "atlas_col": 4,
+      "atlas_row": 16,
+      "sprite": "Sprites/Terrain/260_trans_heavy_industrial_to_full_metal_lr_right_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 261,
+      "name": "trans_heavy_industrial_to_full_metal_lr_top_left",
+      "category": "transition",
+      "kind": "lr_top_left",
+      "atlas_col": 5,
+      "atlas_row": 16,
+      "sprite": "Sprites/Terrain/261_trans_heavy_industrial_to_full_metal_lr_top_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 262,
+      "name": "trans_heavy_industrial_to_full_metal_lr_top_right",
+      "category": "transition",
+      "kind": "lr_top_right",
+      "atlas_col": 6,
+      "atlas_row": 16,
+      "sprite": "Sprites/Terrain/262_trans_heavy_industrial_to_full_metal_lr_top_right.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 263,
+      "name": "trans_heavy_industrial_to_full_metal_lr_bottom_left",
+      "category": "transition",
+      "kind": "lr_bottom_left",
+      "atlas_col": 7,
+      "atlas_row": 16,
+      "sprite": "Sprites/Terrain/263_trans_heavy_industrial_to_full_metal_lr_bottom_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 264,
+      "name": "trans_heavy_industrial_to_full_metal_rl_fill",
+      "category": "transition",
+      "kind": "rl_fill",
+      "atlas_col": 8,
+      "atlas_row": 16,
+      "sprite": "Sprites/Terrain/264_trans_heavy_industrial_to_full_metal_rl_fill.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 265,
+      "name": "trans_heavy_industrial_to_full_metal_rl_top",
+      "category": "transition",
+      "kind": "rl_top",
+      "atlas_col": 9,
+      "atlas_row": 16,
+      "sprite": "Sprites/Terrain/265_trans_heavy_industrial_to_full_metal_rl_top.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 266,
+      "name": "trans_heavy_industrial_to_full_metal_rl_bottom",
+      "category": "transition",
+      "kind": "rl_bottom",
+      "atlas_col": 10,
+      "atlas_row": 16,
+      "sprite": "Sprites/Terrain/266_trans_heavy_industrial_to_full_metal_rl_bottom.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 267,
+      "name": "trans_heavy_industrial_to_full_metal_rl_left_edge",
+      "category": "transition",
+      "kind": "rl_left_edge",
+      "atlas_col": 11,
+      "atlas_row": 16,
+      "sprite": "Sprites/Terrain/267_trans_heavy_industrial_to_full_metal_rl_left_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 268,
+      "name": "trans_heavy_industrial_to_full_metal_rl_right_edge",
+      "category": "transition",
+      "kind": "rl_right_edge",
+      "atlas_col": 12,
+      "atlas_row": 16,
+      "sprite": "Sprites/Terrain/268_trans_heavy_industrial_to_full_metal_rl_right_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 269,
+      "name": "trans_heavy_industrial_to_full_metal_rl_top_left",
+      "category": "transition",
+      "kind": "rl_top_left",
+      "atlas_col": 13,
+      "atlas_row": 16,
+      "sprite": "Sprites/Terrain/269_trans_heavy_industrial_to_full_metal_rl_top_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 270,
+      "name": "trans_heavy_industrial_to_full_metal_rl_top_right",
+      "category": "transition",
+      "kind": "rl_top_right",
+      "atlas_col": 14,
+      "atlas_row": 16,
+      "sprite": "Sprites/Terrain/270_trans_heavy_industrial_to_full_metal_rl_top_right.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 271,
+      "name": "trans_heavy_industrial_to_full_metal_rl_bottom_left",
+      "category": "transition",
+      "kind": "rl_bottom_left",
+      "atlas_col": 15,
+      "atlas_row": 16,
+      "sprite": "Sprites/Terrain/271_trans_heavy_industrial_to_full_metal_rl_bottom_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 272,
+      "name": "trans_heavy_industrial_to_full_metal_tb_fill",
+      "category": "transition",
+      "kind": "tb_fill",
+      "atlas_col": 0,
+      "atlas_row": 17,
+      "sprite": "Sprites/Terrain/272_trans_heavy_industrial_to_full_metal_tb_fill.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 273,
+      "name": "trans_heavy_industrial_to_full_metal_tb_top",
+      "category": "transition",
+      "kind": "tb_top",
+      "atlas_col": 1,
+      "atlas_row": 17,
+      "sprite": "Sprites/Terrain/273_trans_heavy_industrial_to_full_metal_tb_top.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 274,
+      "name": "trans_heavy_industrial_to_full_metal_tb_bottom",
+      "category": "transition",
+      "kind": "tb_bottom",
+      "atlas_col": 2,
+      "atlas_row": 17,
+      "sprite": "Sprites/Terrain/274_trans_heavy_industrial_to_full_metal_tb_bottom.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 275,
+      "name": "trans_heavy_industrial_to_full_metal_tb_left_edge",
+      "category": "transition",
+      "kind": "tb_left_edge",
+      "atlas_col": 3,
+      "atlas_row": 17,
+      "sprite": "Sprites/Terrain/275_trans_heavy_industrial_to_full_metal_tb_left_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 276,
+      "name": "trans_heavy_industrial_to_full_metal_tb_right_edge",
+      "category": "transition",
+      "kind": "tb_right_edge",
+      "atlas_col": 4,
+      "atlas_row": 17,
+      "sprite": "Sprites/Terrain/276_trans_heavy_industrial_to_full_metal_tb_right_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 277,
+      "name": "trans_heavy_industrial_to_full_metal_tb_top_left",
+      "category": "transition",
+      "kind": "tb_top_left",
+      "atlas_col": 5,
+      "atlas_row": 17,
+      "sprite": "Sprites/Terrain/277_trans_heavy_industrial_to_full_metal_tb_top_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 278,
+      "name": "trans_heavy_industrial_to_full_metal_tb_top_right",
+      "category": "transition",
+      "kind": "tb_top_right",
+      "atlas_col": 6,
+      "atlas_row": 17,
+      "sprite": "Sprites/Terrain/278_trans_heavy_industrial_to_full_metal_tb_top_right.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 279,
+      "name": "trans_heavy_industrial_to_full_metal_tb_bottom_left",
+      "category": "transition",
+      "kind": "tb_bottom_left",
+      "atlas_col": 7,
+      "atlas_row": 17,
+      "sprite": "Sprites/Terrain/279_trans_heavy_industrial_to_full_metal_tb_bottom_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 280,
+      "name": "trans_heavy_industrial_to_full_metal_bt_fill",
+      "category": "transition",
+      "kind": "bt_fill",
+      "atlas_col": 8,
+      "atlas_row": 17,
+      "sprite": "Sprites/Terrain/280_trans_heavy_industrial_to_full_metal_bt_fill.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 281,
+      "name": "trans_heavy_industrial_to_full_metal_bt_top",
+      "category": "transition",
+      "kind": "bt_top",
+      "atlas_col": 9,
+      "atlas_row": 17,
+      "sprite": "Sprites/Terrain/281_trans_heavy_industrial_to_full_metal_bt_top.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 282,
+      "name": "trans_heavy_industrial_to_full_metal_bt_bottom",
+      "category": "transition",
+      "kind": "bt_bottom",
+      "atlas_col": 10,
+      "atlas_row": 17,
+      "sprite": "Sprites/Terrain/282_trans_heavy_industrial_to_full_metal_bt_bottom.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 283,
+      "name": "trans_heavy_industrial_to_full_metal_bt_left_edge",
+      "category": "transition",
+      "kind": "bt_left_edge",
+      "atlas_col": 11,
+      "atlas_row": 17,
+      "sprite": "Sprites/Terrain/283_trans_heavy_industrial_to_full_metal_bt_left_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 284,
+      "name": "trans_heavy_industrial_to_full_metal_bt_right_edge",
+      "category": "transition",
+      "kind": "bt_right_edge",
+      "atlas_col": 12,
+      "atlas_row": 17,
+      "sprite": "Sprites/Terrain/284_trans_heavy_industrial_to_full_metal_bt_right_edge.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 285,
+      "name": "trans_heavy_industrial_to_full_metal_bt_top_left",
+      "category": "transition",
+      "kind": "bt_top_left",
+      "atlas_col": 13,
+      "atlas_row": 17,
+      "sprite": "Sprites/Terrain/285_trans_heavy_industrial_to_full_metal_bt_top_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 286,
+      "name": "trans_heavy_industrial_to_full_metal_bt_top_right",
+      "category": "transition",
+      "kind": "bt_top_right",
+      "atlas_col": 14,
+      "atlas_row": 17,
+      "sprite": "Sprites/Terrain/286_trans_heavy_industrial_to_full_metal_bt_top_right.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    },
+    {
+      "index": 287,
+      "name": "trans_heavy_industrial_to_full_metal_bt_bottom_left",
+      "category": "transition",
+      "kind": "bt_bottom_left",
+      "atlas_col": 15,
+      "atlas_row": 17,
+      "sprite": "Sprites/Terrain/287_trans_heavy_industrial_to_full_metal_bt_bottom_left.png",
+      "size": [
+        32,
+        32
+      ],
+      "from_stage": "heavy_industrial",
+      "to_stage": "full_metal"
+    }
+  ],
+  "props": [
+    {
+      "index": 0,
+      "name": "pipe_horizontal",
+      "atlas_col": 0,
+      "atlas_row": 0,
+      "sprite": "Sprites/Props/00_pipe_horizontal.png"
+    },
+    {
+      "index": 1,
+      "name": "pipe_vertical",
+      "atlas_col": 1,
+      "atlas_row": 0,
+      "sprite": "Sprites/Props/01_pipe_vertical.png"
+    },
+    {
+      "index": 2,
+      "name": "pipe_elbow_ne",
+      "atlas_col": 2,
+      "atlas_row": 0,
+      "sprite": "Sprites/Props/02_pipe_elbow_ne.png"
+    },
+    {
+      "index": 3,
+      "name": "pipe_elbow_nw",
+      "atlas_col": 3,
+      "atlas_row": 0,
+      "sprite": "Sprites/Props/03_pipe_elbow_nw.png"
+    },
+    {
+      "index": 4,
+      "name": "pipe_elbow_se",
+      "atlas_col": 4,
+      "atlas_row": 0,
+      "sprite": "Sprites/Props/04_pipe_elbow_se.png"
+    },
+    {
+      "index": 5,
+      "name": "pipe_elbow_sw",
+      "atlas_col": 5,
+      "atlas_row": 0,
+      "sprite": "Sprites/Props/05_pipe_elbow_sw.png"
+    },
+    {
+      "index": 6,
+      "name": "pipe_t_up",
+      "atlas_col": 6,
+      "atlas_row": 0,
+      "sprite": "Sprites/Props/06_pipe_t_up.png"
+    },
+    {
+      "index": 7,
+      "name": "pipe_t_down",
+      "atlas_col": 7,
+      "atlas_row": 0,
+      "sprite": "Sprites/Props/07_pipe_t_down.png"
+    },
+    {
+      "index": 8,
+      "name": "pipe_cross",
+      "atlas_col": 0,
+      "atlas_row": 1,
+      "sprite": "Sprites/Props/08_pipe_cross.png"
+    },
+    {
+      "index": 9,
+      "name": "pipe_end_l",
+      "atlas_col": 1,
+      "atlas_row": 1,
+      "sprite": "Sprites/Props/09_pipe_end_l.png"
+    },
+    {
+      "index": 10,
+      "name": "pipe_end_r",
+      "atlas_col": 2,
+      "atlas_row": 1,
+      "sprite": "Sprites/Props/10_pipe_end_r.png"
+    },
+    {
+      "index": 11,
+      "name": "pipe_end_top",
+      "atlas_col": 3,
+      "atlas_row": 1,
+      "sprite": "Sprites/Props/11_pipe_end_top.png"
+    },
+    {
+      "index": 12,
+      "name": "pipe_end_bottom",
+      "atlas_col": 4,
+      "atlas_row": 1,
+      "sprite": "Sprites/Props/12_pipe_end_bottom.png"
+    },
+    {
+      "index": 13,
+      "name": "vent",
+      "atlas_col": 5,
+      "atlas_row": 1,
+      "sprite": "Sprites/Props/13_vent.png"
+    },
+    {
+      "index": 14,
+      "name": "large_vent",
+      "atlas_col": 6,
+      "atlas_row": 1,
+      "sprite": "Sprites/Props/14_large_vent.png"
+    },
+    {
+      "index": 15,
+      "name": "fan",
+      "atlas_col": 7,
+      "atlas_row": 1,
+      "sprite": "Sprites/Props/15_fan.png"
+    },
+    {
+      "index": 16,
+      "name": "joint_bracket",
+      "atlas_col": 0,
+      "atlas_row": 2,
+      "sprite": "Sprites/Props/16_joint_bracket.png"
+    },
+    {
+      "index": 17,
+      "name": "horizontal_beam",
+      "atlas_col": 1,
+      "atlas_row": 2,
+      "sprite": "Sprites/Props/17_horizontal_beam.png"
+    },
+    {
+      "index": 18,
+      "name": "vertical_beam",
+      "atlas_col": 2,
+      "atlas_row": 2,
+      "sprite": "Sprites/Props/18_vertical_beam.png"
+    },
+    {
+      "index": 19,
+      "name": "green_indicator",
+      "atlas_col": 3,
+      "atlas_row": 2,
+      "sprite": "Sprites/Props/19_green_indicator.png"
+    },
+    {
+      "index": 20,
+      "name": "cyan_indicator",
+      "atlas_col": 4,
+      "atlas_row": 2,
+      "sprite": "Sprites/Props/20_cyan_indicator.png"
+    },
+    {
+      "index": 21,
+      "name": "hazard_stripe",
+      "atlas_col": 5,
+      "atlas_row": 2,
+      "sprite": "Sprites/Props/21_hazard_stripe.png"
+    },
+    {
+      "index": 22,
+      "name": "saw",
+      "atlas_col": 6,
+      "atlas_row": 2,
+      "sprite": "Sprites/Props/22_saw.png"
+    },
+    {
+      "index": 23,
+      "name": "flame_emitter",
+      "atlas_col": 7,
+      "atlas_row": 2,
+      "sprite": "Sprites/Props/23_flame_emitter.png"
+    },
+    {
+      "index": 24,
+      "name": "fire",
+      "atlas_col": 0,
+      "atlas_row": 3,
+      "sprite": "Sprites/Props/24_fire.png"
+    },
+    {
+      "index": 25,
+      "name": "ladder",
+      "atlas_col": 1,
+      "atlas_row": 3,
+      "sprite": "Sprites/Props/25_ladder.png"
+    },
+    {
+      "index": 26,
+      "name": "cable_horizontal",
+      "atlas_col": 2,
+      "atlas_row": 3,
+      "sprite": "Sprites/Props/26_cable_horizontal.png"
+    },
+    {
+      "index": 27,
+      "name": "cable_vertical",
+      "atlas_col": 3,
+      "atlas_row": 3,
+      "sprite": "Sprites/Props/27_cable_vertical.png"
+    },
+    {
+      "index": 28,
+      "name": "electrical_panel",
+      "atlas_col": 4,
+      "atlas_row": 3,
+      "sprite": "Sprites/Props/28_electrical_panel.png"
+    },
+    {
+      "index": 29,
+      "name": "soil_encrusted_plate",
+      "atlas_col": 5,
+      "atlas_row": 3,
+      "sprite": "Sprites/Props/29_soil_encrusted_plate.png"
+    },
+    {
+      "index": 30,
+      "name": "grassy_metal_cap",
+      "atlas_col": 6,
+      "atlas_row": 3,
+      "sprite": "Sprites/Props/30_grassy_metal_cap.png"
+    },
+    {
+      "index": 31,
+      "name": "support_foot",
+      "atlas_col": 7,
+      "atlas_row": 3,
+      "sprite": "Sprites/Props/31_support_foot.png"
+    }
+  ]
+}
