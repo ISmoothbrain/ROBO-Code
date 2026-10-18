@@ -28,7 +28,9 @@ This game is about learning how to code by battling enemies and progressing thro
 
 ## Visuals:
 
-Pixel art
+Its a Pixel art game
+
+
 
 ## Installation:
 
