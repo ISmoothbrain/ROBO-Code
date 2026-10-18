@@ -344,6 +344,10 @@ public class Player : MonoBehaviour
 
         foreach (Collider2D hit in hits)
         {
+            // Hitting the disguised NightBorne (DayForborne) unmasks him, and you strike first.
+            DisguisedBoss disguise = hit.GetComponentInParent<DisguisedBoss>();
+            if (disguise != null) { disguise.OnPlayerHit(this); return; }
+
             BanditEnemy enemy = hit.GetComponentInParent<BanditEnemy>();
             if (enemy == null) continue;
 

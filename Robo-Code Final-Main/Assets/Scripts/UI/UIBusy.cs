@@ -14,5 +14,5 @@ public static class UIBusy
     public static bool AnyOpen =>
         BattleManager.InBattle || DialogueUI.IsOpen || ShopUI.IsOpen || BackpackUI.IsOpen || CodeChallengeUI.IsOpen
         || StoneOfRecall.MenuOpen || PlayerDeathAnimation.Spawning
-        || HackCrafting.IsOpen;
+        || HackCrafting.IsOpen || LetterUI.IsOpen;
 }

@@ -111,18 +111,33 @@ public class SceneTransition : MonoBehaviour
         black.raycastTarget = true;
         yield return Fade(0f, 1f, 1.5f, false);           // slow fade to black
 
-        title.text = "THE END";
+        // An open ending: the invasion is stopped... for now.
+        title.text = "THE END...";
         title.fontSize = 110;
-        title.color = new Color(0.85f, 0.95f, 1f);
-        subtitle.text = "Every boss has fallen. Thanks for playing!\nChoose New Game on the main menu to play again.";
+        title.color = new Color(0.85f, 0.95f, 1f, 0f);
+        subtitle.text = "The invasion of the Clankers has been stopped....";
         float t = 0f;
-        while (t < 2f)
+        while (t < 2.2f)
         {
             t += Time.unscaledDeltaTime;
-            title.alpha = Mathf.Clamp01(t / 1.2f);
-            subtitle.alpha = Mathf.Clamp01((t - 0.8f) / 1.2f);
+            title.alpha = Mathf.Clamp01(t / 1.4f);
+            subtitle.alpha = Mathf.Clamp01((t - 1.0f) / 1.2f);
             yield return null;
         }
+        yield return new WaitForSecondsRealtime(2.2f);
+
+        // ...then, after a pause, the question hangs on its own line
+        string first = subtitle.text;
+        string question = "...but for how long...";
+        t = 0f;
+        while (t < 1.6f)
+        {
+            t += Time.unscaledDeltaTime;
+            int shown = Mathf.Clamp(Mathf.RoundToInt(question.Length * t / 1.4f), 0, question.Length);
+            subtitle.text = first + "\n" + question.Substring(0, shown);   // typed out slowly
+            yield return null;
+        }
+        subtitle.text = first + "\n" + question;
         yield return new WaitForSecondsRealtime(4f);
         yield return Fade(1f, 0f, 0.8f, true);
         subtitle.alpha = 0f;

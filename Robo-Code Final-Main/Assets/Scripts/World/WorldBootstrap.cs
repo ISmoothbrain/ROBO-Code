@@ -118,6 +118,7 @@ public static class WorldBootstrap
         t.submitReply = "THEN GET THE HELL OUT OF HERE!!";
         t.defyChoice = "No, I am here to help you end your duty.";
         t.defyReply = "I see... another practice dummy.";
+        e.gameObject.AddComponent<LetterOnDefeat>();   // the General's letter when he falls
     }
 }
 
@@ -164,11 +165,11 @@ public class WorldRunner : MonoBehaviour
 
         if (announce)
         {
-            if (UIBusy.AnyOpen || SceneTransition.Busy || DialogueUI.Instance == null) return; // wait until the battle is gone
+            if (UIBusy.AnyOpen || SceneTransition.Busy || LetterUI.Busy || DialogueUI.Instance == null) return; // wait for the battle and the letter
             announce = false;
 
-            // Every boss defeated: roll the ending, then back to the main menu.
-            if (LevelProgress.AllComplete()) { SceneTransition.ShowEnding(); return; }
+            // NightBorne defeated (Level 3), or every level done: roll the ending, then back to the main menu.
+            if (level.endsGame || LevelProgress.AllComplete()) { SceneTransition.ShowEnding(); return; }
 
             var lines = new System.Collections.Generic.List<string> { $"{level.displayName} complete!" };
             if (level.rewardHackFragment) lines.Add("You found a Hack Fragment! Open your backpack and use it to craft the Hack ability.");

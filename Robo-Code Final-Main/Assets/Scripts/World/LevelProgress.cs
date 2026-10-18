@@ -17,6 +17,7 @@ public static class LevelProgress
         public int tier = 1;         // difficulty: enemies get tougher and questions harder each tier
         public int rewardMaxHealth;  // extra max HP for completing it (beating its boss)
         public bool rewardHackFragment; // drops the Hack Fragment used to craft Hack
+        public bool endsGame;        // beating this level's boss plays the ending
     }
 
     public static readonly Destination[] Destinations =
@@ -27,7 +28,8 @@ public static class LevelProgress
                           sceneNames = new[] { "Level 2", "Level2" }, unlockedBy = "tutorial",
                           tier = 2, rewardMaxHealth = 20, rewardHackFragment = true },   // the Magitek's rewards
         new Destination { id = "level3", displayName = "Gemini's Blade",
-                          sceneNames = new[] { "Level 3", "Level3" }, unlockedBy = "level2", tier = 3 },
+                          sceneNames = new[] { "Level 3", "Level3" }, unlockedBy = "level2", tier = 3,
+                          endsGame = true },   // defeating NightBorne is the ending
     };
 
     private static string Prefix => GameSave.Prefix + "LevelComplete_";  // part of the save (New Game clears it)
