@@ -84,11 +84,11 @@ to discuss what you would like to change.
 Please make sure to update tests as appropriate.
 
 ## Authors And Acknowledgement:
-- Neil Fernandez [NeilFer-N](https://github.com/NeilFer-N)
-- Tiger Te Ahu [ISmoothBrain](https://github.com/ISmoothbrain)
-- Raja Cordova [Ravii55](https://github.com/Ravii55)
-- Devesh Sood [Dev](https://github.com/deveshsood656-dotcom)
-- Vishwa Vel [Vishwa-Vel](https://github.com/Vishwa-Vel)
+- Neil Fernandez - Scrum Master - [NeilFer-N](https://github.com/NeilFer-N)
+- Tiger Te Ahu - Product Owner - [ISmoothBrain](https://github.com/ISmoothbrain)
+- Raja Cordova - Development Team - [Ravii55](https://github.com/Ravii55)
+- Devesh Sood - Development Team - [Dev](https://github.com/deveshsood656-dotcom)
+- Vishwa Vel - Development Team - [Vishwa-Vel](https://github.com/Vishwa-Vel)
   
 ## License:
 [MIT](https://github.com/ISmoothbrain/ROBO-Code/blob/Release/LICENSE)
