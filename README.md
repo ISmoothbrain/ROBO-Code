@@ -1,4 +1,4 @@
-Robo-Code
+# Robo-Code
 
 ## Description: 
 This game is about learning how to code by battling enemies and progressing through levels. While you progress the challenges will increase in difficulty making it challenging and a fun way to test your knowledge. This game has:
