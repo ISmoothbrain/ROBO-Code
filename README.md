@@ -23,6 +23,10 @@ This game has:
 - Npc Interaction and Dialouge options
 - Create Skills
 - Music
+- Difficulty
+- Progression system
+- An ending
+- Side stories
 
 ## Badge:
 
@@ -52,8 +56,6 @@ Use a search engine and manually install:
 - cxj8010@gmail.com
 
 ## Roadmap:
-- Difficulty
-- Progression system
 - Story
 - Earn Achievements
 - Collectables
