@@ -24,7 +24,7 @@ This game is about learning how to code by battling enemies and progressing thro
 
 ## Badge:
 
-![Build Succeeded](https://img.shields.io/badge/build-succeeded-brightgreen)
+![Build Passing](https://img.shields.io/badge/build-succeeded-brightgreen)
 
 ## Visuals:
 
