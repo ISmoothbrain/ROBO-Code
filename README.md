@@ -30,7 +30,7 @@ This game has:
 
 ## Badge:
 
-![Build Passing](https://img.shields.io/badge/build-succeeded-brightgreen)
+![Build Passing](https://img.shields.io/badge/build-Passing-brightgreen)
 
 ## Visuals:
 
