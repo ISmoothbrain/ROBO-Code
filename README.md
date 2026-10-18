@@ -64,7 +64,7 @@ to discuss what you would like to change.
 - Vishwa Vel
 
 ## License:
-[MIT]
-(https://github.com/ISmoothbrain/ROBO-Code/blob/Release/LICENSE)
+[MIT](https://github.com/ISmoothbrain/ROBO-Code/blob/Release/LICENSE)
+
 ## Status:
 Slowed Down
