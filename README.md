@@ -57,6 +57,15 @@ Use a search engine and manually install:
 4. Select the root folder of the cloned repository.
 5. Make sure you have the matching Unity version installed via Unity Hub, then click the project to open it.
 
+### How to Play/ Controls
+- A, D:** Move Player
+- **Spacebar:** Jumping
+- **E:** Interact
+- **F:** Item use
+- **RightClick:** Equipping
+- **LeftClick:** Attacking
+- **ESC:** Pause
+
 ## Support:
 - neilfer305@gmail.com
 - cxj8010@gmail.com
