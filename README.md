@@ -31,6 +31,9 @@ This game is about learning how to code by battling enemies and progressing thro
 Pixel art
 
 ## Installation:
+
+Requirements:
+
 Use a search engine and manually install:
 - Unity version 6000.5.6f or newer
 - C# Compiler (Recomend Visual studio code)
@@ -55,6 +58,8 @@ Use a search engine and manually install:
 ## Contributing:
 Pull requests are welcome. For major changes, please open an issue first
 to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
 
 ## Authors And Acknowledgement:
 - Neil Fernandez
