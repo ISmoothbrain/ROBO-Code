@@ -1,6 +1,7 @@
 Robo-Code
 
-Description: This game is about learning how to code by battling enemies and progressing through levels. While you progress the challenges will increase in difficulty making it challenging and a fun way to test your knowledge. This game has:
+## Description: 
+This game is about learning how to code by battling enemies and progressing through levels. While you progress the challenges will increase in difficulty making it challenging and a fun way to test your knowledge. This game has:
 
 Main menu
 Moveable player character
@@ -20,24 +21,30 @@ Item pickups
 Npc Interaction and Dialouge options
 Create Skills
 Music
-Badge:
 
-Build Passing
+## Badge:
 
-Visuals:
+![Build Succeeded](https://img.shields.io/badge/build-succeeded-brightgreen)
+
+## Visuals:
 
 Pixel art
-Installation:
 
+## Installation:
+Use a search engine and manually install:
 Unity version 6000.5.6f or newer
-C# Compiler
-Usage:
+C# Compiler (Recomend Visual studio code)
 
-Support:
+## Usage:
+---C#
+
+
+## Support:
 
 neilfer305@gmail.com
 cxj8010@gmail.com
-Roadmap:
+
+## Roadmap:
 
 Difficulty
 Progression system
@@ -46,21 +53,26 @@ Earn Achievements
 Collectables
 Companions
 Choosen Difficulty options
-Contributing:
 
-Runs in Unity 6000.5.6f1 or Newer
-Robo-Code Version 1.01
-Everything is Located in Assets
-Authors And Acknowledgement:
+## Contributing:
+Pull requests are welcome. For major changes, please open an issue first
+to discuss what you would like to change.
+
+## Authors And Acknowledgement:
 
 Neil Fernandez
 Tiger Te Ahu
 Raja Cordova
 Devesh Sood
 Vishwa Vel
-License:
+## License:
+MIT License
+Project S
 
-Unity Personal
-Project Status:
+
+
+
+
+tatus:
 
 Slowed Down
