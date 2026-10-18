@@ -64,13 +64,7 @@ to discuss what you would like to change.
 - Vishwa Vel
 
 ## License:
-MIT License
-Project S
-
-
-
-
-
-tatus:
-
+[MIT]
+(https://github.com/ISmoothbrain/ROBO-Code/blob/Release/LICENSE)
+## Status:
 Slowed Down
