@@ -35,11 +35,12 @@ Pixel art
 Requirements:
 
 Use a search engine and manually install:
-- Unity version 6000.5.6f or newer
+- Unity Hub and then downlaod unity version 6000.5.6f to run the game files
 - C# Compiler (Recomend Visual studio code)
 
 ## Usage:
----C#
+--C#
+
 
 
 ## Support:
