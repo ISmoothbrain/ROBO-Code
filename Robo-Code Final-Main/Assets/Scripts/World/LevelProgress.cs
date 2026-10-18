@@ -14,6 +14,9 @@ public static class LevelProgress
         public string displayName;   // what the Stone of Recall shows
         public string[] sceneNames;  // any of these scene names will do
         public string unlockedBy;    // id of the level that must be completed first (null = always open)
+        public int tier = 1;         // difficulty: enemies get tougher and questions harder each tier
+        public int rewardMaxHealth;  // extra max HP for completing it (beating its boss)
+        public bool rewardHackFragment; // drops the Hack Fragment used to craft Hack
     }
 
     public static readonly Destination[] Destinations =
@@ -21,12 +24,60 @@ public static class LevelProgress
         new Destination { id = "tutorial", displayName = "The Safe Haven",
                           sceneNames = new[] { "Tuturial Level", "Tutorial Level", "Lobby&Tutorial", "Tutorial" }, unlockedBy = null },
         new Destination { id = "level2", displayName = "Magister's Island",
-                          sceneNames = new[] { "Level 2", "Level2" }, unlockedBy = "tutorial" },
+                          sceneNames = new[] { "Level 2", "Level2" }, unlockedBy = "tutorial",
+                          tier = 2, rewardMaxHealth = 20, rewardHackFragment = true },   // the Magitek's rewards
         new Destination { id = "level3", displayName = "Gemini's Blade",
-                          sceneNames = new[] { "Level 3", "Level3" }, unlockedBy = "level2" },
+                          sceneNames = new[] { "Level 3", "Level3" }, unlockedBy = "level2", tier = 3 },
     };
 
-    private const string Prefix = "LevelComplete_";
+    private static string Prefix => GameSave.Prefix + "LevelComplete_";  // part of the save (New Game clears it)
+
+    // Difficulty tier of the level that's open (1 if it isn't one of the levels above).
+    public static int CurrentTier() { Destination d = Current(); return d != null ? d.tier : 1; }
+
+    // ---- used by your teammate's scripts (Coin.cs, PlayerUpgrades.cs, GamePreferences.cs,
+    //      MainMenuRuntimeUI.cs, GameFlowOverlay.cs) ----
+
+    // Which playthrough this is. New Game moves to the next number, so coins and upgrades
+    // saved per run (Coins_Run<id>) start fresh. Same number as GameSave's save generation.
+    public static int RunId => PlayerPrefs.GetInt("SaveGeneration", 0);
+
+    // Position of the open level in Destinations: 0 = The Safe Haven, 1 = Magister's Island,
+    // 2 = Gemini's Blade, -1 = not a level (e.g. the main menu).
+    public static int CurrentOrdinal() => System.Array.IndexOf(Destinations, Current());
+
+    // Is there a game to continue?
+    public static bool HasProgress()
+    {
+        if (GameSave.HasSave) return true;
+        foreach (Destination d in Destinations) if (IsComplete(d.id)) return true;
+        return false;
+    }
+
+    // Respawn rule after dying: at the Stone of Recall, except in the tutorial until its stone is reached.
+    public static bool ShouldRespawnAtStone()
+    {
+        Destination level = Current();
+        bool tutorial = level != null && level.id == "tutorial";
+        return !tutorial || StoneOfRecall.ReachedInThisScene();
+    }
+
+    // Build index of the "Main Menu" scene (0 if it isn't found by name).
+    public static int MainMenuBuildIndex()
+    {
+        for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
+        {
+            string path = UnityEngine.SceneManagement.SceneUtility.GetScenePathByBuildIndex(i);
+            if (Normalize(System.IO.Path.GetFileNameWithoutExtension(path)) == "mainmenu") return i;
+        }
+        return 0;
+    }
+
+    public static bool AllComplete()
+    {
+        foreach (Destination d in Destinations) if (!IsComplete(d.id)) return false;
+        return true;
+    }
 
     public static bool IsComplete(string id) => PlayerPrefs.GetInt(Prefix + id, 0) == 1;
 

@@ -73,11 +73,10 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        if (maxHealth <= 0) maxHealth = 100;
-
-        // Max HP bought in the shop carries over when the level reloads.
-        maxHealth += PlayerUpgrades.BonusMaxHealth;
-        health = Mathf.Clamp(health + PlayerUpgrades.BonusMaxHealth, 0, maxHealth);
+        // A new game starts at 30 HP (GameSave.BaseMaxHealth). Beating the Magitek adds 20,
+        // and Heart Containers from the shop add more. All of it is saved for Continue.
+        maxHealth = GameSave.BaseMaxHealth + GameSave.BossHealthBonus + PlayerUpgrades.BonusMaxHealth;
+        health = maxHealth;
 
         ResolveAttackStates();
         ApplyHealthBarColor(HealthBarSettings.CurrentColor);
@@ -473,9 +472,17 @@ public class Player : MonoBehaviour
 
     private IEnumerator ReloadAfterDeath(float delay)
     {
-        yield return new WaitForSeconds(delay);
-        UnityEngine.SceneManagement.SceneManager.LoadScene(
-            UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+        // Let the death animation get going, then YOU DIED and respawn (see SceneTransition).
+        yield return new WaitForSeconds(Mathf.Min(delay, 0.8f));
+        SceneTransition.ShowDeathAndRespawn();
+    }
+
+    // Called when the player falls off the map.
+    public void FellOffMap()
+    {
+        if (isDead) return;
+        if (rb != null) { rb.linearVelocity = Vector2.zero; rb.bodyType = RigidbodyType2D.Kinematic; } // stop falling
+        TakeDamage(health + 9999);
     }
 
     private void OnDrawGizmosSelected()

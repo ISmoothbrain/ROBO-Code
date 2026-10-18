@@ -17,7 +17,9 @@ public class SceneTransition : MonoBehaviour
     private static SceneTransition instance;
     private static bool arriveAtStone;
     private Image black;
+    private Image band;
     private TextMeshProUGUI title;
+    private TextMeshProUGUI subtitle;
     private bool running;
 
     // Loads a scene with the fade. atStone = arrive next to the Stone of Recall (teleporting).
@@ -26,6 +28,112 @@ public class SceneTransition : MonoBehaviour
         SceneTransition t = Get();
         if (t.running) return;
         t.StartCoroutine(t.Run(buildIndex, atStone, titleText));
+    }
+
+    // Lines shown under YOU DIED (one at random).
+    private static readonly string[] DeathLines =
+    {
+        "Segmentation fault (core dumped)",
+        "Uncaught exception: player.health < 0",
+        "Stack overflow. Try again.",
+        "Process terminated with exit code 1",
+        "NullReferenceException: hero was null",
+        "Fatal error. Rebooting...",
+    };
+
+    // Called when the player dies: YOU DIED, then back to the Stone of Recall (or the level start).
+    public static void ShowDeathAndRespawn()
+    {
+        SceneTransition t = Get();
+        if (t.running) return;
+        t.StartCoroutine(t.RunDeath());
+    }
+
+    // Respawn rule: at the Stone of Recall, except in the tutorial until the player has reached its stone.
+    private static bool RespawnAtStone() => LevelProgress.ShouldRespawnAtStone();
+
+    private IEnumerator RunDeath()
+    {
+        running = true;
+        bool atStone = RespawnAtStone();
+        string where = atStone && Object.FindAnyObjectByType<StoneOfRecall>() != null
+            ? "Returning to the Stone of Recall..." : "Restarting...";
+
+        // dark band across the middle with the big red letters, Dark Souls style
+        black.raycastTarget = true;
+        band.gameObject.SetActive(true);
+        title.text = "YOU DIED";
+        title.color = new Color(0.72f, 0.08f, 0.08f);
+        title.fontSize = 120;
+        subtitle.text = DeathLines[Random.Range(0, DeathLines.Length)] + "\n" + where;
+        float t = 0f;
+        while (t < 1.4f)
+        {
+            t += Time.unscaledDeltaTime;
+            float k = Mathf.Clamp01(t / 1.4f);
+            band.color = new Color(0f, 0f, 0f, 0.75f * k);
+            title.alpha = k;
+            subtitle.alpha = Mathf.Clamp01((t - 0.6f) / 0.8f);
+            title.transform.localScale = Vector3.one * Mathf.Lerp(0.92f, 1.04f, k);  // slow, heavy grow
+            yield return null;
+        }
+        yield return new WaitForSecondsRealtime(1.6f);
+
+        yield return Fade(0f, 1f, 0.7f, false);              // to black
+        title.alpha = 0f; subtitle.alpha = 0f; band.gameObject.SetActive(false);
+        title.transform.localScale = Vector3.one;
+        // keep it invisible: setting a colour also sets its transparency, and a solid colour
+        // here used to leave "YOU DIED" on screen after respawning
+        title.color = new Color(0.85f, 0.95f, 1f, 0f); title.fontSize = 64;
+
+        arriveAtStone = atStone;
+        Time.timeScale = 1f;
+        AsyncOperation op = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        while (!op.isDone) yield return null;
+        yield return null;
+
+        yield return Fade(1f, 0f, fadeInTime, false);
+        black.raycastTarget = false;
+        running = false;
+    }
+
+    // Every boss is defeated: THE END, then back to the main menu (build index 0).
+    public static void ShowEnding()
+    {
+        SceneTransition t = Get();
+        if (t.running) return;
+        t.StartCoroutine(t.RunEnding());
+    }
+
+    private IEnumerator RunEnding()
+    {
+        running = true;
+        black.raycastTarget = true;
+        yield return Fade(0f, 1f, 1.5f, false);           // slow fade to black
+
+        title.text = "THE END";
+        title.fontSize = 110;
+        title.color = new Color(0.85f, 0.95f, 1f);
+        subtitle.text = "Every boss has fallen. Thanks for playing!\nChoose New Game on the main menu to play again.";
+        float t = 0f;
+        while (t < 2f)
+        {
+            t += Time.unscaledDeltaTime;
+            title.alpha = Mathf.Clamp01(t / 1.2f);
+            subtitle.alpha = Mathf.Clamp01((t - 0.8f) / 1.2f);
+            yield return null;
+        }
+        yield return new WaitForSecondsRealtime(4f);
+        yield return Fade(1f, 0f, 0.8f, true);
+        subtitle.alpha = 0f;
+        title.fontSize = 64;
+
+        Time.timeScale = 1f;
+        AsyncOperation op = SceneManager.LoadSceneAsync(0);   // the main menu
+        while (!op.isDone) yield return null;
+        yield return Fade(1f, 0f, fadeInTime, false);
+        black.raycastTarget = false;
+        running = false;
     }
 
     // WorldBootstrap asks this once per scene: did we arrive by teleport?
@@ -112,5 +220,28 @@ public class SceneTransition : MonoBehaviour
         title.color = new Color(0.85f, 0.95f, 1f);
         title.raycastTarget = false;
         title.alpha = 0f;
+
+        // death screen pieces: a dark band behind the text, and a smaller line underneath
+        GameObject bd = new GameObject("DeathBand", typeof(RectTransform));
+        bd.transform.SetParent(transform, false);
+        bd.transform.SetSiblingIndex(1); // above the black, below the text
+        RectTransform bdr = (RectTransform)bd.transform;
+        bdr.anchorMin = new Vector2(0f, 0.38f); bdr.anchorMax = new Vector2(1f, 0.62f); bdr.offsetMin = bdr.offsetMax = Vector2.zero;
+        band = bd.AddComponent<Image>();
+        band.color = new Color(0f, 0f, 0f, 0f);
+        band.raycastTarget = false;
+        bd.SetActive(false);
+
+        GameObject st = new GameObject("Subtitle", typeof(RectTransform));
+        st.transform.SetParent(transform, false);
+        RectTransform str = (RectTransform)st.transform;
+        str.anchorMin = new Vector2(0f, 0.30f); str.anchorMax = new Vector2(1f, 0.40f); str.offsetMin = str.offsetMax = Vector2.zero;
+        subtitle = st.AddComponent<TextMeshProUGUI>();
+        UIFont.Apply(subtitle);
+        subtitle.fontSize = 30;
+        subtitle.alignment = TextAlignmentOptions.Center;
+        subtitle.color = new Color(0.8f, 0.78f, 0.75f);
+        subtitle.raycastTarget = false;
+        subtitle.alpha = 0f;
     }
 }

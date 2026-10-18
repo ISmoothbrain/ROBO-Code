@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 // Shows a message and restarts the level if the player falls off the bottom.
 // Put this on an empty GameObject in the scene.
@@ -35,7 +34,9 @@ public class DeathZone : MonoBehaviour
         if (player.position.y < deathHeight)
         {
             dead = true;
-            StartCoroutine(Die());
+            Player playerComponent = player.GetComponent<Player>();
+            if (playerComponent != null) playerComponent.FellOffMap();
+            else StartCoroutine(Die());
         }
     }
 
@@ -46,7 +47,7 @@ public class DeathZone : MonoBehaviour
             deathMessage.SetActive(true);
         }
 
-        // real time, so the wait still counts down even if something paused the game
+        // Legacy fallback for scenes whose assigned Transform is not the Player component.
         yield return new WaitForSecondsRealtime(waitBeforeRestart);
 
         // the pause menu sets this to 0, so put it back or the level loads frozen
@@ -54,6 +55,6 @@ public class DeathZone : MonoBehaviour
 
         // loading the scene that is already open just starts it over, and asking
         // for the active scene means this works in any level without changing it
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameFlowOverlay.ShowDeath(0f, true);
     }
 }

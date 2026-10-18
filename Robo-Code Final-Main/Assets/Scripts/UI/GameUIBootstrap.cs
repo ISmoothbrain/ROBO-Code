@@ -31,7 +31,8 @@ public static class GameUIBootstrap
             ApplyPlayerLook(player);
             CreateBackground();
             if (player.GetComponent<PotionUser>() == null) player.gameObject.AddComponent<PotionUser>();
-            if (player.GetComponent<PlayerSkills>() == null) player.gameObject.AddComponent<PlayerSkills>();
+            PlayerSkills playerSkills = player.GetComponent<PlayerSkills>();
+            if (playerSkills == null) playerSkills = player.gameObject.AddComponent<PlayerSkills>();
             if (Object.FindFirstObjectByType<InventoryManager>() == null) new GameObject("InventoryManager").AddComponent<InventoryManager>();
             HideOldHud();
 
@@ -73,6 +74,7 @@ public static class GameUIBootstrap
             hud.itemCount = h.itemCount;
             hud.itemKey = h.itemKey;
             hud.itemMessage = h.itemMessage;
+            playerSkills.equippedSkillText = h.skill;
 
             BackpackUI backpack = controllers.AddComponent<BackpackUI>();
             backpack.root = b.root;
@@ -123,6 +125,15 @@ public static class GameUIBootstrap
         }
         if (settings == null) return;
 
+        // A choice made in the main-menu settings intentionally wins over both
+        // the shared asset and a scene override. -1 keeps the scene/default setup.
+        if (GamePreferences.BackgroundChoice >= 0)
+        {
+            settings = Object.Instantiate(settings);
+            settings.theme = (BackgroundTheme)GamePreferences.BackgroundChoice;
+            sceneChoice = null;
+        }
+
         ParallaxBackground bg = new GameObject("[Background]").AddComponent<ParallaxBackground>();
         bg.settings = settings;
         bg.sceneOverride = sceneChoice;
@@ -154,6 +165,7 @@ public static class GameUIBootstrap
     private struct HudRefs
     {
         public RectTransform hearts, mana;
+        public TextMeshProUGUI skill;
         public Image itemIcon;
         public TextMeshProUGUI itemLabel, itemCount, itemKey, itemMessage;
     }
@@ -225,6 +237,9 @@ public static class GameUIBootstrap
 
         r.hearts = Row(bars.transform, "Hearts", 4);
         r.mana = Row(bars.transform, "Mana", 6);
+        GameObject skill = UIBuild.Node("SkillHint", bars.transform);
+        skill.AddComponent<LayoutElement>().preferredHeight = 26f;
+        r.skill = UIBuild.Label(skill, 18, FontStyles.Bold, new Color(0.55f, 0.88f, 1f), TextAlignmentOptions.Left);
         return r;
     }
 

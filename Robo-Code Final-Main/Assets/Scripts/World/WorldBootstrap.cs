@@ -47,6 +47,23 @@ public static class WorldBootstrap
                 c.coins = a.name.Contains("Golden") ? 20 : a.name.Contains("Silver") ? 10 : a.name.Contains("Wooden") ? 5 : 10;
             }
 
+            // Later levels are harder: normal enemies get +30% health and damage per tier.
+            // (Bosses keep the exact numbers on their prefabs.)
+            int tier = LevelProgress.CurrentTier();
+            float scale = 1f + 0.3f * (tier - 1);
+            foreach (BanditEnemy e in Object.FindObjectsByType<BanditEnemy>(FindObjectsSortMode.None))
+            {
+                if (e.isBoss || scale <= 1f) continue;
+                e.health = Mathf.RoundToInt(e.health * scale);
+                e.attackDamage = Mathf.RoundToInt(e.attackDamage * scale);
+            }
+
+            // Save where we are, for Continue on the main menu.
+            if (LevelProgress.Current() != null)
+                GameSave.LastLevelIndex = SceneManager.GetActiveScene().buildIndex;
+            GameSave.SaveSession();
+            HackCrafting.EnsureFragmentInBackpack();
+
             foreach (BanditEnemy e in Object.FindObjectsByType<BanditEnemy>(FindObjectsSortMode.None))
             {
                 if (e.GetComponent<BossEncounter>() != null) continue;
@@ -112,9 +129,22 @@ public class WorldRunner : MonoBehaviour
     private readonly List<BanditEnemy> enemies = new List<BanditEnemy>();
     private bool announce;
     private float nextCheck;
+    private float killY = float.NegativeInfinity; // falling below this = off the map
+    private Player player;
 
     private void Start()
     {
+        player = FindAnyObjectByType<Player>();
+
+        // The fall line: a few units below the lowest solid thing in the level.
+        float lowest = float.PositiveInfinity;
+        foreach (Collider2D c in FindObjectsByType<Collider2D>(FindObjectsSortMode.None))
+        {
+            if (c.isTrigger || c.GetComponentInParent<Player>() != null || c.GetComponentInParent<BanditEnemy>() != null) continue;
+            lowest = Mathf.Min(lowest, c.bounds.min.y);
+        }
+        if (!float.IsInfinity(lowest)) killY = lowest - 6f;
+
         level = LevelProgress.Current();
         foreach (BanditEnemy e in FindObjectsByType<BanditEnemy>(FindObjectsSortMode.None))
         {
@@ -125,19 +155,27 @@ public class WorldRunner : MonoBehaviour
 
     private void Update()
     {
+        // Fell off the map?
+        if (player != null && !player.IsDead && player.transform.position.y < killY) player.FellOffMap();
+        foreach (BanditEnemy e in enemies)
+            if (e != null && !e.IsDead && e.transform.position.y < killY) Destroy(e.gameObject); // enemies that fall are gone
+
         if (level == null) return;
 
         if (announce)
         {
-            if (UIBusy.AnyOpen || DialogueUI.Instance == null) return;   // wait until the battle screen is gone
+            if (UIBusy.AnyOpen || SceneTransition.Busy || DialogueUI.Instance == null) return; // wait until the battle is gone
             announce = false;
+
+            // Every boss defeated: roll the ending, then back to the main menu.
+            if (LevelProgress.AllComplete()) { SceneTransition.ShowEnding(); return; }
+
+            var lines = new System.Collections.Generic.List<string> { $"{level.displayName} complete!" };
+            if (level.rewardHackFragment) lines.Add("You found a Hack Fragment! Open your backpack and use it to craft the Hack ability.");
+            if (level.rewardMaxHealth > 0) lines.Add($"Your max HP went up by {level.rewardMaxHealth}!");
             LevelProgress.Destination next = LevelProgress.Next(level);
-            DialogueUI.Instance.Show("Stone of Recall", new[]
-            {
-                $"{level.displayName} complete!",
-                next != null ? $"{next.displayName} is now unlocked. Travel there from any Stone of Recall."
-                             : "You've completed every level!"
-            });
+            if (next != null) lines.Add($"{next.displayName} is now unlocked. Travel there from any Stone of Recall.");
+            DialogueUI.Instance.Show("Stone of Recall", lines.ToArray());
             return;
         }
 
@@ -149,6 +187,29 @@ public class WorldRunner : MonoBehaviour
         foreach (BanditEnemy e in goal) if (e != null && !e.IsDead) return;   // someone's still standing
 
         LevelProgress.MarkComplete(level.id);
+        GiveRewards();
         announce = true;
     }
+
+    // The level's reward (e.g. the Magitek: +20 max HP and the Hack Fragment). Only ever given once.
+    private void GiveRewards()
+    {
+        if (level.rewardMaxHealth > 0)
+        {
+            GameSave.BossHealthBonus += level.rewardMaxHealth;
+            if (player != null && !player.IsDead)
+            {
+                player.maxHealth += level.rewardMaxHealth;
+                player.Heal(level.rewardMaxHealth);
+            }
+        }
+        if (level.rewardHackFragment && !GameSave.HackUnlocked)
+        {
+            GameSave.HasHackFragment = true;
+            HackCrafting.EnsureFragmentInBackpack();
+        }
+        GameSave.SaveSession();
+    }
+
+    private void OnApplicationQuit() => GameSave.SaveSession();
 }

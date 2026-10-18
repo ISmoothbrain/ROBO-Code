@@ -38,6 +38,12 @@ public class AudioManager : MonoBehaviour
 
     private int lastFootstep = -1;
 
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    private static void Bootstrap()
+    {
+        if (instance == null) new GameObject("[Audio Manager]").AddComponent<AudioManager>();
+    }
+
     void Awake()
     {
         // there is one in each scene so the game works from either starting point,
@@ -49,6 +55,8 @@ public class AudioManager : MonoBehaviour
         }
 
         instance = this;
+        EnsureSources();
+        LoadBundledClips();
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
 
@@ -56,6 +64,50 @@ public class AudioManager : MonoBehaviour
         musicSource.loop = true;
         musicSource.volume = PlayerPrefs.GetFloat("MusicVolume", 1f);
         sfxSource.volume = PlayerPrefs.GetFloat("SFXVolume", 1f);
+    }
+
+    private void EnsureSources()
+    {
+        AudioSource[] sources = GetComponents<AudioSource>();
+        if (musicSource == null)
+        {
+            musicSource = sources.Length > 0 ? sources[0] : gameObject.AddComponent<AudioSource>();
+        }
+        if (sfxSource == null || sfxSource == musicSource)
+        {
+            sfxSource = sources.Length > 1 ? sources[1] : gameObject.AddComponent<AudioSource>();
+        }
+        musicSource.playOnAwake = false;
+        sfxSource.playOnAwake = false;
+    }
+
+    private void LoadBundledClips()
+    {
+        if (menuMusic == null) menuMusic = Resources.Load<AudioClip>("Audio/MenuMusic");
+        if (gameMusic == null) gameMusic = Resources.Load<AudioClip>("Audio/GameMusic");
+        if (battleMusic == null) battleMusic = Resources.Load<AudioClip>("Audio/BattleMusic");
+        if (buttonClick == null) buttonClick = Resources.Load<AudioClip>("Audio/ButtonClick");
+        if (buttonHover == null) buttonHover = Resources.Load<AudioClip>("Audio/ButtonHover");
+        if (buttonBack == null) buttonBack = Resources.Load<AudioClip>("Audio/ButtonBack");
+        if (startGame == null) startGame = Resources.Load<AudioClip>("Audio/StartGame");
+        if (attack == null) attack = Resources.Load<AudioClip>("Audio/Attack");
+        if (heavyAttack == null) heavyAttack = Resources.Load<AudioClip>("Audio/HeavyAttack");
+        if (enemyAttack == null) enemyAttack = Resources.Load<AudioClip>("Audio/EnemyAttack");
+        if (defend == null) defend = Resources.Load<AudioClip>("Audio/Defend");
+        if (hurt == null) hurt = Resources.Load<AudioClip>("Audio/Hurt");
+        if (heal == null) heal = Resources.Load<AudioClip>("Audio/Heal");
+        if (coin == null) coin = Resources.Load<AudioClip>("Audio/Coin");
+        if (enemyDefeated == null) enemyDefeated = Resources.Load<AudioClip>("Audio/EnemyDefeated");
+        if (battleStart == null) battleStart = Resources.Load<AudioClip>("Audio/BattleStart");
+        if (victory == null) victory = Resources.Load<AudioClip>("Audio/Victory");
+        if (defeat == null) defeat = Resources.Load<AudioClip>("Audio/Defeat");
+        if (levelUp == null) levelUp = Resources.Load<AudioClip>("Audio/LevelUp");
+        if (footsteps == null || footsteps.Length == 0)
+        {
+            footsteps = new AudioClip[5];
+            for (int i = 0; i < footsteps.Length; i++)
+                footsteps[i] = Resources.Load<AudioClip>($"Audio/Footstep-{i + 1}");
+        }
     }
 
     void OnDestroy()
@@ -111,7 +163,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(AudioClip clip)
     {
-        if (clip == null)
+        if (clip == null || musicSource == null)
         {
             return;
         }
@@ -128,7 +180,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySFX(AudioClip clip)
     {
-        if (clip == null)
+        if (clip == null || sfxSource == null)
         {
             return;
         }
@@ -161,11 +213,11 @@ public class AudioManager : MonoBehaviour
 
     public void SetMusicVolume(float volume)
     {
-        musicSource.volume = volume;
+        if (musicSource != null) musicSource.volume = volume;
     }
 
     public void SetSFXVolume(float volume)
     {
-        sfxSource.volume = volume;
+        if (sfxSource != null) sfxSource.volume = volume;
     }
 }

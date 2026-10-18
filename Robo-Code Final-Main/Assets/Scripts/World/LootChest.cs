@@ -15,7 +15,7 @@ public class LootChest : MonoBehaviour
     private TextMeshPro prompt;
     private bool opened;
 
-    private string SaveKey => "Chest_" + gameObject.scene.name + "_" + Mathf.RoundToInt(transform.position.x * 10) + "_" + Mathf.RoundToInt(transform.position.y * 10);
+    private string SaveKey => GameSave.Prefix + "Chest_" + gameObject.scene.name + "_" + Mathf.RoundToInt(transform.position.x * 10) + "_" + Mathf.RoundToInt(transform.position.y * 10);
 
     private void Start()
     {

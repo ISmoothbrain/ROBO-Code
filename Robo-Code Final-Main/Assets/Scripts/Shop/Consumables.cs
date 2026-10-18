@@ -25,12 +25,21 @@ public static class Consumables
         return item.itemName == "Mana Potion" ? 50 : 0;
     }
 
-    public static bool CanUse(InventoryItem item) => HealAmount(item) > 0 || ManaAmount(item) > 0;
+    public static bool CanUse(InventoryItem item) =>
+        HealAmount(item) > 0 || ManaAmount(item) > 0 || (item != null && item.itemName == HackCrafting.FragmentName);
 
     // Uses one of the item. Returns a message for the UI, or null if nothing happened.
     public static string TryUse(InventoryItem item, Player player)
     {
         if (item == null || player == null || player.IsDead || InventoryManager.Instance == null) return null;
+
+        // The Hack Fragment opens the crafting window instead of being consumed.
+        if (item.itemName == HackCrafting.FragmentName)
+        {
+            if (BackpackUI.Instance != null && BackpackUI.IsOpen) BackpackUI.Instance.Close();
+            HackCrafting.Open();
+            return "Fix the hack script to craft HACK.";
+        }
 
         int heal = HealAmount(item);
         int mana = ManaAmount(item);

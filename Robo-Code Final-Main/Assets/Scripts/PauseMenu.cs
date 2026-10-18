@@ -18,6 +18,9 @@ public class PauseMenu : MonoBehaviour
         {
             pausePanel.SetActive(false);
         }
+
+        // ANSWER TIME and BACKGROUND in the pause menu's settings, in your button art.
+        MenuExtras.SetupSettingsPanel(settingsPanel);
     }
 
     void Update()

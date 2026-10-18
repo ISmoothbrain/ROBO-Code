@@ -178,27 +178,48 @@ public class Coin : MonoBehaviour
 // have one — just call into that from OnTriggerEnter2D instead.
 public static class CoinCounter
 {
-    public static int Total { get; private set; }
+    private static int total;
+    private static int loadedRun = -1;
+    public static int Total { get { EnsureLoaded(); return total; } }
     public static System.Action<int> OnCoinsChanged;
+
+    private static void EnsureLoaded()
+    {
+        if (loadedRun == LevelProgress.RunId) return;
+        loadedRun = LevelProgress.RunId;
+        total = PlayerPrefs.GetInt("Coins_Run" + loadedRun, 0);
+    }
+
+    private static void Save()
+    {
+        PlayerPrefs.SetInt("Coins_Run" + loadedRun, total);
+        PlayerPrefs.Save();
+    }
 
     public static void Add(int amount)
     {
-        Total += amount;
-        OnCoinsChanged?.Invoke(Total);
+        EnsureLoaded();
+        total += amount;
+        Save();
+        OnCoinsChanged?.Invoke(total);
     }
 
     // Takes coins if the player has enough. Returns false (and takes nothing) otherwise.
     public static bool TrySpend(int amount)
     {
-        if (amount < 0 || Total < amount) return false;
-        Total -= amount;
-        OnCoinsChanged?.Invoke(Total);
+        EnsureLoaded();
+        if (amount < 0 || total < amount) return false;
+        total -= amount;
+        Save();
+        OnCoinsChanged?.Invoke(total);
         return true;
     }
 
     public static void Reset()
     {
-        Total = 0;
-        OnCoinsChanged?.Invoke(Total);
+        loadedRun = LevelProgress.RunId;
+        total = 0;
+        Save();
+        OnCoinsChanged?.Invoke(total);
     }
 }

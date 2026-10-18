@@ -30,6 +30,14 @@ public class PlayerSkills : MonoBehaviour
 
     public float Mana => mana;
 
+    // Spends mana if there's enough (used by Hack in battle). Returns false and spends nothing otherwise.
+    public bool TrySpendMana(float amount)
+    {
+        if (mana < amount) return false;
+        mana -= amount;
+        return true;
+    }
+
     // Mana potions call this. Never goes above max.
     public void RestoreMana(float amount)
     {
@@ -49,7 +57,8 @@ public class PlayerSkills : MonoBehaviour
     {
         if (CodeChallengeUI.IsOpen) return;
 
-        mana = Mathf.Min(maxMana, mana + manaRegenPerSecond * Time.deltaTime);
+        // Energy doesn't refill during battles, so Hacks (1 bar each) stay a real choice.
+        if (!BattleManager.InBattle) mana = Mathf.Min(maxMana, mana + manaRegenPerSecond * Time.deltaTime);
 
         IReadOnlyList<SkillData> skills = ProgressManager.Instance != null
             ? ProgressManager.Instance.UnlockedSkills

@@ -245,10 +245,35 @@ public class BanditEnemy : MonoBehaviour
     private void MoveToward(Vector2 targetPos)
     {
         Vector2 direction = (targetPos - (Vector2)transform.position).normalized;
+
+        // Edge guard: don't walk off a ledge (or the map) while chasing or patrolling.
+        if (isGrounded && !GroundAhead(Mathf.Sign(direction.x)))
+        {
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+            FaceTarget(targetPos);
+            animator.SetInteger("AnimState", 1); // combat idle at the edge
+            if (isWaitingAtPoint == false && currentTarget != null && targetPos == (Vector2)currentTarget.position)
+            {
+                // patrol point is past an edge: turn around instead of getting stuck
+                isWaitingAtPoint = true;
+                waitTimer = waitTimeAtPoint;
+            }
+            return;
+        }
+
         rb.linearVelocity = new Vector2(direction.x * moveSpeed, rb.linearVelocity.y);
 
         FaceTarget(targetPos);
         animator.SetInteger("AnimState", 2); // Run
+    }
+
+    // Is there ground just in front of our feet?
+    private bool GroundAhead(float dir)
+    {
+        if (groundLayer.value == 0 || dir == 0f) return true; // can't check, so don't block
+        Vector2 feet = groundCheck != null ? (Vector2)groundCheck.position : (Vector2)transform.position;
+        Vector2 ahead = feet + new Vector2(dir * 0.6f, 0.3f);
+        return Physics2D.Raycast(ahead, Vector2.down, 1.2f, groundLayer).collider != null;
     }
 
     private void FaceTarget(Vector2 targetPos)

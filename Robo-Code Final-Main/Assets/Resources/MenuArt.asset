@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16d87c82ab03498b9dbbdf535e35bb0e, type: 3}
+  m_Name: MenuArt
+  m_EditorClassIdentifier: Assembly-CSharp::MenuArt
+  continueButton: {fileID: -2230229002620744338, guid: 72f8ba123c0e4a10bd68966b365c20ed, type: 3}
+  newGameButton: {fileID: -2230229002620744338, guid: 1a03395d07864e83aa0781c35660c825, type: 3}
+  answerTimeLabel: {fileID: -2230229002620744338, guid: 013a813deab34004b9bf592debf759b2, type: 3}
+  backgroundLabel: {fileID: -2230229002620744338, guid: 5bc0f7e7b3d74c188112db0edae09c8b, type: 3}
+  valuePlate: {fileID: 21300000, guid: faf60d5c26a01a447914316810254bb5, type: 3}

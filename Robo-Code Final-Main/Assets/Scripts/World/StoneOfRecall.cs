@@ -11,6 +11,11 @@ public class StoneOfRecall : MonoBehaviour
 {
     public static bool MenuOpen { get; private set; }
 
+    // Scenes where the player has reached the stone this session (the tutorial's checkpoint).
+    private static readonly System.Collections.Generic.HashSet<string> reached = new System.Collections.Generic.HashSet<string>();
+    public static bool ReachedInThisScene() => reached.Contains(SceneManager.GetActiveScene().name);
+    public static void ForgetReached() => reached.Clear();
+
     public KeyCode interactKey = KeyCode.E;
     public float interactRange = 1.6f;
     [Tooltip("Where the player appears, relative to the stone.")]
@@ -56,6 +61,7 @@ public class StoneOfRecall : MonoBehaviour
         }
 
         bool near = Vector2.Distance(player.transform.position, transform.position) <= interactRange && !player.IsDead;
+        if (near) reached.Add(gameObject.scene.name); // from now on, dying here respawns at this stone
         bool busy = UIBusy.AnyOpen;
         if (prompt != null) prompt.gameObject.SetActive(near && !busy);
         if (near && !busy && !UIBusy.ClosedThisFrame && Input.GetKeyDown(interactKey)) OpenMenu();

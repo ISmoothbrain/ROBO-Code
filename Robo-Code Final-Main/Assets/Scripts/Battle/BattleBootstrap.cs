@@ -51,6 +51,13 @@ public static class BattleBootstrap
             cr.anchorMin = Vector2.zero; cr.anchorMax = Vector2.one; cr.offsetMin = cr.offsetMax = Vector2.zero;
             ArrowSequence arrows = comboGo.AddComponent<ArrowSequence>();
 
+            // Attack / Hack choice (builds its own visuals)
+            GameObject hackGo = new GameObject("HackMenu", typeof(RectTransform));
+            hackGo.transform.SetParent(canvas.transform, false);
+            RectTransform hr = (RectTransform)hackGo.transform;
+            hr.anchorMin = Vector2.zero; hr.anchorMax = Vector2.one; hr.offsetMin = hr.offsetMax = Vector2.zero;
+            HackMenu hackMenu = hackGo.AddComponent<HackMenu>();
+
             // The manager alone starts switched off, so its Awake() runs after it's wired up.
             GameObject managerGo = new GameObject("BattleManager");
             managerGo.SetActive(false);
@@ -60,6 +67,7 @@ public static class BattleBootstrap
             manager.ui = ui;
             manager.qte = qte;
             manager.arrows = arrows;
+            manager.hackMenu = hackMenu;
             manager.battleFocus = focus.transform;
             manager.cameraDirector = managerGo.AddComponent<BattleCameraDirector>();
             manager.defaultQuestions = DefaultPythonQuestions.Create();
