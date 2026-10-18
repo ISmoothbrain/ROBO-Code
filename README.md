@@ -58,7 +58,7 @@ Use a search engine and manually install:
 5. Make sure you have the matching Unity version installed via Unity Hub, then click the project to open it.
 
 ### How to Play/ Controls
-- A, D:** Move Player
+- **A, D:** Move Player
 - **Spacebar:** Jumping
 - **E:** Interact
 - **F:** Item use
