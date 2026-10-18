@@ -40,16 +40,22 @@ Its a Pixel art game
 
 ## Installation:
 
-Requirements:
+Project Requirements:
 
 Use a search engine and manually install:
 - Unity Hub and then downlaod unity version 6000.5.6f to run the game files
 - C# Compiler (Recomend Visual studio code)
+- PC
 
-## Usage:
---C#
-
-
+### Getting Started:
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com
+   ```
+2. **Open Unity Hub.**
+3. Click **Add** > **Add project from disk**.
+4. Select the root folder of the cloned repository.
+5. Make sure you have the matching Unity version installed via Unity Hub, then click the project to open it.
 
 ## Support:
 - neilfer305@gmail.com
