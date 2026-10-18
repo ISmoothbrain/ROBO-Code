@@ -45,7 +45,7 @@ Project Requirements:
 Use a search engine and manually install:
 - Unity Hub and then downlaod unity version 6000.5.6f to run the game files
 - C# Compiler (Recomend Visual studio code)
-- PC
+- PC Needed
 
 ### Getting Started:
 1. **Clone the repository:**
