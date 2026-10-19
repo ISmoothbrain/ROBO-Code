@@ -35,7 +35,19 @@ This game has:
 ## Visuals:
 
 Its a Pixel art game
+Combat
 <img width="1300" height="620" alt="image" src="https://github.com/user-attachments/assets/6f4d9cca-b7fe-4214-b87f-991d3436d5c2" />
+Combat Tutorial
+<img width="1301" height="691" alt="image" src="https://github.com/user-attachments/assets/86dc6c8e-7b85-4fd4-b6f0-ba702f8b4605" />
+Movement Tutorial
+<img width="1301" height="688" alt="image" src="https://github.com/user-attachments/assets/1b5fa8c3-1994-4953-ae78-e7e5de518037" />
+Inventory
+<img width="1301" height="689" alt="image" src="https://github.com/user-attachments/assets/3ec67ad1-d108-46ec-87dd-109be173e1eb" />
+Settings
+<img width="1098" height="562" alt="image" src="https://github.com/user-attachments/assets/f4cfdb81-4dd9-4cf8-b4ec-2f0f9a939fca" />
+Main Menu
+<img width="1300" height="691" alt="image" src="https://github.com/user-attachments/assets/b0d179e0-25d2-4a7e-b3d2-287e10deb9c2" />
+
 
 
 
