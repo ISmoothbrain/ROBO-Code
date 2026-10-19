@@ -55,8 +55,7 @@ Main Menu
 ## Installation:
 
 Game Link For Unity Play:
-[<img width="1300" height="691" alt="image" src="https://github.com/user-attachments/assets/512aa853-8b34-4b8c-9ea4-3b2a248eae2b" />](https://play.unity.com/en/games/4f5cb42d-1902-43ff-83ee-2cce31b03bf9/webgl-built)
-
+(https://play.unity.com/en/games/4f5cb42d-1902-43ff-83ee-2cce31b03bf9/webgl-built)
 Game Zip Download:
 https://drive.google.com/drive/folders/1Dlb5z-ina8Rv4fUgGZJVdU4HPzqqXcj7?usp=drive_link
 
