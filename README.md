@@ -36,9 +36,28 @@ This game has:
 
 Its a Pixel art game
 
+COMBAT
+<img width="1300" height="620" alt="Screenshot 2026-10-19 140222" src="https://github.com/user-attachments/assets/42cf888e-e049-4526-baf9-65bc376b2b12" />
+Level Completion
+<img width="1301" height="691" alt="Screenshot 2026-10-19 140316" src="https://github.com/user-attachments/assets/29fddbd4-5468-4f5e-b22d-b51f8b6024d8" />
+Tutorial
+<img width="1301" height="688" alt="Screenshot 2026-10-19 140400" src="https://github.com/user-attachments/assets/ef5d2c37-f485-4845-ace7-5417cc4838d1" />
+Inventory Window
+<img width="1301" height="689" alt="Screenshot 2026-10-19 140431" src="https://github.com/user-attachments/assets/f9fc1101-86d9-475d-a833-4e661fd8765b" />
+Settings
+<img width="1098" height="562" alt="Screenshot 2026-10-19 140454" src="https://github.com/user-attachments/assets/c861c62d-5cdf-4141-84ff-2cbfef75ee22" />
+Main Menu
+<img width="1300" height="691" alt="Screenshot 2026-10-19 140513" src="https://github.com/user-attachments/assets/7e62e443-779f-44bf-b03e-f97e071237ac" />
 
 
 ## Installation:
+
+Unity Play Link:
+https://play.unity.com/en/games/4f5cb42d-1902-43ff-83ee-2cce31b03bf9/webgl-built
+
+Google Drive Download:
+https://drive.google.com/drive/folders/1Dlb5z-ina8Rv4fUgGZJVdU4HPzqqXcj7?usp=drive_link
+
 
 Project Requirements:
 
