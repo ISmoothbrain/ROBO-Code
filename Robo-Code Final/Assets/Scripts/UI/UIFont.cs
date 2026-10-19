@@ -16,6 +16,12 @@ public static class UIFont
         {
             looked = true;
             cached = Resources.Load<TMP_FontAsset>("UIFont");
+            if (cached == null)
+            {
+                // Otherwise use the font chosen in Assets/Resources/UIFontSettings (set to GNF).
+                UIFontSettings settings = Resources.Load<UIFontSettings>("UIFontSettings");
+                if (settings != null) cached = settings.font;
+            }
         }
         return cached;
     }

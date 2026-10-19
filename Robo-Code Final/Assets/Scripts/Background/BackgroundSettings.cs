@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public enum BackgroundTheme { None, Dusk, Night, Industrial }
+public enum BackgroundTheme { None, Dusk, Night, Industrial, Cyberpunk }
 
-// Lives at Assets/Resources/BackgroundSettings.asset. Change the theme or how the layers move.
+// Lives at Assets/Resources/BackgroundSettings.asset. This is the DEFAULT for every scene:
+// to give one scene its own background, add a Scene Background component to any object in it.
 // Edits made during Play mode show up straight away and are kept when you stop.
 [CreateAssetMenu(fileName = "BackgroundSettings", menuName = "Background/Background Settings")]
 public class BackgroundSettings : ScriptableObject

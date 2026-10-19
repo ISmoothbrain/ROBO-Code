@@ -65,6 +65,7 @@ public class Player : MonoBehaviour
     private Animator animator;
     private float moveInput;
     private float animationLockUntil; // set by PlayerSkills so a skill's animation isn't overwritten
+        private float footstepTimer;
 
     void Start()
     {
@@ -72,11 +73,10 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        if (maxHealth <= 0) maxHealth = 100;
-
-        // Max HP bought in the shop carries over when the level reloads.
-        maxHealth += PlayerUpgrades.BonusMaxHealth;
-        health = Mathf.Clamp(health + PlayerUpgrades.BonusMaxHealth, 0, maxHealth);
+        // A new game starts at 30 HP (GameSave.BaseMaxHealth). Beating the Magitek adds 20,
+        // and Heart Containers from the shop add more. All of it is saved for Continue.
+        maxHealth = GameSave.BaseMaxHealth + GameSave.BossHealthBonus + PlayerUpgrades.BonusMaxHealth;
+        health = maxHealth;
 
         ResolveAttackStates();
         ApplyHealthBarColor(HealthBarSettings.CurrentColor);
@@ -188,19 +188,21 @@ public class Player : MonoBehaviour
         // Freeze platformer input while a battle, conversation, shop, backpack or coding challenge is open.
         if (UIBusy.AnyOpen) { moveInput = 0f; return; }
 
-        moveInput = Input.GetAxis("Horizontal");
+                moveInput = 0f;
+        if (Input.GetKey(Keybinds.Get("MoveLeft"))) moveInput -= 1f;
+        if (Input.GetKey(Keybinds.Get("MoveRight"))) moveInput += 1f;
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(Keybinds.Get("Jump")) && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
 
         bool clickedOnUI = EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();
-        if (Input.GetMouseButtonDown(0) && !clickedOnUI)
+        if (Input.GetKeyDown(Keybinds.Get("Attack")) && !clickedOnUI)
         {
             TryAttack();
         }
-
+        
         if (isAttacking && Time.time - attackStartTime > maxAttackDuration)
         {
             Debug.LogWarning(
@@ -217,6 +219,19 @@ public class Player : MonoBehaviour
         }
 
         if (!isAttacking && Time.time >= animationLockUntil) SetAnimation(moveInput);
+                if (isGrounded && Mathf.Abs(moveInput) > 0.1f && !isAttacking)
+        {
+            footstepTimer -= Time.deltaTime;
+            if (footstepTimer <= 0f)
+            {
+                footstepTimer = 0.32f;
+                if (AudioManager.instance != null) AudioManager.instance.PlayFootstep();
+            }
+        }
+        else
+        {
+            footstepTimer = 0f;
+        }
 
         UpdateHealthUI();
     }
@@ -282,6 +297,7 @@ public class Player : MonoBehaviour
         isAttacking = true;
         attackStartTime = Time.time;
         animator.Play(state.hash, state.layer, 0f);
+                if (AudioManager.instance != null) AudioManager.instance.PlaySFX(AudioManager.instance.attack);
     }
 
     // Animation Event on the LAST frame of each attack clip.
@@ -328,6 +344,10 @@ public class Player : MonoBehaviour
 
         foreach (Collider2D hit in hits)
         {
+            // Hitting the disguised NightBorne (DayForborne) unmasks him, and you strike first.
+            DisguisedBoss disguise = hit.GetComponentInParent<DisguisedBoss>();
+            if (disguise != null) { disguise.OnPlayerHit(this); return; }
+
             BanditEnemy enemy = hit.GetComponentInParent<BanditEnemy>();
             if (enemy == null) continue;
 
@@ -356,6 +376,7 @@ public class Player : MonoBehaviour
     {
         if (isDead || amount <= 0) return;
         health = Mathf.Min(maxHealth, health + amount);
+                if (AudioManager.instance != null) AudioManager.instance.PlaySFX(AudioManager.instance.heal);
     }
     private static bool warnedNoBattleManager;
 
@@ -423,6 +444,7 @@ public class Player : MonoBehaviour
         if (isDead) return;
 
         health -= amount;
+                if (AudioManager.instance != null) AudioManager.instance.PlaySFX(AudioManager.instance.hurt);
         if (spriteRenderer != null) StartCoroutine(DamageFlash());
 
         if (health <= 0)
@@ -446,14 +468,25 @@ public class Player : MonoBehaviour
         isAttacking = false;
 
         animator.SetTrigger("Death");
-        StartCoroutine(ReloadAfterDeath());
+                if (AudioManager.instance != null) AudioManager.instance.PlaySFX(AudioManager.instance.defeat);
+        // Play the death animation (if there is one) and reload once it has finished.
+        float delay = Mathf.Max(deathReloadDelay, PlayerDeathAnimation.PlayOn(gameObject) + 0.5f);
+        StartCoroutine(ReloadAfterDeath(delay));
     }
 
-    private IEnumerator ReloadAfterDeath()
+    private IEnumerator ReloadAfterDeath(float delay)
     {
-        yield return new WaitForSeconds(deathReloadDelay);
-        UnityEngine.SceneManagement.SceneManager.LoadScene(
-            UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+        // Let the death animation get going, then YOU DIED and respawn (see SceneTransition).
+        yield return new WaitForSeconds(Mathf.Min(delay, 0.8f));
+        SceneTransition.ShowDeathAndRespawn();
+    }
+
+    // Called when the player falls off the map.
+    public void FellOffMap()
+    {
+        if (isDead) return;
+        if (rb != null) { rb.linearVelocity = Vector2.zero; rb.bodyType = RigidbodyType2D.Kinematic; } // stop falling
+        TakeDamage(health + 9999);
     }
 
     private void OnDrawGizmosSelected()

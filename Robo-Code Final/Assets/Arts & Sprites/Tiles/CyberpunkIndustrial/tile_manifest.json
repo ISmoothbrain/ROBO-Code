@@ -1,0 +1,732 @@
+{
+  "terrain": {
+    "columns": 12,
+    "rows": 6,
+    "atlas": "Atlases/terrain_atlas.png",
+    "tiles": [
+      {
+        "name": "solid_infill",
+        "row": 0,
+        "column": 0,
+        "collision": true
+      },
+      {
+        "name": "solid_plain",
+        "row": 0,
+        "column": 1,
+        "collision": true
+      },
+      {
+        "name": "solid_riveted",
+        "row": 0,
+        "column": 2,
+        "collision": true
+      },
+      {
+        "name": "panel_plain",
+        "row": 0,
+        "column": 3,
+        "collision": true
+      },
+      {
+        "name": "panel_riveted",
+        "row": 0,
+        "column": 4,
+        "collision": true
+      },
+      {
+        "name": "vent_panel",
+        "row": 0,
+        "column": 5,
+        "collision": true
+      },
+      {
+        "name": "solid_top",
+        "row": 0,
+        "column": 6,
+        "collision": true
+      },
+      {
+        "name": "solid_bottom",
+        "row": 0,
+        "column": 7,
+        "collision": true
+      },
+      {
+        "name": "solid_left",
+        "row": 0,
+        "column": 8,
+        "collision": true
+      },
+      {
+        "name": "solid_right",
+        "row": 0,
+        "column": 9,
+        "collision": true
+      },
+      {
+        "name": "outer_top_left",
+        "row": 0,
+        "column": 10,
+        "collision": true
+      },
+      {
+        "name": "outer_top_right",
+        "row": 0,
+        "column": 11,
+        "collision": true
+      },
+      {
+        "name": "outer_bottom_left",
+        "row": 1,
+        "column": 0,
+        "collision": true
+      },
+      {
+        "name": "outer_bottom_right",
+        "row": 1,
+        "column": 1,
+        "collision": true
+      },
+      {
+        "name": "inner_tl",
+        "row": 1,
+        "column": 2,
+        "collision": true
+      },
+      {
+        "name": "inner_tr",
+        "row": 1,
+        "column": 3,
+        "collision": true
+      },
+      {
+        "name": "inner_bl",
+        "row": 1,
+        "column": 4,
+        "collision": true
+      },
+      {
+        "name": "inner_br",
+        "row": 1,
+        "column": 5,
+        "collision": true
+      },
+      {
+        "name": "thin_left",
+        "row": 1,
+        "column": 6,
+        "collision": true
+      },
+      {
+        "name": "thin_mid",
+        "row": 1,
+        "column": 7,
+        "collision": true
+      },
+      {
+        "name": "thin_right",
+        "row": 1,
+        "column": 8,
+        "collision": true
+      },
+      {
+        "name": "support",
+        "row": 1,
+        "column": 9,
+        "collision": true
+      },
+      {
+        "name": "support_cap",
+        "row": 1,
+        "column": 10,
+        "collision": true
+      },
+      {
+        "name": "bracket",
+        "row": 1,
+        "column": 11,
+        "collision": true
+      },
+      {
+        "name": "grate",
+        "row": 2,
+        "column": 0,
+        "collision": true
+      },
+      {
+        "name": "transition",
+        "row": 2,
+        "column": 1,
+        "collision": true
+      },
+      {
+        "name": "step",
+        "row": 2,
+        "column": 2,
+        "collision": true
+      },
+      {
+        "name": "edge_tb",
+        "row": 2,
+        "column": 3,
+        "collision": true
+      },
+      {
+        "name": "edge_lr",
+        "row": 2,
+        "column": 4,
+        "collision": true
+      },
+      {
+        "name": "edge_tlb",
+        "row": 2,
+        "column": 5,
+        "collision": true
+      },
+      {
+        "name": "edge_trb",
+        "row": 2,
+        "column": 6,
+        "collision": true
+      },
+      {
+        "name": "edge_tlr",
+        "row": 2,
+        "column": 7,
+        "collision": true
+      },
+      {
+        "name": "edge_blr",
+        "row": 2,
+        "column": 8,
+        "collision": true
+      },
+      {
+        "name": "edge_tbr",
+        "row": 2,
+        "column": 9,
+        "collision": true
+      },
+      {
+        "name": "edge_tlbr",
+        "row": 2,
+        "column": 10,
+        "collision": true
+      },
+      {
+        "name": "solid_variation_01",
+        "row": 2,
+        "column": 11,
+        "collision": true
+      },
+      {
+        "name": "solid_variation_02",
+        "row": 3,
+        "column": 0,
+        "collision": true
+      },
+      {
+        "name": "solid_variation_03",
+        "row": 3,
+        "column": 1,
+        "collision": true
+      },
+      {
+        "name": "solid_variation_04",
+        "row": 3,
+        "column": 2,
+        "collision": true
+      },
+      {
+        "name": "solid_variation_05",
+        "row": 3,
+        "column": 3,
+        "collision": true
+      },
+      {
+        "name": "solid_variation_06",
+        "row": 3,
+        "column": 4,
+        "collision": true
+      },
+      {
+        "name": "top_variation_01",
+        "row": 3,
+        "column": 5,
+        "collision": true
+      },
+      {
+        "name": "top_variation_02",
+        "row": 3,
+        "column": 6,
+        "collision": true
+      },
+      {
+        "name": "top_variation_03",
+        "row": 3,
+        "column": 7,
+        "collision": true
+      },
+      {
+        "name": "top_variation_04",
+        "row": 3,
+        "column": 8,
+        "collision": true
+      },
+      {
+        "name": "bottom_variation_01",
+        "row": 3,
+        "column": 9,
+        "collision": true
+      },
+      {
+        "name": "bottom_variation_02",
+        "row": 3,
+        "column": 10,
+        "collision": true
+      },
+      {
+        "name": "bottom_variation_03",
+        "row": 3,
+        "column": 11,
+        "collision": true
+      },
+      {
+        "name": "bottom_variation_04",
+        "row": 4,
+        "column": 0,
+        "collision": true
+      },
+      {
+        "name": "left_cap",
+        "row": 4,
+        "column": 1,
+        "collision": true
+      },
+      {
+        "name": "right_cap",
+        "row": 4,
+        "column": 2,
+        "collision": true
+      },
+      {
+        "name": "top_cap",
+        "row": 4,
+        "column": 3,
+        "collision": true
+      },
+      {
+        "name": "bottom_cap",
+        "row": 4,
+        "column": 4,
+        "collision": true
+      },
+      {
+        "name": "wall_backing_0",
+        "row": 4,
+        "column": 5,
+        "collision": true
+      },
+      {
+        "name": "wall_backing_1",
+        "row": 4,
+        "column": 6,
+        "collision": true
+      },
+      {
+        "name": "wall_backing_2",
+        "row": 4,
+        "column": 7,
+        "collision": true
+      },
+      {
+        "name": "wall_backing_3",
+        "row": 4,
+        "column": 8,
+        "collision": true
+      },
+      {
+        "name": "wall_square_0",
+        "row": 4,
+        "column": 9,
+        "collision": true
+      },
+      {
+        "name": "wall_square_1",
+        "row": 4,
+        "column": 10,
+        "collision": true
+      },
+      {
+        "name": "wall_square_2",
+        "row": 4,
+        "column": 11,
+        "collision": true
+      },
+      {
+        "name": "wall_square_3",
+        "row": 5,
+        "column": 0,
+        "collision": true
+      }
+    ]
+  },
+  "props": {
+    "columns": 12,
+    "rows": 4,
+    "atlas": "Atlases/props_atlas.png",
+    "tiles": [
+      {
+        "name": "pipe_h",
+        "row": 0,
+        "column": 0,
+        "collision": false
+      },
+      {
+        "name": "pipe_v",
+        "row": 0,
+        "column": 1,
+        "collision": false
+      },
+      {
+        "name": "pipe_elbow_tr",
+        "row": 0,
+        "column": 2,
+        "collision": false
+      },
+      {
+        "name": "pipe_elbow_tl",
+        "row": 0,
+        "column": 3,
+        "collision": false
+      },
+      {
+        "name": "pipe_elbow_br",
+        "row": 0,
+        "column": 4,
+        "collision": false
+      },
+      {
+        "name": "pipe_elbow_bl",
+        "row": 0,
+        "column": 5,
+        "collision": false
+      },
+      {
+        "name": "pipe_t_up",
+        "row": 0,
+        "column": 6,
+        "collision": false
+      },
+      {
+        "name": "pipe_t_down",
+        "row": 0,
+        "column": 7,
+        "collision": false
+      },
+      {
+        "name": "pipe_t_left",
+        "row": 0,
+        "column": 8,
+        "collision": false
+      },
+      {
+        "name": "pipe_t_right",
+        "row": 0,
+        "column": 9,
+        "collision": false
+      },
+      {
+        "name": "pipe_cross",
+        "row": 0,
+        "column": 10,
+        "collision": false
+      },
+      {
+        "name": "pipe_cap_l",
+        "row": 0,
+        "column": 11,
+        "collision": false
+      },
+      {
+        "name": "pipe_cap_r",
+        "row": 1,
+        "column": 0,
+        "collision": false
+      },
+      {
+        "name": "pipe_cap_u",
+        "row": 1,
+        "column": 1,
+        "collision": false
+      },
+      {
+        "name": "pipe_cap_d",
+        "row": 1,
+        "column": 2,
+        "collision": false
+      },
+      {
+        "name": "vent",
+        "row": 1,
+        "column": 3,
+        "collision": false
+      },
+      {
+        "name": "fan",
+        "row": 1,
+        "column": 4,
+        "collision": false
+      },
+      {
+        "name": "electric_panel",
+        "row": 1,
+        "column": 5,
+        "collision": false
+      },
+      {
+        "name": "terminal",
+        "row": 1,
+        "column": 6,
+        "collision": false
+      },
+      {
+        "name": "warning_screen",
+        "row": 1,
+        "column": 7,
+        "collision": false
+      },
+      {
+        "name": "metal_plate",
+        "row": 1,
+        "column": 8,
+        "collision": false
+      },
+      {
+        "name": "machine",
+        "row": 1,
+        "column": 9,
+        "collision": false
+      },
+      {
+        "name": "generator",
+        "row": 1,
+        "column": 10,
+        "collision": false
+      },
+      {
+        "name": "crate",
+        "row": 1,
+        "column": 11,
+        "collision": false
+      },
+      {
+        "name": "recess",
+        "row": 2,
+        "column": 0,
+        "collision": false
+      },
+      {
+        "name": "grille",
+        "row": 2,
+        "column": 1,
+        "collision": false
+      },
+      {
+        "name": "transformer",
+        "row": 2,
+        "column": 2,
+        "collision": false
+      },
+      {
+        "name": "ladder",
+        "row": 2,
+        "column": 3,
+        "collision": false
+      },
+      {
+        "name": "ladder_top",
+        "row": 2,
+        "column": 4,
+        "collision": false
+      },
+      {
+        "name": "ladder_end",
+        "row": 2,
+        "column": 5,
+        "collision": false
+      },
+      {
+        "name": "lamp",
+        "row": 2,
+        "column": 6,
+        "collision": false
+      },
+      {
+        "name": "lamp_ceiling",
+        "row": 2,
+        "column": 7,
+        "collision": false
+      },
+      {
+        "name": "cable_h",
+        "row": 2,
+        "column": 8,
+        "collision": false
+      },
+      {
+        "name": "cable_v",
+        "row": 2,
+        "column": 9,
+        "collision": false
+      },
+      {
+        "name": "cable_corner",
+        "row": 2,
+        "column": 10,
+        "collision": false
+      },
+      {
+        "name": "hazard_strip",
+        "row": 2,
+        "column": 11,
+        "collision": false
+      },
+      {
+        "name": "caution_corner",
+        "row": 3,
+        "column": 0,
+        "collision": false
+      },
+      {
+        "name": "bolt",
+        "row": 3,
+        "column": 1,
+        "collision": false
+      },
+      {
+        "name": "bolt_small",
+        "row": 3,
+        "column": 2,
+        "collision": false
+      },
+      {
+        "name": "joint",
+        "row": 3,
+        "column": 3,
+        "collision": false
+      },
+      {
+        "name": "bracket_h",
+        "row": 3,
+        "column": 4,
+        "collision": false
+      },
+      {
+        "name": "bracket_v",
+        "row": 3,
+        "column": 5,
+        "collision": false
+      },
+      {
+        "name": "chain",
+        "row": 3,
+        "column": 6,
+        "collision": false
+      },
+      {
+        "name": "small_light",
+        "row": 3,
+        "column": 7,
+        "collision": false
+      },
+      {
+        "name": "light_pair",
+        "row": 3,
+        "column": 8,
+        "collision": false
+      },
+      {
+        "name": "wall_post",
+        "row": 3,
+        "column": 9,
+        "collision": false
+      },
+      {
+        "name": "wall_lamp",
+        "row": 3,
+        "column": 10,
+        "collision": false
+      }
+    ]
+  },
+  "hazards": {
+    "columns": 8,
+    "rows": 1,
+    "atlas": "Atlases/hazards_atlas.png",
+    "tiles": [
+      {
+        "name": "saw",
+        "row": 0,
+        "column": 0,
+        "collision": false
+      },
+      {
+        "name": "saw_small",
+        "row": 0,
+        "column": 1,
+        "collision": false
+      },
+      {
+        "name": "flame",
+        "row": 0,
+        "column": 2,
+        "collision": false
+      },
+      {
+        "name": "flame_short",
+        "row": 0,
+        "column": 3,
+        "collision": false
+      },
+      {
+        "name": "fire_emitter",
+        "row": 0,
+        "column": 4,
+        "collision": false
+      },
+      {
+        "name": "laser_emitter",
+        "row": 0,
+        "column": 5,
+        "collision": false
+      },
+      {
+        "name": "spikes",
+        "row": 0,
+        "column": 6,
+        "collision": false
+      },
+      {
+        "name": "warning_bar",
+        "row": 0,
+        "column": 7,
+        "collision": false
+      }
+    ]
+  },
+  "spec": {
+    "logical_tile_width": 16,
+    "logical_tile_height": 16,
+    "pixels_per_unit": 16,
+    "unity_grid_cell_world_units": 1,
+    "filter": "Point",
+    "compression": "Uncompressed",
+    "atlas_background": "transparent",
+    "parallax_size": [
+      512,
+      256
+    ]
+  }
+}

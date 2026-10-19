@@ -17,6 +17,9 @@ public class ParallaxBackground : MonoBehaviour
     }
 
     public BackgroundSettings settings;
+    [Tooltip("Set automatically when the scene has a Scene Background component.")]
+    public SceneBackground sceneOverride;
+    private bool usingCopy;
 
     private Layer[] layers;
     private BackgroundTheme builtTheme;
@@ -88,6 +91,20 @@ public class ParallaxBackground : MonoBehaviour
 
     private void LateUpdate()
     {
+        // This scene's own choice wins over the project-wide default (and can be changed live).
+        if (sceneOverride != null && settings != null)
+        {
+            settings.theme = sceneOverride.theme;
+            settings.verticalOffset = sceneOverride.verticalOffset;
+            settings.scale = sceneOverride.scale;
+        }
+        // The background picked in the Settings menu wins over everything.
+        int choice = GameSettings.BackgroundChoice;
+        if (choice >= 0 && settings != null)
+        {
+            if (!usingCopy) { settings = Instantiate(settings); usingCopy = true; } // never change the shared file
+            settings.theme = (BackgroundTheme)choice;
+        }
         if (settings != null && (settings.theme != builtTheme || !Mathf.Approximately(settings.scale, builtScale))) Build();
         if (Camera.main != null) Position(Camera.main);
     }

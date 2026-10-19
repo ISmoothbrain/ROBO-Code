@@ -42,6 +42,23 @@ public class BanditEnemy : MonoBehaviour
     [Header("Battle")]
     [Tooltip("Python questions this enemy asks. Leave empty to use the BattleManager's defaults.")]
     public PythonQuestion[] battleQuestions;
+
+    [Header("Boss")]
+    [Tooltip("Bosses ask harder questions, and after the ring quick-time event the player must also type an arrow-key combo.")]
+    public bool isBoss = false;
+    [Tooltip("How many arrows are in each boss combo.")]
+    [Range(3, 10)] public int arrowComboLength = 5;
+    [Tooltip("Seconds the player gets to type the whole combo.")]
+    [Range(1f, 10f)] public float arrowComboTime = 4f;
+
+    // Other names for the same three settings, used by StageBossInstaller.cs.
+    // They read and write the fields above, so both systems always agree.
+    public bool isStageBoss { get => isBoss; set => isBoss = value; }
+    public int bossArrowCount { get => arrowComboLength; set => arrowComboLength = value; }
+    public float bossArrowSeconds { get => arrowComboTime; set => arrowComboTime = value; }
+
+    [Tooltip("While ticked, this enemy stands still and never attacks (e.g. a boss you've fooled in conversation). Hitting it still starts a battle.")]
+    public bool passive = false;
     private bool inBattle;
 
     [Header("Loot")]
@@ -128,6 +145,14 @@ public class BanditEnemy : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
             animator.SetInteger("AnimState", inBattle ? 1 : 0);
+            return;
+        }
+
+        // Fooled or waiting to talk: stand still and don't chase or attack.
+        if (passive)
+        {
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+            animator.SetInteger("AnimState", 0); // idle
             return;
         }
 
@@ -220,10 +245,35 @@ public class BanditEnemy : MonoBehaviour
     private void MoveToward(Vector2 targetPos)
     {
         Vector2 direction = (targetPos - (Vector2)transform.position).normalized;
+
+        // Edge guard: don't walk off a ledge (or the map) while chasing or patrolling.
+        if (isGrounded && !GroundAhead(Mathf.Sign(direction.x)))
+        {
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+            FaceTarget(targetPos);
+            animator.SetInteger("AnimState", 1); // combat idle at the edge
+            if (isWaitingAtPoint == false && currentTarget != null && targetPos == (Vector2)currentTarget.position)
+            {
+                // patrol point is past an edge: turn around instead of getting stuck
+                isWaitingAtPoint = true;
+                waitTimer = waitTimeAtPoint;
+            }
+            return;
+        }
+
         rb.linearVelocity = new Vector2(direction.x * moveSpeed, rb.linearVelocity.y);
 
         FaceTarget(targetPos);
         animator.SetInteger("AnimState", 2); // Run
+    }
+
+    // Is there ground just in front of our feet?
+    private bool GroundAhead(float dir)
+    {
+        if (groundLayer.value == 0 || dir == 0f) return true; // can't check, so don't block
+        Vector2 feet = groundCheck != null ? (Vector2)groundCheck.position : (Vector2)transform.position;
+        Vector2 ahead = feet + new Vector2(dir * 0.6f, 0.3f);
+        return Physics2D.Raycast(ahead, Vector2.down, 1.2f, groundLayer).collider != null;
     }
 
     private void FaceTarget(Vector2 targetPos)
@@ -399,6 +449,34 @@ public class BanditEnemy : MonoBehaviour
     {
         if (!isDead) return; // only once the bandit is actually dead (this check was reversed before)
         DisableCollisionAfterDeath();
+    }
+
+    // Fell off the map: counts as defeated. Its coins go straight to the player (they'd only fall
+    // into the void), and a battle against it ends as a win. It's removed once the battle is over,
+    // because deleting it mid-battle is what used to freeze the fight.
+    public void FellOffMap()
+    {
+        if (isDead) return;
+        isDead = true;
+        health = 0;
+        CancelInvoke(nameof(EndAttack));
+        isAttacking = false;
+        if (rb != null) { rb.linearVelocity = Vector2.zero; rb.bodyType = RigidbodyType2D.Kinematic; }
+        DisableCollisionAfterDeath();
+        if (spriteRenderer != null) spriteRenderer.enabled = false;
+        if (healthBar != null) Destroy(healthBar.gameObject);
+
+        int coins = Random.Range(minCoins, maxCoins + 1);
+        if (coins > 0) CoinCounter.Add(coins);
+
+        StartCoroutine(RemoveAfterBattle());
+    }
+
+    private IEnumerator RemoveAfterBattle()
+    {
+        while (BattleManager.InBattle) yield return null;
+        yield return new WaitForSeconds(0.5f);
+        Destroy(gameObject);
     }
 
     private void DisableCollisionAfterDeath()

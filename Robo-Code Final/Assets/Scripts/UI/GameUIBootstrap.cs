@@ -31,7 +31,8 @@ public static class GameUIBootstrap
             ApplyPlayerLook(player);
             CreateBackground();
             if (player.GetComponent<PotionUser>() == null) player.gameObject.AddComponent<PotionUser>();
-            if (player.GetComponent<PlayerSkills>() == null) player.gameObject.AddComponent<PlayerSkills>();
+            PlayerSkills playerSkills = player.GetComponent<PlayerSkills>();
+            if (playerSkills == null) playerSkills = player.gameObject.AddComponent<PlayerSkills>();
             if (Object.FindFirstObjectByType<InventoryManager>() == null) new GameObject("InventoryManager").AddComponent<InventoryManager>();
             HideOldHud();
 
@@ -68,6 +69,12 @@ public static class GameUIBootstrap
             HudUI hud = controllers.AddComponent<HudUI>();
             hud.heartRow = h.hearts;
             hud.manaRow = h.mana;
+            hud.itemIcon = h.itemIcon;
+            hud.itemLabel = h.itemLabel;
+            hud.itemCount = h.itemCount;
+            hud.itemKey = h.itemKey;
+            hud.itemMessage = h.itemMessage;
+            playerSkills.equippedSkillText = h.skill;
 
             BackpackUI backpack = controllers.AddComponent<BackpackUI>();
             backpack.root = b.root;
@@ -76,6 +83,7 @@ public static class GameUIBootstrap
             backpack.coinsText = b.coins;
             backpack.infoTitle = b.infoTitle;
             backpack.infoText = b.infoText;
+            backpack.hintText = b.hintText;
             backpack.slotSprite = b.slotSprite;
             backpack.slotSelectedSprite = b.slotSelectedSprite;
 
@@ -104,8 +112,31 @@ public static class GameUIBootstrap
     {
         if (Object.FindFirstObjectByType<ParallaxBackground>() != null) return;
         BackgroundSettings settings = BackgroundSettings.Load();
+
+        // A Scene Background component in this scene picks this scene's theme.
+        SceneBackground sceneChoice = Object.FindFirstObjectByType<SceneBackground>();
+        if (sceneChoice != null)
+        {
+            // Work on a copy so this scene's choice never changes the shared settings file.
+            settings = settings != null ? Object.Instantiate(settings) : ScriptableObject.CreateInstance<BackgroundSettings>();
+            settings.theme = sceneChoice.theme;
+            settings.verticalOffset = sceneChoice.verticalOffset;
+            settings.scale = sceneChoice.scale;
+        }
         if (settings == null) return;
-        new GameObject("[Background]").AddComponent<ParallaxBackground>().settings = settings;
+
+        // A choice made in the main-menu settings intentionally wins over both
+        // the shared asset and a scene override. -1 keeps the scene/default setup.
+        if (GamePreferences.BackgroundChoice >= 0)
+        {
+            settings = Object.Instantiate(settings);
+            settings.theme = (BackgroundTheme)GamePreferences.BackgroundChoice;
+            sceneChoice = null;
+        }
+
+        ParallaxBackground bg = new GameObject("[Background]").AddComponent<ParallaxBackground>();
+        bg.settings = settings;
+        bg.sceneOverride = sceneChoice;
     }
 
     // The scene's original HUD pieces are replaced by the new HUD and backpack.
@@ -131,7 +162,13 @@ public static class GameUIBootstrap
 
     // ================================================================ HUD
 
-    private struct HudRefs { public RectTransform hearts, mana; }
+    private struct HudRefs
+    {
+        public RectTransform hearts, mana;
+        public TextMeshProUGUI skill;
+        public Image itemIcon;
+        public TextMeshProUGUI itemLabel, itemCount, itemKey, itemMessage;
+    }
 
     private static HudRefs BuildHud(Transform canvas)
     {
@@ -142,14 +179,67 @@ public static class GameUIBootstrap
         hr.pivot = new Vector2(0f, 1f);
         hr.anchoredPosition = new Vector2(28f, -24f);
         hr.sizeDelta = new Vector2(900f, 0f);
-        VerticalLayoutGroup v = hud.AddComponent<VerticalLayoutGroup>();
+        // [ Items slot ] [ hearts / mana ]   (matches your HUD wireframe)
+        HorizontalLayoutGroup hl = hud.AddComponent<HorizontalLayoutGroup>();
+        hl.spacing = 14;
+        hl.childAlignment = TextAnchor.UpperLeft;
+        hl.childControlWidth = hl.childControlHeight = true;
+        hl.childForceExpandWidth = hl.childForceExpandHeight = false;
+        hud.AddComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+
+        // Items slot: icon, stack count, and the Use Item key in the corner
+        GameObject slot = UIBuild.Node("ItemSlot", hud.transform);
+        LayoutElement sl = slot.AddComponent<LayoutElement>();
+        sl.preferredWidth = sl.preferredHeight = 84;
+        UIBuild.Sliced(slot, Resources.Load<Sprite>("UI/slot"), Color.white);
+
+        GameObject label = UIBuild.Node("Label", slot.transform);
+        UIBuild.Stretch(label, 0, 0, 1, 1);
+        r.itemLabel = UIBuild.Label(label, 20, FontStyles.Normal, new Color(0.55f, 0.88f, 1f), TextAlignmentOptions.Center);
+        r.itemLabel.text = "Items";
+
+        GameObject icon = UIBuild.Node("Icon", slot.transform);
+        UIBuild.Stretch(icon, 0, 0, 1, 1);
+        RectTransform ir = (RectTransform)icon.transform;
+        ir.offsetMin = new Vector2(18f, 18f); ir.offsetMax = new Vector2(-18f, -18f); // 48px = 3x the 16px icons
+        r.itemIcon = icon.AddComponent<Image>();
+        r.itemIcon.preserveAspect = true;
+        r.itemIcon.raycastTarget = false;
+        r.itemIcon.enabled = false;
+
+        GameObject count = UIBuild.Node("Count", slot.transform);
+        UIBuild.Stretch(count, 0, 0, 1, 1);
+        RectTransform cr = (RectTransform)count.transform;
+        cr.offsetMin = new Vector2(4f, 3f); cr.offsetMax = new Vector2(-8f, -4f);
+        r.itemCount = UIBuild.Label(count, 22, FontStyles.Bold, Color.white, TextAlignmentOptions.BottomRight);
+
+        GameObject key = UIBuild.Node("Key", slot.transform);
+        RectTransform kr = (RectTransform)key.transform;
+        kr.anchorMin = kr.anchorMax = new Vector2(0f, 1f); kr.pivot = new Vector2(0f, 1f);
+        kr.anchoredPosition = new Vector2(-6f, 8f); kr.sizeDelta = new Vector2(34f, 30f);
+        key.AddComponent<Image>().color = new Color(0.9f, 0.75f, 0.35f);
+        GameObject keyText = UIBuild.Node("Text", key.transform);
+        UIBuild.Stretch(keyText, 0, 0, 1, 1);
+        r.itemKey = UIBuild.Label(keyText, 20, FontStyles.Bold, new Color(0.1f, 0.08f, 0.05f), TextAlignmentOptions.Center);
+
+        GameObject msg = UIBuild.Node("Message", slot.transform);
+        RectTransform mr = (RectTransform)msg.transform;
+        mr.anchorMin = mr.anchorMax = new Vector2(0f, 0f); mr.pivot = new Vector2(0f, 1f);
+        mr.anchoredPosition = new Vector2(0f, -6f); mr.sizeDelta = new Vector2(420f, 30f);
+        r.itemMessage = UIBuild.Label(msg, 20, FontStyles.Normal, new Color(0.5f, 1f, 0.6f), TextAlignmentOptions.TopLeft);
+
+        // hearts and mana, stacked
+        GameObject bars = UIBuild.Node("Bars", hud.transform);
+        VerticalLayoutGroup v = bars.AddComponent<VerticalLayoutGroup>();
         v.spacing = 8;
         v.childControlWidth = v.childControlHeight = true;
         v.childForceExpandWidth = v.childForceExpandHeight = false;
-        hud.AddComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
 
-        r.hearts = Row(hud.transform, "Hearts", 4);
-        r.mana = Row(hud.transform, "Mana", 6);
+        r.hearts = Row(bars.transform, "Hearts", 4);
+        r.mana = Row(bars.transform, "Mana", 6);
+        GameObject skill = UIBuild.Node("SkillHint", bars.transform);
+        skill.AddComponent<LayoutElement>().preferredHeight = 26f;
+        r.skill = UIBuild.Label(skill, 18, FontStyles.Bold, new Color(0.55f, 0.88f, 1f), TextAlignmentOptions.Left);
         return r;
     }
 
@@ -170,7 +260,7 @@ public static class GameUIBootstrap
     {
         public GameObject root, slotTemplate;
         public Transform grid;
-        public TextMeshProUGUI coins, infoTitle, infoText;
+        public TextMeshProUGUI coins, infoTitle, infoText, hintText;
         public Sprite slotSprite, slotSelectedSprite;
     }
 
@@ -242,7 +332,7 @@ public static class GameUIBootstrap
         r.infoText = UIBuild.Label(UIBuild.Node("Description", info.transform), 22, FontStyles.Normal, new Color(0.78f, 0.86f, 0.92f), TextAlignmentOptions.Left);
 
         GameObject hint = UIBuild.Node("Hint", window.transform);
-        UIBuild.Label(hint, 20, FontStyles.Normal, new Color(0.45f, 0.6f, 0.7f), TextAlignmentOptions.Center).text = "[I] or [Esc] to close";
+        r.hintText = UIBuild.Label(hint, 20, FontStyles.Normal, new Color(0.45f, 0.6f, 0.7f), TextAlignmentOptions.Center);
 
         // Slot template: frame + icon + stack count in the bottom-right corner
         GameObject slot = UIBuild.Node("SlotTemplate", root.transform);
@@ -336,7 +426,7 @@ public static class GameUIBootstrap
         cr.anchorMin = cr.anchorMax = new Vector2(0.5f, 0f);
         cr.pivot = new Vector2(1f, 0f);
         cr.anchoredPosition = new Vector2(700f, 290f);
-        cr.sizeDelta = new Vector2(360f, 0f);
+        cr.sizeDelta = new Vector2(640f, 0f); // wide enough for long answers; each button grows to fit its text
         VerticalLayoutGroup v = choices.AddComponent<VerticalLayoutGroup>();
         v.spacing = 8;
         v.childControlWidth = v.childControlHeight = true;
@@ -345,7 +435,7 @@ public static class GameUIBootstrap
         choices.AddComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
         r.choices = choices.transform;
 
-        r.choiceTemplate = UIBuild.Button(root.transform, "ChoiceTemplate", "choice", 28, 56);
+        r.choiceTemplate = UIBuild.Button(root.transform, "ChoiceTemplate", "choice", 24, 56);
         r.choiceTemplate.gameObject.SetActive(false);
 
         root.SetActive(false);

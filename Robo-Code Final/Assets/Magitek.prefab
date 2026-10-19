@@ -117,7 +117,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 317b8365a4649ab459f6cb58ec8f9f18, type: 3}
+  m_Sprite: {fileID: 5547417771902212560, guid: efc3eaf0da4744e1aee8780f78788626, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -138,7 +138,7 @@ Animator:
   m_GameObject: {fileID: 4187778408488130863}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: b810f2280bb2a6b4cbf996716e6e3d55, type: 2}
+  m_Controller: {fileID: 22100000, guid: 98bdbb0e455849fc99d47e433e8fd858, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -211,7 +211,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.008942723, y: 0.68739974}
+  m_Offset: {x: 0, y: 0.95}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -221,7 +221,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.80245423, y: 1.3032565}
+  m_Size: {x: 0.9, y: 1.9}
   m_EdgeRadius: 0
 --- !u!114 &7935008345682957309
 MonoBehaviour:
@@ -252,10 +252,13 @@ MonoBehaviour:
   waitTimeAtPoint: 1.5
   fallbackPatrolDistance: 3
   healthBarPrefab: {fileID: 0}
-  healthBarOffset: {x: 0, y: 1.2, z: 0}
+  healthBarOffset: {x: 0, y: 2.3, z: 0}
   damageFlashColor: {r: 1, g: 0, b: 0, a: 1}
   damageFlashDuration: 0.1
   battleQuestions: []
+  isBoss: 1
+  arrowComboLength: 5
+  arrowComboTime: 4
   coinPrefab: {fileID: 8121993398754267287, guid: ce958efae44043544936a673dd5992ed, type: 3}
   minCoins: 2
   maxCoins: 5

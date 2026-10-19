@@ -19,11 +19,24 @@ public class MainMenu : MonoBehaviour
         {
             keybindPanel.SetActive(false);
         }
+
+        // CONTINUE / NEW GAME buttons and the ANSWER TIME / BACKGROUND settings, in your button art.
+        MenuExtras.SetupMainMenu(this);
+        MenuExtras.SetupSettingsPanel(settingsPanel);
     }
 
+    // START / CONTINUE button: back to the level you were last in (the tutorial if there's no save).
     public void PlayGame()
     {
-        SceneManager.LoadSceneAsync(1);
+        int index = GameSave.ContinueIndex();
+        SceneTransition.LoadScene(index, false, LevelProgress.TitleForBuildIndex(index));
+    }
+
+    // NEW GAME button: wipes the save (levels, chests, coins, upgrades, Hack) and starts the tutorial.
+    public void NewGame()
+    {
+        GameSave.StartNewGame();
+        SceneTransition.LoadScene(1, false, LevelProgress.TitleForBuildIndex(1));
     }
 
     public void OpenSettings()

@@ -24,7 +24,10 @@ public class BattleSettings : ScriptableObject
     [Header("Damage & Time")]
     public int correctAnswerDamage = 15;
     public int wrongAnswerDamage = 10;
+    [Tooltip("Old setting, no longer used: each enemy now hits for its own Attack Damage (set on the enemy prefab).")]
     public int enemyAttackDamage = 10;
+    [Tooltip("Multiplies every enemy's Attack Damage in battles. 1 = as set on each enemy, 1.5 = 50% harder, 0.5 = half.")]
+    [Range(0f, 3f)] public float enemyDamageMultiplier = 1f;
     public float answerTimeLimit = 20f;
 
     [Header("Quick-Time Event")]

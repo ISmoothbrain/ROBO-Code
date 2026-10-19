@@ -16,6 +16,17 @@ public class BattleManager : MonoBehaviour
     [Header("References")]
     public BattleUI ui;
     public QuickTimeEvent qte;
+    [Tooltip("Boss arrow combo. Created automatically by BattleBootstrap.")]
+    public ArrowSequence arrows;
+    [Tooltip("Attack/Hack choice. Created automatically by BattleBootstrap.")]
+    public HackMenu hackMenu;
+
+    private const float HackCost = 20f;  // one energy bar
+    private int enemySkipTurns;          // HACK: OVERRIDE
+    private bool enemyWeakened;          // HACK: OVERLOAD
+
+    // Answer time: the Settings menu's choice, or BattleSettings' Answer Time Limit.
+    private float AnswerLimit => GameSettings.AnswerTime > 0f ? GameSettings.AnswerTime : answerTimeLimit;
     [Tooltip("A CinemachineCamera with a higher priority than the normal one. Kept inactive until a battle starts.")]
     public GameObject battleCamera;
     [Tooltip("Used instead of Battle Camera when that's empty: zooms your existing camera directly.")]
@@ -36,7 +47,8 @@ public class BattleManager : MonoBehaviour
     public bool startBattleOnHit = true;
     public int correctAnswerDamage = 15;  // to the enemy
     public int wrongAnswerDamage = 10;    // to the player
-    public int enemyAttackDamage = 10;    // to the player when the QTE is missed
+    public int enemyAttackDamage = 10;    // old: battles now use each enemy's own Attack Damage
+    public float enemyDamageMultiplier = 1f; // scales every enemy's Attack Damage in battles
     public float answerTimeLimit = 20f;
 
     [Header("Staging")]
@@ -109,8 +121,16 @@ public class BattleManager : MonoBehaviour
     private IEnumerator BattleRoutine(Player player, BanditEnemy enemy, bool playerFirst)
     {
         InBattle = true;
+        enemySkipTurns = 0;
+        enemyWeakened = false;
+                if (AudioManager.instance != null)
+        {
+            AudioManager.instance.PlaySFX(AudioManager.instance.battleStart);
+            AudioManager.instance.PlayMusic(AudioManager.instance.battleMusic);
+        }
         // The question bag is NOT reset here, so you see every question before any repeats.
         // Only reshuffle when the question pool changes (an enemy with its own questions vs. the defaults).
+        
         BanditEnemy source = enemy.battleQuestions != null && enemy.battleQuestions.Length > 0 ? enemy : null;
         if (source != lastQuestionSource)
         {
@@ -149,6 +169,10 @@ public class BattleManager : MonoBehaviour
         }
 
         bool won = enemy == null || enemy.IsDead;
+                if (AudioManager.instance != null)
+        {
+                        if (won) AudioManager.instance.PlaySFX(AudioManager.instance.victory);
+        }
         ui.ShowBanner(won ? "VICTORY!" : "DEFEATED...");
         yield return new WaitForSeconds(1.6f);
 
@@ -157,6 +181,20 @@ public class BattleManager : MonoBehaviour
 
     private IEnumerator PlayerTurn(Player player, BanditEnemy enemy)
     {
+        // Once HACK is crafted, the turn starts with a choice: attack, or hack (1 energy bar).
+        PlayerSkills skills = player.GetComponent<PlayerSkills>();
+        if (hackMenu != null && GameSave.HackUnlocked && skills != null)
+        {
+            int bars = Mathf.FloorToInt(skills.Mana / HackCost);
+            int choice = 0;
+            yield return hackMenu.Choose(bars >= 1, bars, c => choice = c);
+            if (choice > 0)
+            {
+                yield return HackTurn(player, enemy, skills, choice == 1);
+                yield break;
+            }
+        }
+
         PythonQuestion q = NextQuestion(enemy);
         if (q == null)
         {
@@ -173,10 +211,11 @@ public class BattleManager : MonoBehaviour
         ui.ShowQuestion(q, i => chosen = i);
 
         float t = 0f;
-        while (chosen < 0 && t < answerTimeLimit)
+        float limit = AnswerLimit;
+        while (chosen < 0 && t < limit)
         {
             t += Time.deltaTime;
-            ui.SetTimer(1f - t / answerTimeLimit);
+            ui.SetTimer(1f - t / limit);
             yield return null;
         }
 
@@ -188,7 +227,9 @@ public class BattleManager : MonoBehaviour
         if (correct)
         {
             int dmg = Mathf.RoundToInt((correctAnswerDamage + PlayerUpgrades.BonusDamage) * Mathf.Max(0.1f, q.damageMultiplier));
+            if (enemyWeakened) dmg *= 2; // OVERLOAD
             player.PlayBattleAttack();
+                        if (AudioManager.instance != null) AudioManager.instance.PlaySFX(AudioManager.instance.attack);
             yield return new WaitForSeconds(0.3f);
             enemy.TakeDamage(dmg);
             ui.ShowBanner($"Code compiled!\n{dmg} damage");
@@ -205,23 +246,46 @@ public class BattleManager : MonoBehaviour
 
     private IEnumerator EnemyTurn(Player player, BanditEnemy enemy)
     {
+        // HACK: OVERRIDE - the enemy is under your control and loses this turn.
+        if (enemySkipTurns > 0)
+        {
+            enemySkipTurns--;
+            ui.ShowBanner("OVERRIDDEN!\nThe enemy can't attack this turn");
+            yield return new WaitForSeconds(1.4f);
+            yield break;
+        }
+
         ui.ShowBanner("ENEMY TURN\nPress the key when the rings meet!");
         yield return new WaitForSeconds(1f);
 
         bool dodged = false;
         yield return qte.Run(result => dodged = result);
 
+        // Bosses add a second test: an arrow-key combo, Helldivers "Stratagem Hero" style.
+        bool comboOk = true;
+        if (enemy.isBoss && arrows != null)
+        {
+            ui.ShowBanner("BOSS COMBO!\nType the arrows!");
+            yield return new WaitForSeconds(0.5f);
+            yield return arrows.Run(enemy.arrowComboLength, enemy.arrowComboTime, r => comboOk = r);
+        }
+
         enemy.PlayBattleAttack();
+                if (AudioManager.instance != null) AudioManager.instance.PlaySFX(AudioManager.instance.enemyAttack);
         yield return new WaitForSeconds(0.3f);
 
-        if (dodged)
+        // One hit for a missed ring, and (bosses only) another for a failed combo.
+        int dmg = Mathf.Max(0, Mathf.RoundToInt(enemy.attackDamage * enemyDamageMultiplier * (enemyWeakened ? 0.5f : 1f)));
+        int hits = (dodged ? 0 : 1) + (comboOk ? 0 : 1);
+        if (hits == 0)
         {
             ui.ShowBanner("DODGED!");
+            if (AudioManager.instance != null) AudioManager.instance.PlaySFX(AudioManager.instance.defend);
         }
         else
         {
-            player.TakeDamage(enemyAttackDamage);
-            ui.ShowBanner($"HIT!\n-{enemyAttackDamage} HP");
+            player.TakeDamage(dmg * hits);
+            ui.ShowBanner(hits == 2 ? $"DOUBLE HIT!\n-{dmg * 2} HP" : $"HIT!\n-{dmg} HP");
         }
 
         yield return new WaitForSeconds(0.9f);
@@ -230,6 +294,7 @@ public class BattleManager : MonoBehaviour
     private void EndBattle(Player player, BanditEnemy enemy)
     {
         ui.Hide();
+                if (AudioManager.instance != null) AudioManager.instance.PlayMusic(AudioManager.instance.gameMusic);
         RestoreHud();
         if (battleCamera != null) battleCamera.SetActive(false);
         else if (cameraDirector != null) cameraDirector.Exit();
@@ -253,6 +318,7 @@ public class BattleManager : MonoBehaviour
         correctAnswerDamage = settings.correctAnswerDamage;
         wrongAnswerDamage = settings.wrongAnswerDamage;
         enemyAttackDamage = settings.enemyAttackDamage;
+        enemyDamageMultiplier = settings.enemyDamageMultiplier;
         answerTimeLimit = settings.answerTimeLimit;
 
         if (cameraDirector != null)
@@ -315,6 +381,8 @@ public class BattleManager : MonoBehaviour
 
         Collider2D body = t.GetComponent<Collider2D>();
         float feetOffset = body != null ? here.y - body.bounds.min.y : 0f;
+        // Both feet must be on solid ground, with a little margin, so nobody lands half over an edge.
+        float footHalf = body != null ? body.bounds.extents.x * 0.9f + 0.1f : 0.4f;
         float feetY = here.y - feetOffset;
         const float maxStepUp = 1.2f, maxStepDown = 1.0f, headroom = 1.4f;
 
@@ -328,6 +396,8 @@ public class BattleManager : MonoBehaviour
             if (floor.collider == null) continue;                    // a cliff or a gap: no floor
             if (floor.distance < 0.01f) continue;                    // started inside a wall
             if (floor.point.y > feetY + maxStepUp) continue;         // too high to hop onto
+            if (!FloorUnder(x - footHalf, floor.point.y, ground) || !FloorUnder(x + footHalf, floor.point.y, ground))
+                continue;                                            // too close to an edge
 
             // Make sure nothing blocks the arc, measured above the higher of the two floors.
             float clearY = Mathf.Max(feetY, floor.point.y) + headroom;
@@ -336,6 +406,13 @@ public class BattleManager : MonoBehaviour
             return new Vector3(x, floor.point.y + feetOffset + 0.02f, here.z);
         }
         return here;
+    }
+
+    // Is there ground at this x, at about the same height as the landing floor?
+    private static bool FloorUnder(float x, float floorY, LayerMask ground)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(x, floorY + 0.5f), Vector2.down, 0.9f, ground);
+        return hit.collider != null && hit.distance > 0.01f;
     }
 
     private IEnumerator Hop(Transform[] bodies, Vector3[] targets)
@@ -424,27 +501,108 @@ public class BattleManager : MonoBehaviour
 
     // ---------------------------------------------------------------- questions
 
-    // Shuffled "bag": no repeats until every question has been used once.
+    // Questions already asked this play session (kept across level reloads), so you see every
+    // question before any repeats. Normal enemies ask easy-medium, bosses ask medium-hard.
+    private static readonly HashSet<string> askedNormal = new HashSet<string>();
+    private static readonly HashSet<string> askedBoss = new HashSet<string>();
+    private static readonly HashSet<string> askedCustom = new HashSet<string>();
+
     private PythonQuestion NextQuestion(BanditEnemy enemy)
     {
-        if (questionBag.Count == 0)
-        {
-            PythonQuestion[] pool = enemy.battleQuestions != null && enemy.battleQuestions.Length > 0
-                ? enemy.battleQuestions
-                : defaultQuestions;
-            if (pool == null) return null;
+        bool custom = enemy.battleQuestions != null && System.Array.Exists(enemy.battleQuestions, q => q != null);
+        PythonQuestion[] source = custom ? enemy.battleQuestions : defaultQuestions;
+        if (source == null) return null;
 
-            foreach (PythonQuestion q in pool) if (q != null) questionBag.Add(q);
-            for (int i = questionBag.Count - 1; i > 0; i--)
+        // Questions get harder level by level (LevelProgress tier):
+        //   normal enemies: The Safe Haven easy, Magister's Island easy-medium, Gemini's Blade medium-hard
+        //   bosses:         Magister's Island medium-hard, Gemini's Blade hard only
+        int tier = LevelProgress.CurrentTier();
+        int minDifficulty = enemy.isBoss ? Mathf.Clamp(tier, 2, 3) : Mathf.Max(1, tier - 1);
+        int maxDifficulty = enemy.isBoss ? 3 : Mathf.Min(3, tier);
+
+        List<PythonQuestion> pool = new List<PythonQuestion>();
+        foreach (PythonQuestion q in source)
+        {
+            if (q == null) continue;
+            if (!custom && (q.difficulty < minDifficulty || q.difficulty > maxDifficulty)) continue;
+            pool.Add(q);
+        }
+        if (pool.Count == 0) return null;
+
+        HashSet<string> asked = custom ? askedCustom : (enemy.isBoss ? askedBoss : askedNormal);
+        List<PythonQuestion> fresh = pool.FindAll(q => !asked.Contains(Key(q)));
+        if (fresh.Count == 0)
+        {
+            foreach (PythonQuestion q in pool) asked.Remove(Key(q)); // seen them all: start a new round
+            fresh = pool;
+        }
+        PythonQuestion pick = fresh[Random.Range(0, fresh.Count)];
+        asked.Add(Key(pick));
+        return pick;
+    }
+
+    private static string Key(PythonQuestion q) =>
+        q.goal + "|" + (q.codeLines != null && q.codeLines.Length > 0 ? q.codeLines[0] : "");
+
+    // ------------------------------------------------------------------ HACK
+    // Costs 1 energy bar and asks a HARD question. Right: the hack lands. Wrong: it's traced back
+    // to you and you take double the wrong-answer damage. High risk, high reward.
+    private IEnumerator HackTurn(Player player, BanditEnemy enemy, PlayerSkills skills, bool overrideHack)
+    {
+        skills.TrySpendMana(HackCost);
+        ui.ShowBanner(overrideHack ? "HACK: OVERRIDE\nBreak in to take control!" : "HACK: OVERLOAD\nBreak in to overload it!");
+        yield return new WaitForSeconds(0.8f);
+
+        bool correct = true;
+        PythonQuestion q = HardQuestion();
+        if (q != null)
+        {
+            int chosen = -1;
+            ui.ShowQuestion(q, i => chosen = i);
+            float t = 0f, limit = AnswerLimit;
+            while (chosen < 0 && t < limit)
             {
-                int j = Random.Range(0, i + 1);
-                (questionBag[i], questionBag[j]) = (questionBag[j], questionBag[i]);
+                t += Time.deltaTime;
+                ui.SetTimer(1f - t / limit);
+                yield return null;
             }
+            correct = chosen == q.correctIndex;
+            ui.RevealAnswer(q, chosen, correct);
+            yield return new WaitForSeconds(1.8f);
+            ui.HideQuestion();
         }
 
-        if (questionBag.Count == 0) return null;
-        PythonQuestion next = questionBag[questionBag.Count - 1];
-        questionBag.RemoveAt(questionBag.Count - 1);
-        return next;
+        if (correct)
+        {
+            if (overrideHack)
+            {
+                enemySkipTurns = 1;
+                ui.ShowBanner("OVERRIDE!\nThe enemy loses its next turn");
+            }
+            else
+            {
+                enemyWeakened = true;
+                ui.ShowBanner("OVERLOAD!\nDouble damage to it, half from it");
+            }
+            if (AudioManager.instance != null) AudioManager.instance.PlaySFX(AudioManager.instance.levelUp);
+        }
+        else
+        {
+            int dmg = wrongAnswerDamage * 2;
+            player.TakeDamage(dmg);
+            ui.ShowBanner($"HACK TRACED!\n-{dmg} HP");
+        }
+
+        yield return new WaitForSeconds(1.1f);
+        if (!player.IsDead) player.ReturnToBattleIdle();
+    }
+
+    private PythonQuestion HardQuestion()
+    {
+        List<PythonQuestion> pool = new List<PythonQuestion>();
+        if (defaultQuestions != null)
+            foreach (PythonQuestion q in defaultQuestions)
+                if (q != null && q.difficulty >= 3) pool.Add(q);
+        return pool.Count > 0 ? pool[Random.Range(0, pool.Count)] : null;
     }
 }

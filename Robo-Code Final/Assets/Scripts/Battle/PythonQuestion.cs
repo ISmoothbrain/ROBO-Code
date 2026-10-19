@@ -23,4 +23,7 @@ public class PythonQuestion : ScriptableObject
 
     [Tooltip("Optional: scales damage for harder questions.")]
     public float damageMultiplier = 1f;
+
+    [Tooltip("1 = easy, 2 = medium, 3 = hard. Normal enemies ask 1-2, bosses ask 2-3.")]
+    [Range(1, 3)] public int difficulty = 1;
 }

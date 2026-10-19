@@ -826,6 +826,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseMenu
   pausePanel: {fileID: 527131258}
+  settingsPanel: {fileID: 2006670295}
+  keybindsPanel: {fileID: 954730435}
 --- !u!4 &203233423
 Transform:
   m_ObjectHideFlags: 0
@@ -3740,6 +3742,16 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: -2, y: 3, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 39
+      m_TileSpriteIndex: 39
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: -1, y: 3, z: 0}
     second:
       serializedVersion: 2
@@ -4080,8 +4092,8 @@ Tilemap:
     m_RefCount: 0
     m_Data: {fileID: 11400000, guid: e08352eb31c24bf4a416ee2abba2f8a2, type: 2}
   - serializedVersion: 2
-    m_RefCount: 0
-    m_Data: {fileID: 11400000, guid: 49a72304152448f796be3487543f827e, type: 2}
+    m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 7c4bcce9112b5ad4681df3768dceb1cf, type: 2}
   - serializedVersion: 2
     m_RefCount: 2
     m_Data: {fileID: 11400000, guid: d5758ace90834c029636028f35c7695e, type: 2}
@@ -4207,8 +4219,8 @@ Tilemap:
     m_RefCount: 0
     m_Data: {fileID: 1189724793572697592, guid: 51fd2003f5784ce7a30e2f67435de204, type: 3}
   - serializedVersion: 2
-    m_RefCount: 0
-    m_Data: {fileID: 5570211016938774848, guid: 51fd2003f5784ce7a30e2f67435de204, type: 3}
+    m_RefCount: 1
+    m_Data: {fileID: 3046535596759301673, guid: 157cbc340d2b7e64ab85168e80e95550, type: 3}
   - serializedVersion: 2
     m_RefCount: 2
     m_Data: {fileID: 6777485088782439938, guid: 51fd2003f5784ce7a30e2f67435de204, type: 3}
@@ -4217,7 +4229,7 @@ Tilemap:
     m_Data: {fileID: 8864670616864374697, guid: 51fd2003f5784ce7a30e2f67435de204, type: 3}
   m_TileMatrixArray:
   - serializedVersion: 2
-    m_RefCount: 221
+    m_RefCount: 222
     m_Data:
       e00: 1
       e01: 0
@@ -4237,7 +4249,7 @@ Tilemap:
       e33: 1
   m_TileColorArray:
   - serializedVersion: 2
-    m_RefCount: 221
+    m_RefCount: 222
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -4342,15 +4354,7 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 411991770}
     m_ColliderPaths:
-    - - X: -20000000
-        Y: 40000000
-      - X: -10000000
-        Y: 40000000
-      - X: -10000000
-        Y: 30000000
-      - X: -5625000
-        Y: 30000000
-      - X: -3125000
+    - - X: -3125000
         Y: 32812500
       - X: -2500000
         Y: 34375000
@@ -4386,7 +4390,7 @@ CompositeCollider2D:
         Y: 32187500
       - X: -118437504
         Y: 30000000
-      - X: -20000000
+      - X: -5625000
         Y: 30000000
     - - X: 50000000
         Y: -10937500
@@ -4472,11 +4476,7 @@ CompositeCollider2D:
         Y: -5625000
   m_CompositePaths:
     m_Paths:
-    - - {x: -2.0000293, y: 3}
-      - {x: -1.9999707, y: 4}
-      - {x: -1, y: 3.9999704}
-      - {x: -0.99997073, y: 3}
-      - {x: -0.56249213, y: 3.0000088}
+    - - {x: -0.5625117, y: 3}
       - {x: -0.3124984, y: 3.281254}
       - {x: -0.25, y: 3.4375048}
       - {x: -0.2499809, y: 3.7500064}
@@ -4602,7 +4602,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.7199707, y: -3.0200195}
+  m_AnchoredPosition: {x: 1.7199707, y: -3.019989}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &444652213
@@ -7051,6 +7051,7 @@ GameObject:
   - component: {fileID: 954730436}
   - component: {fileID: 954730438}
   - component: {fileID: 954730437}
+  - component: {fileID: 954730439}
   m_Layer: 5
   m_Name: KeybindsPanel
   m_TagString: Untagged
@@ -7091,15 +7092,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.46666667, g: 0.53333336, b: 0.6, a: 0.39215687}
+  m_Color: {r: 0.46666667, g: 0.53333336, b: 0.6, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 4202066125836637424, guid: 6cf8c0b3f444bbe4ca132185ade1c46f, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -7116,6 +7117,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 954730435}
   m_CullTransparentMesh: 1
+--- !u!114 &954730439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954730435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6523e9e97ce74e4c98d0fd7edf6ac55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KeybindMenuBuilder
+  titleSprite: {fileID: 0}
+  nameSprites:
+  - {fileID: 21300000, guid: 2b871e84545f3414fb2a329c0b5b48b8, type: 3}
+  - {fileID: 21300000, guid: 7557c0eb0a887af4ea2c45bbf425490b, type: 3}
+  - {fileID: 21300000, guid: 7e83cf006f77bc347884387d4474824b, type: 3}
+  - {fileID: 21300000, guid: a3bc75303a5c7ff43b3e1e62014600e7, type: 3}
+  - {fileID: 21300000, guid: 1b8a0c94ae9ae914dbf72b5127884530, type: 3}
+  keyPlateSprite: {fileID: 21300000, guid: faf60d5c26a01a447914316810254bb5, type: 3}
+  resetSprite: {fileID: 21300000, guid: d143014c7ecdddd4c8beb569262c2a2d, type: 3}
+  font: {fileID: 0}
+  showTitle: 0
+  titleLeft: 0.34
+  titleRight: 0.66
+  titleBottom: 0.88
+  titleTop: 0.98
+  firstRowTop: 0.855
+  rowHeight: 0.072
+  rowGap: 0.02
+  nameLeft: 0.22
+  nameRight: 0.5
+  keyLeft: 0.54
+  keyRight: 0.78
+  backButton: {fileID: 137232071}
+  resetGap: 6
+  resetBottom: 0.3
+  resetTop: 0.365
+  resetLeft: 0.38
+  resetRight: 0.62
+  normalTint: {r: 0.46666667, g: 0.53333336, b: 0.6, a: 1}
+  highlightTint: {r: 0.9019608, g: 0.9019608, b: 0.9019608, a: 1}
+  pressedTint: {r: 0.46666667, g: 0.53333336, b: 0.6, a: 1}
+  nameFontSize: 24
+  keyFontSize: 22
+  textColor: {r: 0.50980395, g: 0.5882353, b: 0.64705884, a: 1}
+  messageColor: {r: 1, g: 0.82, b: 0.4, a: 1}
+  plainBoxColor: {r: 0.12, g: 0.16, b: 0.24, a: 1}
 --- !u!1 &1037165677
 GameObject:
   m_ObjectHideFlags: 0
@@ -8487,6 +8536,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1504073378}
   m_CullTransparentMesh: 1
+--- !u!1001 &1535291004
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6662341251651463786, guid: 1df30adec8dacf041abfab680cfb239c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.90165
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662341251651463786, guid: 1df30adec8dacf041abfab680cfb239c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.73221
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662341251651463786, guid: 1df30adec8dacf041abfab680cfb239c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662341251651463786, guid: 1df30adec8dacf041abfab680cfb239c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662341251651463786, guid: 1df30adec8dacf041abfab680cfb239c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662341251651463786, guid: 1df30adec8dacf041abfab680cfb239c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662341251651463786, guid: 1df30adec8dacf041abfab680cfb239c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662341251651463786, guid: 1df30adec8dacf041abfab680cfb239c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662341251651463786, guid: 1df30adec8dacf041abfab680cfb239c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662341251651463786, guid: 1df30adec8dacf041abfab680cfb239c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8118558181487333224, guid: 1df30adec8dacf041abfab680cfb239c, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1df30adec8dacf041abfab680cfb239c, type: 3}
 --- !u!1001 &1541670772
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8575,7 +8681,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VolumeSettings
   musicSlider: {fileID: 1883559781}
   sfxSlider: {fileID: 445367562}
-  musicSource: {fileID: 0}
 --- !u!4 &1547941595
 Transform:
   m_ObjectHideFlags: 0
@@ -10047,15 +10152,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.46666667, g: 0.53333336, b: 0.6, a: 0.39215687}
+  m_Color: {r: 0.46666667, g: 0.53333336, b: 0.6, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 4202066125836637424, guid: 6cf8c0b3f444bbe4ca132185ade1c46f, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -10897,3 +11002,4 @@ SceneRoots:
   - {fileID: 160237547}
   - {fileID: 846470594}
   - {fileID: 269126971}
+  - {fileID: 1535291004}
