@@ -35,6 +35,8 @@ This game has:
 ## Visuals:
 
 Its a Pixel art game
+<img width="1300" height="620" alt="image" src="https://github.com/user-attachments/assets/6f4d9cca-b7fe-4214-b87f-991d3436d5c2" />
+
 
 
 
